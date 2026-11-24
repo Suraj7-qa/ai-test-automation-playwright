@@ -465,6 +465,6 @@ MIT License - see [LICENSE](LICENSE) for details.
 
 **⭐ Star this repo if you find it useful!**
 
-*Built with ❤️ and GitHub Copilot*
+*Built with ❤️ and Claude Code & GitHub Copilot*
 
 </div>

@@ -1,0 +1,97 @@
+{
+  "pageName": "ElectronicsPage",
+  "pageUrl": "/electronics",
+  "pageTitle": "Demo Web Shop. Electronics",
+  "elements": {
+    "electronicsHeading": {
+      "locator": "h1",
+      "strategy": "role",
+      "role": "heading",
+      "name": "Electronics",
+      "exact": true,
+      "type": "heading",
+      "description": "Electronics category heading"
+    },
+    "cameraPhotoLink": {
+      "locator": "a[href='/camera-photo'][title]",
+      "fallbackLocators": ["h2 a[href='/camera-photo']"],
+      "type": "link",
+      "description": "Camera, photo subcategory link"
+    },
+    "cellPhonesLink": {
+      "locator": "a[href='/cell-phones'][title]",
+      "fallbackLocators": ["h2 a[href='/cell-phones']"],
+      "type": "link",
+      "description": "Cell phones subcategory link"
+    },
+    "cameraPhotoHeading": {
+      "locator": "h1",
+      "strategy": "role",
+      "role": "heading",
+      "name": "Camera, photo",
+      "exact": true,
+      "type": "heading",
+      "description": "Camera, photo category heading"
+    },
+    "under500Filter": {
+      "locator": "a[href*='price=-500']",
+      "strategy": "role",
+      "role": "link",
+      "name": "Under 500.00",
+      "exact": true,
+      "type": "link",
+      "description": "Camera, photo price filter under 500.00"
+    },
+    "over500Filter": {
+      "locator": "a[href*='price=500-']",
+      "strategy": "role",
+      "role": "link",
+      "name": "Over 500.00",
+      "exact": true,
+      "type": "link",
+      "description": "Camera, photo price filter over 500.00"
+    },
+    "handycamLink": {
+      "locator": "a[href='/hard-drive-handycam-camcorder']",
+      "strategy": "role",
+      "role": "link",
+      "name": "1MP 60GB Hard Drive Handycam Camcorder",
+      "exact": true,
+      "type": "link",
+      "description": "Handycam product link"
+    },
+    "handycamPrice": {
+      "locator": ".item-box:has(a[href='/hard-drive-handycam-camcorder']) .prices .price",
+      "fallbackLocators": [".item-box:has(a[href='/hard-drive-handycam-camcorder']) [class*='price']"],
+      "type": "text",
+      "description": "Handycam price in the Camera, photo listing"
+    },
+    "camcorderLink": {
+      "locator": "a[href='/camcorder']",
+      "strategy": "role",
+      "role": "link",
+      "name": "Camcorder",
+      "exact": true,
+      "type": "link",
+      "description": "Camcorder product link"
+    },
+    "digitalSlrLink": {
+      "locator": "a[href='/digital-slr-camera']",
+      "strategy": "role",
+      "role": "link",
+      "name": "Digital SLR Camera 12.2 Mpixel",
+      "exact": true,
+      "type": "link",
+      "description": "Digital SLR product link"
+    },
+    "highDefinitionCamcorderLink": {
+      "locator": "a[href='/3d-camcorder']",
+      "strategy": "role",
+      "role": "link",
+      "name": "High Definition 3D Camcorder",
+      "exact": true,
+      "type": "link",
+      "description": "High Definition 3D Camcorder product link"
+    }
+  }
+}

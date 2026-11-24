@@ -1,0 +1,59 @@
+{
+  "app": {
+    "baseUrl": "https://demowebshop.tricentis.com",
+    "loginUrl": "https://demowebshop.tricentis.com/login",
+    "registerUrl": "https://demowebshop.tricentis.com/register",
+    "logoutUrl": "https://demowebshop.tricentis.com/logout",
+    "passwordRecoveryUrl": "https://demowebshop.tricentis.com/passwordrecovery"
+  },
+  "testData": {
+    "validUser": {
+      "email": "surajnavgire2015@gmail.com",
+      "password": "Suraj7616",
+      "firstName": "Suraj",
+      "lastName": "Navgire"
+    },
+    "newUser": {
+      "firstName": "John",
+      "lastName": "Doe",
+      "email": "john.doe.test@test.com",
+      "password": "TestPass123!",
+      "gender": "Male"
+    },
+    "invalidData": {
+      "invalidEmail": "invalid-email",
+      "shortPassword": "123",
+      "wrongPassword": "WrongPass123!",
+      "unregisteredEmail": "nonexistent@test.com",
+      "duplicateEmail": "surajnavgire2015@gmail.com"
+    }
+  },
+  "timeouts": {
+    "navigation": 30000,
+    "action": 15000,
+    "assertion": 10000,
+    "pageLoad": 20000
+  },
+  "selectors": {
+    "testIdAttributes": ["data-testid", "data-cy", "data-qa", "data-test", "test-id"],
+    "locatorStrategy": ["testid", "role", "label", "css"]
+  },
+  "browser": {
+    "headless": true,
+    "slowMo": 0,
+    "viewport": { "width": 1280, "height": 720 }
+  },
+  "retry": {
+    "enabled": true,
+    "count": 2,
+    "delay": 1000
+  },
+  "reporting": {
+    "screenshotOnFailure": true,
+    "videoOnFailure": true,
+    "traceOnFailure": true,
+    "htmlReport": true,
+    "jsonReport": true,
+    "junitReport": true
+  }
+}

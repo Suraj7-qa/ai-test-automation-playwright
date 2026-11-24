@@ -1,0 +1,162 @@
+{
+  "pageName": "LoginPage",
+  "pageUrl": "/login",
+  "pageTitle": "Demo Web Shop. Login",
+  "elements": {
+    "emailInput": {
+      "locator": "input[id='Email'], input[name='Email'], input[type='email']",
+      "fallbackLocators": [
+        "input[id='Email']",
+        "input[name='Email']",
+        "input[type='email']",
+        "#Email"
+      ],
+      "strategy": "label",
+      "name": "Email:",
+      "exact": false,
+      "type": "textbox",
+      "description": "Email address input field"
+    },
+    "passwordInput": {
+      "locator": "input[id='Password'], input[name='Password'], input[type='password']",
+      "fallbackLocators": [
+        "input[id='Password']",
+        "input[name='Password']",
+        "input[type='password']",
+        "#Password"
+      ],
+      "strategy": "label",
+      "name": "Password:",
+      "exact": false,
+      "type": "textbox",
+      "description": "Password input field"
+    },
+    "rememberMeCheckbox": {
+      "locator": "input[id='RememberMe'], input[name='RememberMe'], input[type='checkbox']",
+      "fallbackLocators": [
+        "input[id='RememberMe']",
+        "input[name='RememberMe']",
+        "input[type='checkbox']",
+        "#RememberMe"
+      ],
+      "strategy": "label",
+      "name": "Remember me?",
+      "exact": false,
+      "type": "checkbox",
+      "description": "Remember me checkbox"
+    },
+    "loginButton": {
+      "locator": "button[type='submit'], input[value='Log in'], button:has-text('Log in')",
+      "fallbackLocators": [
+        "button[type='submit']",
+        "input[value='Log in']",
+        "button:has-text('Log in')",
+        ".login-button"
+      ],
+      "strategy": "role",
+      "role": "button",
+      "name": "Log in",
+      "exact": true,
+      "type": "button",
+      "description": "Login submit button"
+    },
+    "forgotPasswordLink": {
+      "locator": "a:has-text('Forgot password?'), a[href*='passwordrecovery']",
+      "fallbackLocators": [
+        "a:has-text('Forgot password?')",
+        "a[href*='passwordrecovery']",
+        "a[href='/passwordrecovery']"
+      ],
+      "strategy": "role",
+      "role": "link",
+      "name": "Forgot password?",
+      "exact": true,
+      "type": "link",
+      "description": "Forgot password link"
+    },
+    "registerLink": {
+      "locator": "a:has-text('Register'), a[href*='register']",
+      "fallbackLocators": [
+        "a:has-text('Register')",
+        "a[href*='register']",
+        "a[href='/register']"
+      ],
+      "strategy": "role",
+      "role": "link",
+      "name": "Register",
+      "exact": true,
+      "type": "link",
+      "description": "Register link in header"
+    },
+    "errorMessage": {
+      "locator": "[data-testid='login-error'], .validation-summary-errors, .field-validation-error, span[data-valmsg-for='Email'], span[data-valmsg-for='Password']",
+      "fallbackLocators": [
+        ".validation-summary-errors",
+        ".field-validation-error",
+        "span[data-valmsg-for='Email']",
+        "span[data-valmsg-for='Password']",
+        ".message-error"
+      ],
+      "type": "text",
+      "description": "Login error message display"
+    },
+    "validationSummary": {
+      "locator": ".validation-summary-errors ul li",
+      "fallbackLocators": [
+        ".validation-summary-errors ul li",
+        ".field-validation-error"
+      ],
+      "type": "list",
+      "description": "Validation error summary list"
+    },
+    "emailFieldError": {
+      "locator": "span[data-valmsg-for='Email'].field-validation-error",
+      "fallbackLocators": [
+        "span[data-valmsg-for='Email'].field-validation-error",
+        "input[id='Email'].input-validation-error + span.field-validation-error"
+      ],
+      "type": "text",
+      "description": "Email field validation error"
+    },
+    "passwordFieldError": {
+      "locator": "span[data-valmsg-for='Password'].field-validation-error",
+      "fallbackLocators": [
+        "span[data-valmsg-for='Password'].field-validation-error",
+        "input[id='Password'].input-validation-error + span.field-validation-error"
+      ],
+      "type": "text",
+      "description": "Password field validation error"
+    },
+    "pageTitle": {
+      "locator": "h1:has-text('Welcome, Please Sign In!'), h1:has-text('Login'), .page-title h1",
+      "strategy": "role",
+      "role": "heading",
+      "name": "Welcome, Please Sign In!",
+      "exact": true,
+      "fallbackLocators": [
+        "h1:has-text('Welcome, Please Sign In!')",
+        "h1:has-text('Login')",
+        ".page-title h1"
+      ],
+      "type": "heading",
+      "description": "Login page title"
+    },
+    "loginForm": {
+      "locator": "form[action*='login'], form[data-testid='login-form'], .login-form",
+      "fallbackLocators": [
+        "form[action*='login']",
+        "form[data-testid='login-form']",
+        ".login-form"
+      ],
+      "type": "form",
+      "description": "Login form container"
+    }
+  },
+  "forms": {
+    "loginForm": {
+      "locator": "form[action*='login'], form[data-testid='login-form']",
+      "fields": ["emailInput", "passwordInput", "rememberMeCheckbox"],
+      "submitButton": "loginButton"
+    }
+  }
+}

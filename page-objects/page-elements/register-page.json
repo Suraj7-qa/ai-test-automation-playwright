@@ -1,0 +1,267 @@
+{
+  "pageName": "RegisterPage",
+  "pageUrl": "/register",
+  "pageTitle": "Demo Web Shop. Register",
+  "elements": {
+    "genderMaleRadio": {
+      "locator": "input[id='gender-male'], input[name='Gender'][value='M']",
+      "fallbackLocators": ["input[id='gender-male']", "input[name='Gender'][value='M']", "#gender-male"],
+      "strategy": "role",
+      "role": "radio",
+      "name": "Male",
+      "exact": true,
+      "type": "radio",
+      "description": "Male gender radio button"
+    },
+    "genderFemaleRadio": {
+      "locator": "input[id='gender-female'], input[name='Gender'][value='F']",
+      "fallbackLocators": ["input[id='gender-female']", "input[name='Gender'][value='F']", "#gender-female"],
+      "strategy": "role",
+      "role": "radio",
+      "name": "Female",
+      "exact": true,
+      "type": "radio",
+      "description": "Female gender radio button"
+    },
+    "firstNameInput": {
+      "locator": "input[id='FirstName'], input[name='FirstName']",
+      "fallbackLocators": ["input[id='FirstName']", "input[name='FirstName']", "#FirstName"],
+      "strategy": "label",
+      "name": "First name:",
+      "exact": false,
+      "type": "textbox",
+      "description": "First name input field"
+    },
+    "lastNameInput": {
+      "locator": "input[id='LastName'], input[name='LastName']",
+      "fallbackLocators": ["input[id='LastName']", "input[name='LastName']", "#LastName"],
+      "strategy": "label",
+      "name": "Last name:",
+      "exact": false,
+      "type": "textbox",
+      "description": "Last name input field"
+    },
+    "emailInput": {
+      "locator": "input[id='Email'], input[name='Email']",
+      "fallbackLocators": ["input[id='Email']", "input[name='Email']", "#Email"],
+      "strategy": "label",
+      "name": "Email:",
+      "exact": false,
+      "type": "textbox",
+      "description": "Email address input field"
+    },
+    "passwordInput": {
+      "locator": "input[id='Password'], input[name='Password']",
+      "fallbackLocators": ["input[id='Password']", "input[name='Password']", "#Password"],
+      "strategy": "label",
+      "name": "Password:",
+      "exact": false,
+      "type": "textbox",
+      "description": "Password input field"
+    },
+    "confirmPasswordInput": {
+      "locator": "input[id='ConfirmPassword'], input[name='ConfirmPassword']",
+      "fallbackLocators": ["input[id='ConfirmPassword']", "input[name='ConfirmPassword']", "#ConfirmPassword"],
+      "strategy": "label",
+      "name": "Confirm password:",
+      "exact": false,
+      "type": "textbox",
+      "description": "Confirm password input field"
+    },
+    "registerButton": {
+      "locator": "button[type='submit'], input[value='Register']",
+      "fallbackLocators": ["button[type='submit']", "input[value='Register']", "button:has-text('Register')", ".register-button"],
+      "strategy": "role",
+      "role": "button",
+      "name": "Register",
+      "exact": true,
+      "type": "button",
+      "description": "Register submit button"
+    },
+    "loginLink": {
+      "locator": "a[data-testid='login-link'], a:has-text('Log in'), a[href*='login']",
+      "fallbackLocators": [
+        "a:has-text('Log in')",
+        "a[href*='login']",
+        "a[href='/login']"
+      ],
+      "strategy": "role",
+      "role": "link",
+      "name": "Log in",
+      "exact": true,
+      "type": "link",
+      "description": "Log in link in header"
+    },
+    "registerLink": {
+      "locator": "a[data-testid='register-link'], a:has-text('Register'), a[href*='register']",
+      "fallbackLocators": [
+        "a:has-text('Register')",
+        "a[href*='register']",
+        "a[href='/register']"
+      ],
+      "strategy": "role",
+      "role": "link",
+      "name": "Register",
+      "exact": true,
+      "type": "link",
+      "description": "Register link in header"
+    },
+    "errorMessage": {
+      "locator": "[data-testid='register-error'], .validation-summary-errors, .field-validation-error, .message-error",
+      "fallbackLocators": [
+        ".validation-summary-errors",
+        ".field-validation-error",
+        ".message-error",
+        "span[data-valmsg-for='Email']",
+        "span[data-valmsg-for='Password']",
+        "span[data-valmsg-for='ConfirmPassword']",
+        "span[data-valmsg-for='FirstName']",
+        "span[data-valmsg-for='LastName']"
+      ],
+      "type": "text",
+      "description": "Registration error message display"
+    },
+    "validationSummary": {
+      "locator": ".validation-summary-errors ul li",
+      "fallbackLocators": [
+        ".validation-summary-errors ul li",
+        ".field-validation-error"
+      ],
+      "type": "list",
+      "description": "Validation error summary list"
+    },
+    "firstNameFieldError": {
+      "locator": "span[data-valmsg-for='FirstName'].field-validation-error",
+      "fallbackLocators": [
+        "span[data-valmsg-for='FirstName'].field-validation-error",
+        "input[id='FirstName'].input-validation-error + span.field-validation-error"
+      ],
+      "type": "text",
+      "description": "First name field validation error"
+    },
+    "lastNameFieldError": {
+      "locator": "span[data-valmsg-for='LastName'].field-validation-error",
+      "fallbackLocators": [
+        "span[data-valmsg-for='LastName'].field-validation-error",
+        "input[id='LastName'].input-validation-error + span.field-validation-error"
+      ],
+      "type": "text",
+      "description": "Last name field validation error"
+    },
+    "emailFieldError": {
+      "locator": "span[data-valmsg-for='Email'].field-validation-error",
+      "fallbackLocators": [
+        "span[data-valmsg-for='Email'].field-validation-error",
+        "input[id='Email'].input-validation-error + span.field-validation-error"
+      ],
+      "type": "text",
+      "description": "Email field validation error"
+    },
+    "passwordFieldError": {
+      "locator": "span[data-valmsg-for='Password'].field-validation-error",
+      "fallbackLocators": [
+        "span[data-valmsg-for='Password'].field-validation-error",
+        "input[id='Password'].input-validation-error + span.field-validation-error"
+      ],
+      "type": "text",
+      "description": "Password field validation error"
+    },
+    "confirmPasswordFieldError": {
+      "locator": "span[data-valmsg-for='ConfirmPassword'].field-validation-error",
+      "fallbackLocators": [
+        "span[data-valmsg-for='ConfirmPassword'].field-validation-error",
+        "input[id='ConfirmPassword'].input-validation-error + span.field-validation-error"
+      ],
+      "type": "text",
+      "description": "Confirm password field validation error"
+    },
+    "passwordMismatchError": {
+      "locator": ".validation-summary-errors ul li:has-text('password'), .field-validation-error:has-text('password')",
+      "fallbackLocators": [
+        ".validation-summary-errors ul li:has-text('password')",
+        ".field-validation-error:has-text('password')",
+        "span[data-valmsg-for='ConfirmPassword'].field-validation-error:has-text('match')"
+      ],
+      "type": "text",
+      "description": "Password mismatch error message"
+    },
+    "duplicateEmailError": {
+      "locator": ".validation-summary-errors ul li:has-text('already exists'), .field-validation-error:has-text('already exists')",
+      "fallbackLocators": [
+        ".validation-summary-errors ul li:has-text('already exists')",
+        ".field-validation-error:has-text('already exists')",
+        "span[data-valmsg-for='Email'].field-validation-error:has-text('already exists')"
+      ],
+      "type": "text",
+      "description": "Duplicate email error message"
+    },
+    "invalidEmailError": {
+      "locator": ".validation-summary-errors ul li:has-text('Wrong email'), .field-validation-error:has-text('Wrong email')",
+      "fallbackLocators": [
+        ".validation-summary-errors ul li:has-text('Wrong email')",
+        ".field-validation-error:has-text('Wrong email')",
+        "span[data-valmsg-for='Email'].field-validation-error:has-text('Wrong email')"
+      ],
+      "type": "text",
+      "description": "Invalid email format error message"
+    },
+    "successMessage": {
+      "locator": ".result, .content, .page-title:has-text('Your registration completed'), h1:has-text('Your registration completed')",
+      "fallbackLocators": [
+        ".result",
+        ".content",
+        ".page-title:has-text('Your registration completed')",
+        "h1:has-text('Your registration completed')"
+      ],
+      "strategy": "text",
+      "name": "Your registration completed",
+      "exact": false,
+      "type": "text",
+      "description": "Registration success message"
+    },
+    "continueButton": {
+      "locator": "a[data-testid='continue-button'], a:has-text('Continue'), button:has-text('Continue'), input[value='Continue']",
+      "fallbackLocators": [
+        "a:has-text('Continue')",
+        "button:has-text('Continue')",
+        "input[value='Continue']"
+      ],
+      "strategy": "role",
+      "role": "link",
+      "name": "Continue",
+      "exact": true,
+      "type": "button",
+      "description": "Continue button after successful registration"
+    },
+    "pageTitle": {
+      "locator": "h1:has-text('Register'), .page-title h1",
+      "fallbackLocators": [
+        "h1:has-text('Register')",
+        ".page-title h1"
+      ],
+      "strategy": "role",
+      "role": "heading",
+      "name": "Register",
+      "exact": true,
+      "type": "heading",
+      "description": "Register page title"
+    },
+    "registerForm": {
+      "locator": "form[action*='register'], form[data-testid='register-form'], .register-form",
+      "fallbackLocators": [
+        "form[action*='register']",
+        "form[data-testid='register-form']",
+        ".register-form"
+      ],
+      "type": "form",
+      "description": "Register form container"
+    }
+  },
+  "forms": {
+    "registerForm": {
+      "locator": "form[action*='register'], form[data-testid='register-form']",
+      "fields": ["genderMaleRadio", "genderFemaleRadio", "firstNameInput", "lastNameInput", "emailInput", "passwordInput", "confirmPasswordInput"],
+      "submitButton": "registerButton"
+    }
+  }
+}

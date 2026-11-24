@@ -1,0 +1,255 @@
+{
+  "pageName": "ComputersPage",
+  "pageUrl": "/computers",
+  "pageTitle": "Demo Web Shop. Computers",
+  "elements": {
+    "categoryHeading": {
+      "locator": "h1",
+      "strategy": "role",
+      "role": "heading",
+      "name": "Computers",
+      "exact": true,
+      "type": "heading",
+      "description": "Current category heading"
+    },
+    "computersSubcategoryLinks": {
+      "locator": "h2 a[href='/desktops'], h2 a[href='/notebooks'], h2 a[href='/accessories']",
+      "type": "link",
+      "description": "Computers subcategory links"
+    },
+    "sidebarNotebooksLink": {
+      "locator": ".block-category-navigation a[href='/notebooks']",
+      "strategy": "role",
+      "role": "link",
+      "name": "Notebooks",
+      "exact": true,
+      "type": "link",
+      "description": "Notebooks sidebar link"
+    },
+    "sidebarAccessoriesLink": {
+      "locator": ".block-category-navigation a[href='/accessories']",
+      "strategy": "role",
+      "role": "link",
+      "name": "Accessories",
+      "exact": true,
+      "type": "link",
+      "description": "Accessories sidebar link"
+    },
+
+    "productCards": {
+      "locator": ".item-box",
+      "fallbackLocators": [".product-item", "[class*='product-card']"],
+      "type": "container",
+      "description": "Product cards in a computer category"
+    },
+    "productNameLinks": {
+      "locator": ".item-box .product-title a",
+      "type": "link",
+      "description": "Product title links in the category catalogue"
+    },
+    "productCardImage": {
+      "locator": ".picture img",
+      "fallbackLocators": [".product-image img", "img[alt*='Picture of']"],
+      "type": "image",
+      "description": "Product image within a catalogue card"
+    },
+    "productCardPrice": {
+      "locator": ".prices .price, .actual-price, .price-value, .price",
+      "fallbackLocators": [".prices .price", ".actual-price", "[class*='price']"],
+      "type": "text",
+      "description": "Product price within a catalogue card"
+    },
+    "sortByDropdown": {
+      "locator": "select[id*='products-orderby']",
+      "fallbackLocators": [
+        "select[id*='sort']",
+        ".sort-by select"
+      ],
+      "strategy": "label",
+      "name": "Sort by:",
+      "exact": false,
+      "type": "select",
+      "description": "Catalogue sort order"
+    },
+
+    "desktopPriceUnder1000": {
+      "locator": "a[href*='price=-1000']",
+      "fallbackLocators": [
+        "a:has-text('Under 1000.00')"
+      ],
+      "strategy": "role",
+      "role": "link",
+      "name": "Under 1000.00",
+      "exact": true,
+      "type": "link",
+      "description": "Desktop price filter under 1000.00"
+    },
+    "desktopPrice1000To1200": {
+      "locator": "a[href*='price=1000-1200']",
+      "fallbackLocators": [
+        "a:has-text('1000.00 - 1200.00')"
+      ],
+      "strategy": "role",
+      "role": "link",
+      "name": "1000.00 - 1200.00",
+      "exact": true,
+      "type": "link",
+      "description": "Desktop price filter from 1000.00 to 1200.00"
+    },
+    "desktopPriceOver1200": {
+      "locator": "a[href*='price=1200-']",
+      "fallbackLocators": [
+        "a:has-text('Over 1200.00')"
+      ],
+      "strategy": "role",
+      "role": "link",
+      "name": "Over 1200.00",
+      "exact": true,
+      "type": "link",
+      "description": "Desktop price filter over 1200.00"
+    },
+    "accessoriesPriceUnder100": {
+      "locator": "a[href*='price=-100']",
+      "fallbackLocators": [
+        "a:has-text('Under 100.00')"
+      ],
+      "strategy": "role",
+      "role": "link",
+      "name": "Under 100.00",
+      "exact": true,
+      "type": "link",
+      "description": "Accessories price filter under 100.00"
+    },
+    "accessoriesPriceOver100": {
+      "locator": "a[href*='price=100-']",
+      "fallbackLocators": [
+        "a:has-text('Over 100.00')"
+      ],
+      "strategy": "role",
+      "role": "link",
+      "name": "Over 100.00",
+      "exact": true,
+      "type": "link",
+      "description": "Accessories price filter over 100.00"
+    },
+    "notebookIntelFilter": {
+      "locator": "a[href*='specs=6']",
+      "fallbackLocators": [
+        "a:has-text('Intel')"
+      ],
+      "strategy": "role",
+      "role": "link",
+      "name": "Intel",
+      "exact": true,
+      "type": "link",
+      "description": "Notebook Intel CPU filter"
+    },
+    "notebookMemoryFilter": {
+      "locator": "a[href*='specs=8']",
+      "fallbackLocators": [
+        "a:has-text('3 GB')"
+      ],
+      "strategy": "role",
+      "role": "link",
+      "name": "3 GB",
+      "exact": true,
+      "type": "link",
+      "description": "Notebook 3 GB memory filter"
+    },
+    "notebookProductLink": {
+      "locator": ".item-box .product-title a[href*='141-inch-laptop']",
+      "strategy": "role",
+      "role": "link",
+      "name": "14.1-inch Laptop",
+      "exact": true,
+      "type": "link",
+      "description": "14.1-inch Laptop product link"
+    },
+
+    "desktopProductDetailHeading": {
+      "locator": "h1",
+      "strategy": "role",
+      "role": "heading",
+      "name": "Build your own computer",
+      "exact": true,
+      "type": "heading",
+      "description": "Desktop product detail heading"
+    },
+    "desktopProductDetailsForm": {
+      "locator": "#product-details-form",
+      "type": "form",
+      "description": "Main configurable desktop product form"
+    },
+    "desktopProductDetailPrice": {
+      "locator": "#product-details-form span.price-value-16",
+      "type": "text",
+      "description": "Configured desktop price scoped to the main product"
+    },
+    "ramSelect": {
+      "locator": "#product-details-form select[id^='product_attribute_16_6_']",
+      "strategy": "label",
+      "name": "RAM *",
+      "exact": true,
+      "type": "select",
+      "description": "RAM configuration selector"
+    },
+    "desktopHddOption": {
+      "locator": "#product-details-form input[type='radio'][name='product_attribute_16_3_6'][value='18']",
+      "strategy": "label",
+      "name": "320 GB",
+      "exact": true,
+      "type": "radio",
+      "description": "Required 320 GB HDD option"
+    },
+    "desktopQuantityInput": {
+      "locator": "#product-details-form input#addtocart_16_EnteredQuantity",
+      "strategy": "label",
+      "name": "Qty:",
+      "exact": true,
+      "type": "textbox",
+      "description": "Desktop product quantity input"
+    },
+    "desktopAddToCartButton": {
+      "locator": "#product-details-form button[id*='add-to-cart']",
+      "fallbackLocators": [
+        "#product-details-form .add-to-cart-button"
+      ],
+      "strategy": "role",
+      "role": "button",
+      "name": "Add to cart",
+      "exact": true,
+      "type": "button",
+      "description": "Add configured desktop to cart"
+    },
+
+    "addToCartNotification": {
+      "locator": ".bar-notification",
+      "fallbackLocators": [".message-success", "[class*='notification']"],
+      "type": "status",
+      "description": "Add-to-cart success notification"
+    },
+    "cartCount": {
+      "locator": ".cart-qty",
+      "fallbackLocators": ["[data-testid='cart-count']", ".cart-count"],
+      "strategy": "role",
+      "role": "link",
+      "name": "Shopping cart",
+      "type": "text",
+      "description": "Shopping cart item count"
+    },
+    "cartProductRow": {
+      "locator": ".cart-item-row",
+      "type": "container",
+      "description": "Desktop product row in the shopping cart"
+    },
+    "cartQuantityInput": {
+      "locator": "input.qty-input",
+      "fallbackLocators": ["input[class*='qty']", "input[name*='qty']"],
+      "strategy": "label",
+      "name": "Qty:",
+      "exact": true,
+      "type": "textbox",
+      "description": "Quantity input in the shopping cart"
+    }
+  }
+}

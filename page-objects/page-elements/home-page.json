@@ -1,0 +1,250 @@
+{
+  "pageName": "HomePage",
+  "pageUrl": "/",
+  "pageTitle": "Demo Web Shop",
+  "elements": {
+    "header": {
+      "locator": "header, #header, .header",
+      "fallbackLocators": [
+        "header",
+        "#header",
+        ".header"
+      ],
+      "type": "header",
+      "description": "Header section"
+    },
+    "logoLink": {
+      "locator": "a[href='/'] img, .header-logo a, a.logo",
+      "strategy": "role",
+      "role": "link",
+      "name": "Tricentis Demo Web Shop",
+      "exact": true,
+      "fallbackLocators": [
+        "a[href='/'] img",
+        ".header-logo a",
+        "a.logo"
+      ],
+      "type": "link",
+      "description": "Logo link to home page"
+    },
+    "loginLink": {
+      "locator": "a:has-text('Log in'), a[href*='login'], .ico-login",
+      "fallbackLocators": ["a:has-text('Log in')", "a[href*='login']", ".ico-login"],
+      "strategy": "role",
+      "role": "link",
+      "name": "Log in",
+      "exact": true,
+      "type": "link",
+      "description": "Log in link in header"
+    },
+    "registerLink": {
+      "locator": "a:has-text('Register'), a[href*='register'], .ico-register",
+      "fallbackLocators": ["a:has-text('Register')", "a[href*='register']", ".ico-register"],
+      "strategy": "role",
+      "role": "link",
+      "name": "Register",
+      "exact": true,
+      "type": "link",
+      "description": "Register link in header"
+    },
+    "logoutLink": {
+      "locator": "a:has-text('Log out'), a[href*='logout'], .ico-logout",
+      "fallbackLocators": ["a:has-text('Log out')", "a[href*='logout']", ".ico-logout"],
+      "strategy": "role",
+      "role": "link",
+      "name": "Log out",
+      "exact": true,
+      "type": "link",
+      "description": "Log out link in header"
+    },
+    "userEmail": {
+      "locator": "a[data-testid='user-email'], .account, .ico-account, a[href*='customer/info']",
+      "fallbackLocators": [
+        ".account",
+        ".ico-account",
+        "a[href*='customer/info']"
+      ],
+      "type": "link",
+      "description": "Logged in user email/account link"
+    },
+    "shoppingCartLink": {
+      "locator": "a[href*='cart'], .ico-cart, .cart-qty",
+      "fallbackLocators": ["a[href*='cart']", ".ico-cart", ".cart-qty"],
+      "strategy": "role",
+      "role": "link",
+      "name": "Shopping cart",
+      "exact": false,
+      "type": "link",
+      "description": "Shopping cart link"
+    },
+    "wishlistLink": {
+      "locator": "a[href*='wishlist'], .ico-wishlist",
+      "fallbackLocators": ["a[href*='wishlist']", ".ico-wishlist"],
+      "strategy": "role",
+      "role": "link",
+      "name": "Wishlist",
+      "exact": false,
+      "type": "link",
+      "description": "Wishlist link"
+    },
+    "cartCount": {
+      "locator": ".cart-qty, span[data-testid='cart-count']",
+      "fallbackLocators": [
+        ".cart-qty",
+        "span[data-testid='cart-count']"
+      ],
+      "type": "text",
+      "description": "Shopping cart item count"
+    },
+    "welcomeMessage": {
+      "locator": ".welcome-message, .content h1, h1:has-text('Welcome')",
+      "strategy": "role",
+      "role": "heading",
+      "name": "Welcome",
+      "exact": false,
+      "fallbackLocators": [
+        ".welcome-message",
+        ".content h1",
+        "h1:has-text('Welcome')"
+      ],
+      "type": "text",
+      "description": "Welcome message after login"
+    },
+    "newsletterEmail": {
+      "locator": "input[id='newsletter-email'], input[name='NewsletterEmail']",
+      "fallbackLocators": ["input[id='newsletter-email']", "input[name='NewsletterEmail']", "input[type='email'][name='NewsletterEmail']"],
+      "strategy": "placeholder",
+      "name": "Sign up for our newsletter",
+      "exact": false,
+      "type": "textbox",
+      "description": "Newsletter email input"
+    },
+    "newsletterSubscribeButton": {
+      "locator": "button[id='newsletter-subscribe-button'], input[value='Subscribe']",
+      "fallbackLocators": ["button[id='newsletter-subscribe-button']", "input[value='Subscribe']", "button:has-text('Subscribe')"],
+      "strategy": "role",
+      "role": "button",
+      "name": "Subscribe",
+      "exact": true,
+      "type": "button",
+      "description": "Newsletter subscribe button"
+    },
+    "searchInput": {
+      "locator": "input[id='small-searchterms'], input[name='q']",
+      "fallbackLocators": ["input[id='small-searchterms']", "input[name='q']", "input[type='search']"],
+      "strategy": "placeholder",
+      "name": "Search store",
+      "exact": false,
+      "type": "textbox",
+      "description": "Search input field"
+    },
+    "searchButton": {
+      "locator": "button[type='submit'], input[value='Search']",
+      "fallbackLocators": ["button[type='submit']", "input[value='Search']", "button:has-text('Search')"],
+      "strategy": "role",
+      "role": "button",
+      "name": "Search",
+      "exact": true,
+      "type": "button",
+      "description": "Search button"
+    },
+    "categoryMenu": {
+      "locator": ".category-menu, .sitemap, ul[class*='category']",
+      "fallbackLocators": [
+        ".category-menu",
+        ".sitemap",
+        "ul[class*='category']"
+      ],
+      "type": "navigation",
+      "description": "Category navigation menu"
+    },
+    "footer": {
+      "locator": "footer, #footer, .footer",
+      "fallbackLocators": [
+        "footer",
+        "#footer",
+        ".footer"
+      ],
+      "type": "footer",
+      "description": "Footer section"
+    },
+    "headerTopMenu": {
+      "locator": "ul.top-menu, ul[class*='top-menu'], #topmenu",
+      "fallbackLocators": [
+        "ul.top-menu",
+        "ul[class*='top-menu']",
+        "#topmenu"
+      ],
+      "type": "navigation",
+      "description": "Header top menu with categories"
+    },
+    "sidebarCategoryNavigation": {
+      "locator": "div.block.block-category-navigation, .block-category-navigation",
+      "fallbackLocators": [
+        "div.block.block-category-navigation",
+        ".block-category-navigation"
+      ],
+      "type": "navigation",
+      "description": "Sidebar category navigation block"
+    },
+    "footerInformation": {
+      "locator": "div.footer div.column:has(h3:has-text('Information')), .footer .column:first-child",
+      "fallbackLocators": [
+        "div.footer div.column:has(h3:has-text('Information'))",
+        ".footer .column:first-child"
+      ],
+      "type": "section",
+      "description": "Footer Information column"
+    },
+    "footerCustomerService": {
+      "locator": "div.footer div.column:has(h3:has-text('Customer service')), .footer .column:nth-child(2)",
+      "fallbackLocators": [
+        "div.footer div.column:has(h3:has-text('Customer service'))",
+        ".footer .column:nth-child(2)"
+      ],
+      "type": "section",
+      "description": "Footer Customer service column"
+    },
+    "footerMyAccount": {
+      "locator": "div.footer div.column:has(h3:has-text('My account')), .footer .column:nth-child(3)",
+      "fallbackLocators": [
+        "div.footer div.column:has(h3:has-text('My account'))",
+        ".footer .column:nth-child(3)"
+      ],
+      "type": "section",
+      "description": "Footer My account column"
+    },
+    "footerFollowUs": {
+      "locator": "div.footer div.column:has(h3:has-text('Follow us')), .footer .column:nth-child(4)",
+      "fallbackLocators": [
+        "div.footer div.column:has(h3:has-text('Follow us'))",
+        ".footer .column:nth-child(4)"
+      ],
+      "type": "section",
+      "description": "Footer Follow us column"
+    },
+    "breadcrumb": {
+      "locator": ".breadcrumb, .breadcrumbs, [class*='breadcrumb'], .topic-html-content-header .breadcrumb",
+      "fallbackLocators": [
+        ".breadcrumb",
+        ".breadcrumbs",
+        "[class*='breadcrumb']",
+        ".topic-html-content-header .breadcrumb"
+      ],
+      "type": "navigation",
+      "description": "Breadcrumb navigation"
+    }
+  },
+  "forms": {
+    "newsletterForm": {
+      "locator": "form[action*='newsletter'], #newsletter-form",
+      "fields": ["newsletterEmail"],
+      "submitButton": "newsletterSubscribeButton"
+    },
+    "searchForm": {
+      "locator": "form[action*='search'], #small-search-box-form",
+      "fields": ["searchInput"],
+      "submitButton": "searchButton"
+    }
+  }
+}

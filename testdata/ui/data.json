@@ -1,0 +1,91 @@
+{
+  "validUser": {
+    "email": "surajnavgire2015@gmail.com",
+    "password": "Suraj7616",
+    "firstName": "Suraj",
+    "lastName": "Navgire"
+  },
+  "newUser": {
+    "firstName": "John",
+    "lastName": "Doe",
+    "email": "john.doe.test@test.com",
+    "password": "TestPass123!",
+    "gender": "Male"
+  },
+  "invalidData": {
+    "invalidEmail": "invalid-email",
+    "shortPassword": "123",
+    "wrongPassword": "WrongPass123!",
+    "unregisteredEmail": "nonexistent@test.com",
+    "duplicateEmail": "surajnavgire2015@gmail.com",
+    "mismatchPassword": "TestPass456!"
+  },
+  "errorMessages": {
+    "invalidCredentials": "Login was unsuccessful. Please correct the errors and try again.",
+    "requiredFields": "Email and password are required",
+    "emailRequired": "Email is required.",
+    "passwordRequired": "Password is required.",
+    "firstNameRequired": "First name is required.",
+    "lastNameRequired": "Last name is required.",
+    "passwordMismatch": "The password and confirmation password do not match.",
+    "duplicateEmail": "The specified email already exists",
+    "invalidEmailFormat": "Wrong email",
+    "shortPassword": "Password must be at least 6 characters",
+    "emailNotFound": "Email not found"
+  },
+  "successMessages": {
+    "registrationCompleted": "Your registration completed",
+    "passwordRecoveryEmailSent": "Email with instructions has been sent to you."
+  },
+  "navigation": {
+    "homePageTitle": "Demo Web Shop",
+    "loginPageTitle": "Demo Web Shop. Login",
+    "registerPageTitle": "Demo Web Shop. Register",
+    "passwordRecoveryPageTitle": "Demo Web Shop. Password Recovery",
+    "categories": [
+      "Books",
+      "Computers",
+      "Electronics",
+      "Apparel & Shoes",
+      "Digital downloads",
+      "Jewelry",
+      "Gift Cards"
+    ],
+    "subCategories": {
+      "Computers": ["Desktops", "Notebooks", "Accessories"]
+    },
+    "footerLinks": {
+      "information": [
+        "Sitemap",
+        "Shipping & returns",
+        "Privacy notice",
+        "Conditions of Use",
+        "About us",
+        "Contact us"
+      ],
+      "customerService": [
+        "Search",
+        "Advanced search",
+        "Orders and returns",
+        "Contact us"
+      ],
+      "myAccount": [
+        "My account",
+        "Order history",
+        "Downloadable products",
+        "Newsletter",
+        "Reward points"
+      ],
+      "followUs": [
+        "Facebook",
+        "Twitter",
+        "YouTube"
+      ]
+    },
+    "searchTerms": {
+      "valid": "book",
+      "invalid": "xyzinvalid123",
+      "empty": ""
+    }
+  }
+}

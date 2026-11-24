@@ -1,0 +1,227 @@
+{
+  "pageName": "BookProductDetailPage",
+  "pageUrl": "/computing-and-internet",
+  "pageTitle": "Demo Web Shop. Computing and Internet",
+  "elements": {
+    "productName": {
+      "locator": "h1:has-text('Computing and Internet'), .product-name h1, .product-title h1",
+      "strategy": "role",
+      "role": "heading",
+      "name": "Computing and Internet",
+      "exact": true,
+      "fallbackLocators": [
+        "h1",
+        ".product-name",
+        ".product-title"
+      ],
+      "type": "heading",
+      "description": "Product name heading"
+    },
+    "productShortDescription": {
+      "locator": ".short-description, .product-short-description, div[class*='short-description']",
+      "fallbackLocators": [
+        ".short-description",
+        ".product-short-description",
+        "div[class*='short-description']"
+      ],
+      "type": "text",
+      "description": "Product short description"
+    },
+    "productFullDescription": {
+      "locator": ".full-description, .product-full-description, .description, div[class*='full-description']",
+      "fallbackLocators": [
+        ".full-description",
+        ".product-full-description",
+        ".description"
+      ],
+      "type": "text",
+      "description": "Product full description"
+    },
+    "productPrice": {
+      "locator": ".prices .price, .product-price .price, .actual-price, .price-value",
+      "fallbackLocators": [
+        ".prices .price",
+        ".product-price .price",
+        ".actual-price",
+        ".price-value"
+      ],
+      "type": "text",
+      "description": "Product current price"
+    },
+    "productOldPrice": {
+      "locator": ".old-price, .product-old-price, s, strike",
+      "fallbackLocators": [
+        ".old-price",
+        ".product-old-price",
+        "s",
+        "strike"
+      ],
+      "type": "text",
+      "description": "Product old price (discounted)"
+    },
+    "productAvailability": {
+      "locator": ".availability, .stock-availability, span:has-text('In stock'), span:has-text('Availability')",
+      "strategy": "text",
+      "name": "In stock",
+      "exact": false,
+      "fallbackLocators": [
+        ".availability",
+        ".stock-availability",
+        "span:has-text('In stock')",
+        "span:has-text('Availability')"
+      ],
+      "type": "text",
+      "description": "Product availability status"
+    },
+    "freeShipping": {
+      "locator": "span:has-text('Free shipping'), .free-shipping, .shipping-free",
+      "strategy": "text",
+      "name": "Free shipping",
+      "exact": true,
+      "fallbackLocators": [
+        "span:has-text('Free shipping')",
+        ".free-shipping",
+        ".shipping-free"
+      ],
+      "type": "text",
+      "description": "Free shipping indicator"
+    },
+    "quantityInput": {
+      "locator": "input[id*='qty'], input[name*='qty'], input[class*='qty'], .quantity input",
+      "fallbackLocators": [
+        "input[id*='qty']",
+        "input[name*='qty']",
+        "input[class*='qty']",
+        ".quantity input",
+        "input[type='text'][value='1']"
+      ],
+      "strategy": "label",
+      "name": "Qty:",
+      "exact": false,
+      "type": "textbox",
+      "description": "Quantity input field"
+    },
+    "addToCartButton": {
+      "locator": "button[id*='add-to-cart'], button[name*='add-to-cart'], button.add-to-cart-button, button:has-text('Add to cart')",
+      "fallbackLocators": [
+        "button[id*='add-to-cart']",
+        "button[name*='add-to-cart']",
+        ".add-to-cart-button",
+        "button:has-text('Add to cart')",
+        "input[value='Add to cart']"
+      ],
+      "type": "button",
+      "description": "Add to cart button"
+    },
+    "emailFriendButton": {
+      "locator": "button:has-text('Email a friend')",
+      "fallbackLocators": [
+        "button:has-text('Email a friend')",
+        "button[id*='email-friend']",
+        "button[name*='email-friend']"
+      ],
+      "strategy": "role",
+      "role": "button",
+      "name": "Email a friend",
+      "exact": true,
+      "type": "button",
+      "description": "Email a friend button"
+    },
+    "compareListButton": {
+      "locator": "button:has-text('Add to compare list')",
+      "fallbackLocators": [
+        "button:has-text('Add to compare list')",
+        "button[id*='compare']",
+        "button[name*='compare']"
+      ],
+      "strategy": "role",
+      "role": "button",
+      "name": "Add to compare list",
+      "exact": true,
+      "type": "button",
+      "description": "Add to compare list button"
+    },
+    "reviewCountLink": {
+      "locator": "a[href*='productreviews'], a:has-text('review')",
+      "fallbackLocators": [
+        "a[href*='productreviews']",
+        "a:has-text('review')"
+      ],
+      "strategy": "role",
+      "role": "link",
+      "name": "review(s)",
+      "exact": false,
+      "type": "link",
+      "description": "Review count link"
+    },
+    "addReviewLink": {
+      "locator": "a[href*='productreviews']:has-text('Add your review'), a:has-text('Add your review')",
+      "fallbackLocators": [
+        "a:has-text('Add your review')",
+        "a[href*='addreview']"
+      ],
+      "strategy": "role",
+      "role": "link",
+      "name": "Add your review",
+      "exact": true,
+      "type": "link",
+      "description": "Add your review link"
+    },
+    "productImage": {
+      "locator": ".picture img, .product-image img, .product-picture img, img[alt*='Picture of']",
+      "fallbackLocators": [
+        ".picture img",
+        ".product-image img",
+        "img[alt*='Picture of']"
+      ],
+      "type": "image",
+      "description": "Main product image"
+    },
+    "relatedProductsSection": {
+      "locator": ".related-products, .product-related, div:has(strong:has-text('Related products'))",
+      "fallbackLocators": [
+        ".related-products",
+        ".product-related",
+        "div:has(strong:has-text('Related products'))"
+      ],
+      "type": "section",
+      "description": "Related products section"
+    },
+    "relatedProductItem": {
+      "locator": ".related-products .item-box, .product-related .item-box",
+      "fallbackLocators": [
+        ".related-products .item-box",
+        ".product-related .item-box"
+      ],
+      "type": "container",
+      "description": "Related product item"
+    },
+    "relatedProductName": {
+      "locator": ".related-products .product-title a, .product-related .product-title a",
+      "fallbackLocators": [
+        ".related-products .product-title a",
+        ".product-related .product-title a"
+      ],
+      "type": "link",
+      "description": "Related product name link"
+    },
+    "relatedProductPrice": {
+      "locator": ".related-products .price, .product-related .price",
+      "fallbackLocators": [
+        ".related-products .price",
+        ".product-related .price"
+      ],
+      "type": "text",
+      "description": "Related product price"
+    },
+    "relatedProductAddToCart": {
+      "locator": ".related-products .add-to-cart-button, .product-related .add-to-cart-button",
+      "fallbackLocators": [
+        ".related-products .add-to-cart-button",
+        ".product-related .add-to-cart-button"
+      ],
+      "type": "button",
+      "description": "Related product add to cart button"
+    }
+  }
+}

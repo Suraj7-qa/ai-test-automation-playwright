@@ -1,0 +1,145 @@
+{
+  "pageName": "ProductReviewsPage",
+  "pageUrl": "/productreviews/13",
+  "pageTitle": "Demo Web Shop. Product Reviews. Computing and Internet",
+  "elements": {
+    "pageHeading": {
+      "locator": "h1:has-text('Product reviews')",
+      "fallbackLocators": [
+        "h1:has-text('Product reviews')",
+        "h1"
+      ],
+      "strategy": "role",
+      "role": "heading",
+      "name": "Product reviews",
+      "exact": true,
+      "type": "heading",
+      "description": "Product reviews page heading"
+    },
+    "productNameLink": {
+      "locator": "h1 a[href*='computing-and-internet'], h1 a:has-text('Computing and Internet')",
+      "strategy": "role",
+      "role": "link",
+      "name": "Computing and Internet",
+      "exact": true,
+      "fallbackLocators": [
+        "h1 a[href*='computing-and-internet']",
+        "h1 a:has-text('Computing and Internet')"
+      ],
+      "type": "link",
+      "description": "Product name link back to detail page"
+    },
+    "reviewList": {
+      "locator": ".review-list, .product-reviews, .reviews-container",
+      "fallbackLocators": [
+        ".review-list",
+        ".product-reviews",
+        ".reviews-container",
+        "div[class*='review']"
+      ],
+      "type": "list",
+      "description": "List of reviews"
+    },
+    "reviewItem": {
+      "locator": ".review-item, .review, .review-entry",
+      "fallbackLocators": [
+        ".review-item",
+        ".review",
+        ".review-entry"
+      ],
+      "type": "container",
+      "description": "Individual review item"
+    },
+    "reviewTitle": {
+      "locator": ".review-title, .review-subject, strong",
+      "fallbackLocators": [
+        ".review-title",
+        ".review-subject",
+        "strong"
+      ],
+      "type": "text",
+      "description": "Review title/subject"
+    },
+    "reviewText": {
+      "locator": ".review-text, .review-body, .review-content",
+      "fallbackLocators": [
+        ".review-text",
+        ".review-body",
+        ".review-content"
+      ],
+      "type": "text",
+      "description": "Review text content"
+    },
+    "reviewRating": {
+      "locator": ".review-rating, .rating, .stars",
+      "fallbackLocators": [
+        ".review-rating",
+        ".rating",
+        ".stars"
+      ],
+      "type": "text",
+      "description": "Review star rating"
+    },
+    "reviewAuthor": {
+      "locator": ".review-author, .reviewer-name, span:has-text('From:')",
+      "fallbackLocators": [
+        ".review-author",
+        ".reviewer-name",
+        "span:has-text('From:')"
+      ],
+      "type": "text",
+      "description": "Review author name"
+    },
+    "reviewDate": {
+      "locator": ".review-date, .reviewed-on, time",
+      "fallbackLocators": [
+        ".review-date",
+        ".reviewed-on",
+        "time"
+      ],
+      "type": "text",
+      "description": "Review date"
+    },
+    "helpfulYesButton": {
+      "locator": "button:has-text('Yes'), input[value='Yes']",
+      "fallbackLocators": [
+        "button:has-text('Yes')",
+        "input[value='Yes']"
+      ],
+      "type": "button",
+      "description": "Was this review helpful - Yes button"
+    },
+    "helpfulNoButton": {
+      "locator": "button:has-text('No'), input[value='No']",
+      "fallbackLocators": [
+        "button:has-text('No')",
+        "input[value='No']"
+      ],
+      "type": "button",
+      "description": "Was this review helpful - No button"
+    },
+    "addReviewLink": {
+      "locator": "a:has-text('Add your review'), a[href*='addreview']",
+      "strategy": "role",
+      "role": "link",
+      "name": "Add your review",
+      "exact": true,
+      "fallbackLocators": [
+        "a:has-text('Add your review')",
+        "a[href*='addreview']"
+      ],
+      "type": "link",
+      "description": "Add your review link (if not logged in)"
+    },
+    "noReviewsMessage": {
+      "locator": ".no-reviews, div:has-text('No reviews'), div:has-text('There are no reviews')",
+      "fallbackLocators": [
+        ".no-reviews",
+        "div:has-text('No reviews')",
+        "div:has-text('There are no reviews')"
+      ],
+      "type": "text",
+      "description": "Message when no reviews exist"
+    }
+  }
+}

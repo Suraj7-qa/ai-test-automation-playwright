@@ -1,0 +1,120 @@
+{
+  "pageName": "EmailFriendPage",
+  "pageUrl": "/productemailafriend/13",
+  "pageTitle": "Demo Web Shop. Email A Friend. Computing and Internet",
+  "elements": {
+    "pageHeading": {
+      "locator": "h1:has-text('Email a friend')",
+      "strategy": "role",
+      "role": "heading",
+      "name": "Email a friend",
+      "exact": true,
+      "fallbackLocators": [
+        "h1:has-text('Email a friend')",
+        "h1"
+      ],
+      "type": "heading",
+      "description": "Email a friend page heading"
+    },
+    "productNameLink": {
+      "locator": "h2 a[href*='computing-and-internet'], h2 a:has-text('Computing and Internet')",
+      "strategy": "role",
+      "role": "link",
+      "name": "Computing and Internet",
+      "exact": true,
+      "fallbackLocators": [
+        "h2 a[href*='computing-and-internet']",
+        "h2 a:has-text('Computing and Internet')"
+      ],
+      "type": "link",
+      "description": "Product name link back to detail page"
+    },
+    "friendEmailInput": {
+      "locator": "input[id*='FriendEmail'], input[name*='FriendEmail'], input[placeholder*='friend']",
+      "fallbackLocators": [
+        "input[id*='FriendEmail']",
+        "input[name*='FriendEmail']",
+        "input[placeholder*='friend']",
+        "input[type='email']:first-of-type"
+      ],
+      "strategy": "label",
+      "name": "Friend's email",
+      "exact": false,
+      "type": "textbox",
+      "description": "Friend's email input field"
+    },
+    "yourEmailInput": {
+      "locator": "input[id*='YourEmail'], input[name*='YourEmail'], input[placeholder*='your']",
+      "fallbackLocators": [
+        "input[id*='YourEmail']",
+        "input[name*='YourEmail']",
+        "input[placeholder*='your']",
+        "input[type='email']:nth-of-type(2)"
+      ],
+      "strategy": "label",
+      "name": "Your email address",
+      "exact": false,
+      "type": "textbox",
+      "description": "Your email address input field"
+    },
+    "personalMessageInput": {
+      "locator": "textarea[id*='Message'], textarea[name*='Message'], textarea[placeholder*='message']",
+      "fallbackLocators": [
+        "textarea[id*='Message']",
+        "textarea[name*='Message']",
+        "textarea[placeholder*='message']"
+      ],
+      "strategy": "label",
+      "name": "Personal message",
+      "exact": false,
+      "type": "textarea",
+      "description": "Personal message textarea"
+    },
+    "sendEmailButton": {
+      "locator": "button[id*='send-email'], button[name*='send-email'], button:has-text('Send email')",
+      "fallbackLocators": [
+        "button[id*='send-email']",
+        "button[name*='send-email']",
+        "button:has-text('Send email')",
+        "input[value='Send email']"
+      ],
+      "strategy": "role",
+      "role": "button",
+      "name": "Send email",
+      "exact": true,
+      "type": "button",
+      "description": "Send email button"
+    },
+    "validationSummary": {
+      "locator": ".validation-summary-errors, .field-validation-error, .message-error",
+      "fallbackLocators": [
+        ".validation-summary-errors",
+        ".field-validation-error",
+        ".message-error"
+      ],
+      "type": "text",
+      "description": "Validation error messages"
+    },
+    "successMessage": {
+      "locator": ".result, .success-message, .message-success, div:has-text('Your message has been sent')",
+      "fallbackLocators": [
+        ".result",
+        ".success-message",
+        ".message-success",
+        "div:has-text('Your message has been sent')"
+      ],
+      "strategy": "text",
+      "name": "Your message has been sent",
+      "exact": false,
+      "type": "text",
+      "description": "Success message after sending email"
+    }
+  },
+  "forms": {
+    "emailFriendForm": {
+      "locator": "form[action*='emailafriend'], form[id*='email-friend']",
+      "fields": ["friendEmailInput", "yourEmailInput", "personalMessageInput"],
+      "submitButton": "sendEmailButton"
+    }
+  }
+}

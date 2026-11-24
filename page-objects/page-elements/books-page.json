@@ -1,0 +1,275 @@
+{
+  "pageName": "BooksPage",
+  "pageUrl": "/books",
+  "pageTitle": "Demo Web Shop. Books",
+  "elements": {
+    "pageHeading": {
+      "locator": "h1:has-text('Books')",
+      "fallbackLocators": [
+        "h1.page-title",
+        ".page-title h1",
+        "h1:has-text('Books')"
+      ],
+      "strategy": "role",
+      "role": "heading",
+      "name": "Books",
+      "exact": true,
+      "type": "heading",
+      "description": "Books category page heading"
+    },
+    "breadcrumb": {
+      "locator": ".breadcrumb, .breadcrumbs, [class*='breadcrumb']",
+      "fallbackLocators": [
+        ".breadcrumb",
+        ".breadcrumbs",
+        "[class*='breadcrumb']"
+      ],
+      "type": "navigation",
+      "description": "Breadcrumb trail"
+    },
+    "breadcrumbHome": {
+      "locator": ".breadcrumb a:has-text('Home'), .breadcrumbs a:has-text('Home')",
+      "fallbackLocators": [
+        ".breadcrumb a[href='/']",
+        ".breadcrumbs a[href='/']"
+      ],
+      "strategy": "role",
+      "role": "link",
+      "name": "Home",
+      "exact": true,
+      "type": "link",
+      "description": "Home link in breadcrumb"
+    },
+    "breadcrumbBooks": {
+      "locator": ".breadcrumb strong:has-text('Books'), .breadcrumbs strong:has-text('Books')",
+      "fallbackLocators": [
+        ".breadcrumb strong",
+        ".breadcrumbs strong"
+      ],
+      "strategy": "text",
+      "name": "Books",
+      "exact": true,
+      "type": "text",
+      "description": "Books in breadcrumb (current page)"
+    },
+    "productGrid": {
+      "locator": ".product-grid, .products-container, .product-list",
+      "fallbackLocators": [
+        ".product-grid",
+        ".products-container",
+        ".product-list",
+        "div[class*='product-grid']"
+      ],
+      "type": "container",
+      "description": "Product grid container"
+    },
+    "productItem": {
+      "locator": ".product-grid .item-box, .products-container .item-box, .product-list .item-box",
+      "fallbackLocators": [
+        ".item-box",
+        ".product-item",
+        "[class*='product-item']"
+      ],
+      "type": "container",
+      "description": "Individual product item"
+    },
+    "productNameLink": {
+      "locator": ".product-title a, .product-name a, h2.product-title a",
+      "fallbackLocators": [
+        ".product-title a",
+        ".product-name a",
+        "h2.product-title a",
+        "a[href*='computing-and-internet']",
+        "a[href*='copy-of-computing-and-internet']",
+        "a[href*='fiction']"
+      ],
+      "strategy": "role",
+      "role": "link",
+      "type": "link",
+      "description": "Product name link to detail page"
+    },
+    "productImage": {
+      "locator": ".picture img, .product-image img, .product-picture img",
+      "fallbackLocators": [
+        ".picture img",
+        ".product-image img",
+        "img[alt*='Picture of']"
+      ],
+      "type": "image",
+      "description": "Product image"
+    },
+    "productPrice": {
+      "locator": ".prices .price, .product-price .price, .actual-price",
+      "fallbackLocators": [
+        ".prices .price",
+        ".product-price .price",
+        ".actual-price",
+        "[class*='price']"
+      ],
+      "type": "text",
+      "description": "Product current price"
+    },
+    "productOldPrice": {
+      "locator": ".old-price, .product-old-price, .strike-through",
+      "fallbackLocators": [
+        ".old-price",
+        ".product-old-price",
+        "s",
+        "strike"
+      ],
+      "type": "text",
+      "description": "Product old price (discounted)"
+    },
+    "productReviewCount": {
+      "locator": "a[href*='productreviews'], .review-count, .reviews-link",
+      "fallbackLocators": [
+        "a[href*='productreviews']",
+        ".review-count",
+        ".reviews-link"
+      ],
+      "strategy": "role",
+      "role": "link",
+      "name": "review(s)",
+      "exact": false,
+      "type": "link",
+      "description": "Product review count link"
+    },
+    "addToCartButtonCategory": {
+      "locator": ".item-box .add-to-cart-button, .product-grid .add-to-cart-button, button:has-text('Add to cart')",
+      "fallbackLocators": [
+        ".add-to-cart-button",
+        "button[onclick*='addtocart']",
+        "button:has-text('Add to cart')",
+        "input[value='Add to cart']"
+      ],
+      "strategy": "role",
+      "role": "button",
+      "name": "Add to cart",
+      "exact": true,
+      "type": "button",
+      "description": "Add to cart button on category page"
+    },
+    "sortByDropdown": {
+      "locator": "select[id*='sort'], select[name*='sort'], .sort-by select",
+      "fallbackLocators": [
+        "select[id*='sort']",
+        "select[name*='sort']",
+        ".sort-by select"
+      ],
+      "strategy": "label",
+      "name": "Sort by:",
+      "exact": false,
+      "type": "select",
+      "description": "Sort by dropdown"
+    },
+    "displayDropdown": {
+      "locator": "select[id*='view'], select[name*='view'], .view-mode select",
+      "fallbackLocators": [
+        "select[id*='view']",
+        "select[name*='view']",
+        ".view-mode select"
+      ],
+      "strategy": "label",
+      "name": "View:",
+      "exact": false,
+      "type": "select",
+      "description": "Display/View as dropdown (Grid/List)"
+    },
+    "displayPerPageDropdown": {
+      "locator": "select[id*='pagesize'], select[name*='pagesize'], .page-size select",
+      "fallbackLocators": [
+        "select[id*='pagesize']",
+        "select[name*='pagesize']",
+        ".page-size select"
+      ],
+      "strategy": "label",
+      "name": "Display:",
+      "exact": false,
+      "type": "select",
+      "description": "Items per page dropdown"
+    },
+    "priceFilterSidebar": {
+      "locator": ".side-2 .filter-price, .sidebar .filter-price, .block-layered-navigation .filter-price",
+      "fallbackLocators": [
+        ".filter-price",
+        ".side-2 a[href*='price=']",
+        ".sidebar a[href*='price=']"
+      ],
+      "type": "section",
+      "description": "Price filter section in sidebar"
+    },
+    "priceFilterUnder25": {
+      "locator": "a[href*='price=-25'], a:has-text('Under 25')",
+      "fallbackLocators": [
+        "a[href*='price=-25']",
+        "a:has-text('Under 25')"
+      ],
+      "strategy": "role",
+      "role": "link",
+      "name": "Under 25.00",
+      "exact": true,
+      "type": "link",
+      "description": "Under 25.00 price filter"
+    },
+    "priceFilter25to50": {
+      "locator": "a[href*='price=25-50'], a:has-text('25.00 - 50.00')",
+      "fallbackLocators": [
+        "a[href*='price=25-50']",
+        "a:has-text('25.00 - 50.00')"
+      ],
+      "strategy": "role",
+      "role": "link",
+      "name": "25.00 - 50.00",
+      "exact": true,
+      "type": "link",
+      "description": "25.00 - 50.00 price filter"
+    },
+    "priceFilterOver50": {
+      "locator": "a[href*='price=50-'], a:has-text('Over 50')",
+      "fallbackLocators": [
+        "a[href*='price=50-']",
+        "a:has-text('Over 50')"
+      ],
+      "strategy": "role",
+      "role": "link",
+      "name": "Over 50.00",
+      "exact": true,
+      "type": "link",
+      "description": "Over 50.00 price filter"
+    },
+    "sidebarCategories": {
+      "locator": ".block-category-navigation, .side-2 .block-category-navigation",
+      "fallbackLocators": [
+        ".block-category-navigation",
+        ".side-2 .block-category-navigation"
+      ],
+      "type": "navigation",
+      "description": "Sidebar category navigation"
+    },
+    "sidebarBooksLink": {
+      "locator": ".block-category-navigation a[href='/books'], .block-category-navigation a:has-text('Books')",
+      "fallbackLocators": [
+        ".block-category-navigation a[href='/books']",
+        ".block-category-navigation a:has-text('Books')"
+      ],
+      "strategy": "role",
+      "role": "link",
+      "name": "Books",
+      "exact": true,
+      "type": "link",
+      "description": "Books link in sidebar"
+    }
+  },
+  "forms": {
+    "sortForm": {
+      "locator": "form[action*='sort'], .sort-by form",
+      "fields": ["sortByDropdown"],
+      "submitButton": null
+    },
+    "displayForm": {
+      "locator": "form[action*='view'], .view-mode form",
+      "fields": ["displayDropdown", "displayPerPageDropdown"],
+      "submitButton": null
+    }
+  }
+}

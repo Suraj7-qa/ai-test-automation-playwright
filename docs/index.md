@@ -1,128 +1,156 @@
-# 📚 Demo Web Shop - Test Documentation
+# 📚 Documentation Index
 
-> **Framework:** Playwright TypeScript | **Pattern:** Page Object Model | **Application:** https://demowebshop.tricentis.com
-
----
-
-## 🎯 Quick Navigation
-
-| Document | Description | Status |
-|----------|-------------|--------|
-| [Test Plan](./Test-Plan-E2E.md) | Complete E2E strategy, scope, schedule, risks, reporting | ✅ v1.0 |
-| [Traceability Matrix](./Traceability-Matrix.md) | Requirements ↔ Test Cases mapping (auto-updated post-run) | ✅ v1.1 |
-| [Local Execution Guide](./runbooks/local-execution.md) | Run tests locally (headed, debug, tags) | ✅ v1.0 |
-| [CI Execution Guide](./runbooks/ci-execution.md) | GitHub Actions / GitLab CI setup | ✅ v1.0 |
-| [Debug Failures](./runbooks/debug-failures.md) | Troubleshooting flaky tests, locator issues | ✅ v1.0 |
+Welcome to the AI-Powered Playwright Test Automation Framework documentation.
 
 ---
 
-## 📊 Project Metrics (Auto-updated after CI run)
+## 🚀 Quick Navigation
 
-![Tests](https://img.shields.io/badge/Tests-94-blue)
-![Automated](https://img.shields.io/badge/Automated-93/94-brightgreen)
-![Modules](https://img.shields.io/badge/Modules-12-orange)
-![Coverage](https://img.shields.io/badge/Coverage-Auth%20%2B%20Nav-lightgrey)
-
-> **Last CI Run:** `Not yet executed`  
-> **Next Update:** After first pipeline execution
+| Document | Purpose | Audience |
+|----------|---------|----------|
+| [🏃 Local Execution](./runbooks/local-execution.md) | Run tests locally (headed, debug, tags) | Developers, QA |
+| [🔄 CI/CD Execution](./runbooks/ci-execution.md) | GitHub Actions, GitLab CI, Azure DevOps | DevOps, QA Leads |
+| [🐛 Debug Failures](./runbooks/debug-failures.md) | Troubleshooting flaky tests, locators, common issues | QA Engineers |
+| [📋 Test Plan](./Test-Plan-E2E.md) | E2E strategy, scope, schedule, risks, reporting | QA Leads, Managers |
+| [🔗 Traceability Matrix](./Traceability-Matrix.md) | Requirements ↔ Test Cases mapping | QA, Business Analysts |
 
 ---
 
-## 🏗️ Framework Structure
+## 🎯 Framework at a Glance
 
-```text
-Demo-Web-Shop/
-├── tests/ui/                    # 94 test cases across 10 suites
-│   ├── login.spec.ts            # 12 tests (@smoke, @regression, @critical)
-│   ├── register.spec.ts         # 16 tests (@smoke, @regression, @negative)
-│   ├── logout.spec.ts           # 5 tests (@smoke, @regression)
-│   ├── password-recovery.spec.ts # 7 tests (@regression, @negative)
-│   ├── navigation.spec.ts       # 7 tests (@regression)
-│   └── navigation-module.spec.ts # 47 tests (@smoke, @regression, @negative)
-├── page-objects/
-│   ├── page-elements/           # JSON locator repository (4 pages)
-│   └── page-steps/              # Business action classes (4 pages)
-├── testdata/ui/data.json        # Test data (valid, invalid, messages)
-├── commons/ui/web-commons.ts    # 100+ reusable web actions
-├── utilities/                   # Element & test data loaders
-├── config/config.json           # Centralized configuration
-└── docs/                        # 📍 YOU ARE HERE
+```
+┌─────────────────────────────────────────────────────────────┐
+│                    TEST EXECUTION FLOW                       │
+├─────────────────────────────────────────────────────────────┤
+│                                                              │
+│  ┌──────────┐    ┌──────────────┐    ┌──────────────────┐  │
+│  │  Tests   │───▶│  Page Steps  │───▶│  Page Elements   │  │
+│  │ (*.spec) │    │ (*.steps.ts) │    │ (*.json)         │  │
+│  └──────────┘    └──────────────┘    └──────────────────┘  │
+│       │                │                     │              │
+│       ▼                ▼                     ▼              │
+│  ┌──────────────────────────────────────────────────────┐  │
+│  │              TEST DATA (data.json)                    │  │
+│  └──────────────────────────────────────────────────────┘  │
+│       │                                                    │
+│       ▼                                                    │
+│  ┌──────────────────────────────────────────────────────┐  │
+│  │           PLAYWRIGHT CORE + BROWSERS                  │  │
+│  │  Chromium • Firefox • WebKit • Mobile Chrome • iOS   │  │
+│  └──────────────────────────────────────────────────────┘  │
+│       │                                                    │
+│       ▼                                                    │
+│  ┌──────────────────────────────────────────────────────┐  │
+│  │              REPORTERS                                │  │
+│  │  HTML • JSON • JUnit • Allure-ready • Screenshots    │  │
+│  └──────────────────────────────────────────────────────┘  │
+│                                                              │
+└─────────────────────────────────────────────────────────────┘
 ```
 
 ---
 
-## 🚀 Quick Start
+## 📊 Test Coverage Summary (169 Tests)
 
-```bash
-# Install (one-time)
-npm install
-npx playwright install
+| Module | Test File | Tests | Test Case IDs |
+|--------|-----------|-------|---------------|
+| **Authentication** | login.spec.ts | 15 | DWS-TC-0006–0010, 0014 |
+| **Authentication** | register.spec.ts | 19 | DWS-TC-0001–0005, 0015 |
+| **Authentication** | logout.spec.ts | 6 | DWS-TC-0011 |
+| **Authentication** | password-recovery.spec.ts | 8 | DWS-TC-0012–0013 |
+| **Books** | books.spec.ts | 42 | DWS-BOOKS-001–042 |
+| **Computers** | computers.spec.ts | 17 | DWS-COMP-002–024 |
+| **Electronics** | electronics.spec.ts | 5 | ELEC-003, 030–032 |
+| **Navigation** | navigation.spec.ts | 47 | DWS-NAV-001–047 |
+| **Navigation** | navigation-module.spec.ts | 10 | DWS-TC-0014–0015 + nav flows |
+| **TOTAL** | **9 files** | **169** | **136 unique TCs** |
 
-# Run all tests (headed - visible browser)
-npm run test:headed
+---
 
-# Run smoke only
-npx playwright test --grep @smoke --headed
+## 🏷️ Test Organization
 
-# Run specific module
-npx playwright test tests/ui/login.spec.ts --headed
-npx playwright test tests/ui/navigation-module.spec.ts --headed
+### Test Tags
+| Tag | Description | Use Case | Approx. Tests |
+|-----|-------------|----------|---------------|
+| `@smoke` | Critical path, fast feedback | Pre-merge, daily | ~35 |
+| `@regression` | Full feature coverage | Release, scheduled | 169 |
+| `@negative` | Error handling, invalid inputs | Regression runs | ~25 |
+| `@critical` | Business-critical flows | Hotfix validation | ~8 |
 
-# View HTML report
-npm run test:report
+### Test Naming Convention
+```typescript
+// Format: MODULE-ID: Description @tags
+test('DWS-TC-0006: Valid user login with correct credentials @smoke @regression @critical', async () => {
+  // ...
+});
+
+test('DWS-BOOKS-009: Add Computing and Internet book to cart @smoke @regression @critical', async () => {
+  // ...
+});
+
+test('DWS-COMP-017: Add configured desktop to cart @smoke @regression @critical', async () => {
+  // ...
+});
+
+test('DWS-NAV-001: Navigate to Books category from header @smoke @regression', async () => {
+  // ...
+});
 ```
 
 ---
 
-## 🏷️ Test Tags
+## 🔧 Configuration Files
 
-| Tag | Count | Purpose |
-|-----|-------|---------|
-| `@smoke` | 15 | Critical path - run on every commit |
-| `@regression` | 75 | Full functional - run nightly |
-| `@negative` | 19 | Boundary/invalid inputs |
-| `@critical` | 1 | Business-blocking (valid login) |
-
----
-
-## 📋 Module Coverage
-
-| Module | Requirements | Test Cases | Status |
-|--------|--------------|------------|--------|
-| **Authentication - Registration** | REQ-AUTH-001 | 11 (5 base + 6 extended) | ✅ Automated |
-| **Authentication - Login** | REQ-AUTH-002 | 8 (5 base + 3 extended) | ✅ Automated |
-| **Authentication - Logout** | REQ-AUTH-003 | 5 (1 base + 4 extended) | ✅ Automated |
-| **Authentication - Password Recovery** | REQ-AUTH-004 | 7 (2 base + 5 extended) | ✅ Automated |
-| **Authentication - Navigation** | REQ-AUTH-005 | 7 (2 base + 5 extended) | ✅ Automated |
-| **Navigation - Header Menu** | REQ-NAV-001 | 15 (7 main + 3 sub + 4 top + 1 logo) | ✅ Automated |
-| **Navigation - Sidebar** | REQ-NAV-003 | 5 | ✅ Automated |
-| **Navigation - Footer** | REQ-NAV-004 | 18 (6 info + 3 service + 5 account + 4 social) | ✅ Automated |
-| **Navigation - Search** | REQ-NAV-005 | 3 | ✅ Automated |
-| **Navigation - Breadcrumbs** | REQ-NAV-006 | 3 | ✅ Automated |
-| **Navigation - Cross-module** | REQ-NAV-007 | 3 | ✅ Automated |
+| File | Purpose |
+|------|---------|
+| `playwright.config.ts` | Main Playwright configuration (5-browser matrix) |
+| `config/config.json` | Framework-specific settings |
+| `.env` | Environment variables (not committed) |
+| `.env.example` | Template for environment config |
+| `tsconfig.json` | TypeScript compilation settings |
+| `package.json` | Dependencies & scripts |
 
 ---
 
-## 📝 For Contributors
+## 📊 Reports & Artifacts
 
-| Task | Document |
-|------|----------|
-| Add new test case | [Test Plan - Section 12](./Test-Plan-E2E.md#12-test-cases-reference) |
-| Update locators | `page-objects/page-elements/<page>.json` |
-| Add test data | `testdata/ui/data.json` |
-| Update traceability | [Traceability Matrix](./Traceability-Matrix.md) |
-| Debug failure | [Debug Failures Runbook](./runbooks/debug-failures.md) |
-
----
-
-## 📌 Version & Ownership
-
-| Doc | Version | Last Updated | Owner | Review Cycle |
-|-----|---------|--------------|-------|--------------|
-| Test Plan | 1.0 | 2026-11-22 | Suraj Navgire | Per release |
-| Traceability Matrix | 1.1 | 2026-11-22 | Suraj Navgire | Post CI run |
-| Runbooks | 1.0 | 2026-11-22 | Suraj Navgire | As needed |
+| Report | Location | Description |
+|--------|----------|-------------|
+| HTML Report | `playwright-report/index.html` | Interactive test results |
+| JSON Results | `test-results/results.json` | Machine-readable results |
+| JUnit XML | `test-results/results.xml` | CI/CD integration |
+| Screenshots | `test-results/**/*.png` | Failure screenshots |
+| Videos | `test-results/**/*.webm` | Failure recordings |
+| Traces | `test-results/**/*.zip` | Debug traces (first retry) |
 
 ---
 
-> **💡 Tip:** Open this folder in VS Code (`code docs/`) for best Markdown rendering with Mermaid diagrams and table formatting.
+## 🤖 AI-Assisted Development
+
+This framework was built with **GitHub Copilot** assistance:
+
+- **Test Generation** - Copilot generated test specs from requirements
+- **Page Objects** - Copilot created page steps from JSON locators
+- **Locators** - Copilot suggested resilient selectors (data-testid → ARIA → CSS)
+- **Documentation** - Copilot drafted README, runbooks, inline comments
+- **CI/CD** - Copilot created GitHub Actions workflow with matrix strategy
+- **Refactoring** - Copilot Chat for code improvements and bug fixes
+
+---
+
+## 📞 Support
+
+| Channel | Purpose |
+|---------|---------|
+| GitHub Issues | Bug reports, feature requests |
+| GitHub Discussions | Questions, ideas, showcase |
+| Pull Requests | Contributions, fixes |
+
+---
+
+## 🔗 External Resources
+
+- [Playwright Documentation](https://playwright.dev/docs/intro)
+- [TypeScript Handbook](https://www.typescriptlang.org/docs/)
+- [GitHub Actions Docs](https://docs.github.com/en/actions)
+- [Page Object Model Pattern](https://playwright.dev/docs/pom)

@@ -1,0 +1,238 @@
+name: 🧪 Playwright Test Automation
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main]
+  schedule:
+    # Daily regression at 2 AM UTC
+    - cron: '0 2 * * *'
+  workflow_dispatch:
+    inputs:
+      browser:
+        description: 'Browser to run'
+        required: false
+        default: 'all'
+        type: choice
+        options:
+          - all
+          - chromium
+          - firefox
+          - webkit
+          - mobile-chrome
+          - mobile-safari
+      tags:
+        description: 'Test tags to run (e.g., @smoke, @regression)'
+        required: false
+        default: ''
+        type: string
+
+env:
+  NODE_VERSION: '20'
+
+jobs:
+  # Lint & Type Check
+  lint-and-typecheck:
+    name: 🔍 Lint & Type Check
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run ESLint
+        run: npm run lint
+
+      - name: TypeScript type check
+        run: npx tsc --noEmit
+
+  # Main Test Job - Matrix Strategy
+  test:
+    name: 🧪 Test (${{ matrix.project }})
+    runs-on: ubuntu-latest
+    needs: lint-and-typecheck
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        project: [chromium, firefox, webkit, mobile-chrome, mobile-safari]
+        include:
+          - project: chromium
+            browser: 'Desktop Chrome'
+          - project: firefox
+            browser: 'Desktop Firefox'
+          - project: webkit
+            browser: 'Desktop Safari'
+          - project: mobile-chrome
+            browser: 'Mobile Chrome (Pixel 5)'
+          - project: mobile-safari
+            browser: 'Mobile Safari (iPhone 12)'
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Playwright browsers
+        run: npx playwright install --with-deps ${{ matrix.project }}
+
+      - name: Run Playwright tests
+        id: playwright
+        run: |
+          TAG_FILTER="${{ github.event.inputs.tags || '' }}"
+          if [ -n "$TAG_FILTER" ]; then
+            npx playwright test --project=${{ matrix.project }} --grep="$TAG_FILTER"
+          else
+            npx playwright test --project=${{ matrix.project }}
+          fi
+        env:
+          BASE_URL: ${{ secrets.BASE_URL }}
+          TEST_USER_EMAIL: ${{ secrets.TEST_USER_EMAIL }}
+          TEST_USER_PASSWORD: ${{ secrets.TEST_USER_PASSWORD }}
+          ENVIRONMENT: ${{ secrets.ENVIRONMENT || 'ci' }}
+
+      - name: Upload HTML Report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-report-${{ matrix.project }}
+          path: playwright-report/
+          retention-days: 14
+
+      - name: Upload Test Results (JSON)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-results-${{ matrix.project }}
+          path: test-results/
+          retention-days: 14
+
+      - name: Upload Videos (Failures)
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: videos-${{ matrix.project }}
+          path: test-results/**/*.webm
+          retention-days: 7
+
+      - name: Upload Traces (Failures)
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: traces-${{ matrix.project }}
+          path: test-results/**/*.zip
+          retention-days: 7
+
+  # Summary Job - Aggregates Results
+  test-summary:
+    name: 📊 Test Summary
+    runs-on: ubuntu-latest
+    needs: test
+    if: always()
+    steps:
+      - name: Download all reports
+        uses: actions/download-artifact@v4
+        with:
+          path: all-reports
+          pattern: playwright-report-*
+          merge-multiple: false
+
+      - name: Generate Summary
+        run: |
+          echo "## 🧪 Test Execution Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "| Browser | Status | Report |" >> $GITHUB_STEP_SUMMARY
+          echo "|---------|--------|--------|" >> $GITHUB_STEP_SUMMARY
+
+          for dir in all-reports/playwright-report-*; do
+            if [ -d "$dir" ]; then
+              browser=$(basename "$dir" | sed 's/playwright-report-//')
+              # Check if report has index.html
+              if [ -f "$dir/index.html" ]; then
+                echo "| $browser | ✅ Passed | [View]($dir/index.html) |" >> $GITHUB_STEP_SUMMARY
+              else
+                echo "| $browser | ❌ Failed | [View]($dir/index.html) |" >> $GITHUB_STEP_SUMMARY
+              fi
+            fi
+          done
+
+      - name: Comment on PR
+        if: github.event_name == 'pull_request'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const path = require('path');
+
+            let summary = '## 🧪 Playwright Test Results\n\n';
+            summary += '| Browser | Status |\n|---------|--------|\n';
+
+            const reportsDir = 'all-reports';
+            if (fs.existsSync(reportsDir)) {
+              const dirs = fs.readdirSync(reportsDir);
+              for (const dir of dirs) {
+                if (dir.startsWith('playwright-report-')) {
+                  const browser = dir.replace('playwright-report-', '');
+                  const reportPath = path.join(reportsDir, dir, 'index.html');
+                  const status = fs.existsSync(reportPath) ? '✅ Passed' : '❌ Failed';
+                  summary += `| ${browser} | ${status} |\n`;
+                }
+              }
+            }
+
+            summary += '\n[View Full Reports](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }})';
+
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: summary
+            });
+
+  # Deploy to GitHub Pages (Optional - for live report)
+  deploy-report:
+    name: 🌐 Deploy Report to Pages
+    runs-on: ubuntu-latest
+    needs: test
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Download Chromium Report
+        uses: actions/download-artifact@v4
+        with:
+          name: playwright-report-chromium
+          path: playwright-report
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+
+      - name: Upload Pages Artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: playwright-report
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

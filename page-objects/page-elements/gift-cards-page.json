@@ -1,0 +1,79 @@
+{
+  "pageName": "GiftCardsPage",
+  "pageUrl": "/gift-cards",
+  "pageTitle": "Demo Web Shop. Gift Cards",
+  "elements": {
+    "pageHeading": {
+      "locator": "h1",
+      "strategy": "role",
+      "role": "heading",
+      "name": "Gift Cards",
+      "exact": true,
+      "type": "heading",
+      "description": "Gift Cards category heading"
+    },
+    "productCards": {
+      "locator": ".item-box",
+      "fallbackLocators": [".product-item"],
+      "type": "container",
+      "description": "Gift card product cards"
+    },
+    "productTitleLink": {
+      "locator": ".product-title a",
+      "fallbackLocators": [".product-name a"],
+      "strategy": "css",
+      "type": "link",
+      "description": "Product title link"
+    },
+    "productCardPrice": {
+      "locator": ".actual-price",
+      "fallbackLocators": [".prices .price", ".price"],
+      "type": "text",
+      "description": "Product card price"
+    },
+    "productCardImage": {
+      "locator": ".picture img",
+      "fallbackLocators": [".product-image img"],
+      "type": "image",
+      "description": "Product card image"
+    },
+    "sortByDropdown": {
+      "locator": "select[name='products-orderby']",
+      "strategy": "css",
+      "type": "select",
+      "description": "Gift cards sorting dropdown"
+    },
+    "viewModeDropdown": {
+      "locator": "select[name='products-viewmode']",
+      "strategy": "css",
+      "type": "select",
+      "description": "Gift cards view mode dropdown"
+    },
+    "pageSizeDropdown": {
+      "locator": "select[name='products-pagesize']",
+      "strategy": "css",
+      "type": "select",
+      "description": "Gift cards page size dropdown"
+    },
+    "addToCartButton": {
+      "locator": ".item-box input[value='Add to cart']",
+      "fallbackLocators": [".product-item input[value='Add to cart']", "input[id^='add-to-cart-button']"],
+      "strategy": "css",
+      "type": "button",
+      "description": "Add to cart button on category page"
+    },
+    "addToWishlistButton": {
+      "locator": ".item-box input[value='Add to wishlist']",
+      "fallbackLocators": [".product-item input[value='Add to wishlist']"],
+      "strategy": "css",
+      "type": "button",
+      "description": "Add to wishlist button on category page"
+    },
+    "breadcrumb": {
+      "locator": ".breadcrumb",
+      "fallbackLocators": [".breadcrumbs", "[class*='breadcrumb']"],
+      "type": "navigation",
+      "description": "Gift cards breadcrumb"
+    }
+  }
+}

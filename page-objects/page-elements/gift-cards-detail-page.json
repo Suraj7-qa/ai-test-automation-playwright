@@ -1,0 +1,135 @@
+{
+  "pageName": "GiftCardDetailPage",
+  "pageUrl": "",
+  "pageTitle": "Demo Web Shop. Gift Card",
+  "elements": {
+    "pageHeading": {
+      "locator": "h1",
+      "strategy": "role",
+      "role": "heading",
+      "name": "Gift Card",
+      "exact": false,
+      "type": "heading",
+      "description": "Gift card product name heading"
+    },
+    "productImage": {
+      "locator": "#main-product-img-1, #main-product-img-2, #main-product-img-3, #main-product-img-4, .picture > img:first-child, .product-image > img:first-child",
+      "fallbackLocators": ["img[itemprop='image']", "img[id^='main-product-img']"],
+      "type": "image",
+      "description": "Gift card product main image"
+    },
+    "productDescription": {
+      "locator": ".short-description, .product-description, .description",
+      "fallbackLocators": [".overview div"],
+      "type": "text",
+      "description": "Gift card description"
+    },
+    "recipientName": {
+      "locator": "input[name='giftcard_RecipientName'], input[id*='RecipientName'], input[placeholder*='Recipient']",
+      "fallbackLocators": ["textbox[name=\"Recipient's Name:\"]", "input[aria-label*='Recipient']"],
+      "strategy": "css",
+      "type": "textbox",
+      "description": "Recipient's Name field"
+    },
+    "recipientEmail": {
+      "locator": "input[name='giftcard_RecipientEmail'], input[id*='RecipientEmail'], input[placeholder*='Recipient Email']",
+      "fallbackLocators": ["textbox[name=\"Recipient's Email:\"]", "input[aria-label*='Recipient Email']"],
+      "strategy": "css",
+      "type": "textbox",
+      "description": "Recipient's Email field (virtual gift cards only)"
+    },
+    "senderName": {
+      "locator": "input[name='giftcard_SenderName'], input[id*='SenderName'], input[placeholder*='Your Name']",
+      "fallbackLocators": ["textbox[name=\"Your Name:\"]", "input[aria-label*='Your Name']"],
+      "strategy": "css",
+      "type": "textbox",
+      "description": "Your Name (sender) field"
+    },
+    "senderEmail": {
+      "locator": "input[name='giftcard_SenderEmail'], input[id*='SenderEmail'], input[placeholder*='Your Email']",
+      "fallbackLocators": ["textbox[name=\"Your Email:\"]", "input[aria-label*='Your Email']"],
+      "strategy": "css",
+      "type": "textbox",
+      "description": "Your Email field (virtual gift cards only)"
+    },
+    "message": {
+      "locator": "textarea[name='giftcard_Message'], textarea[id*='Message'], textarea[placeholder*='Message']",
+      "fallbackLocators": ["textbox[name=\"Message:\"]", "textarea[aria-label*='Message']"],
+      "strategy": "css",
+      "type": "textbox",
+      "description": "Gift card message field"
+    },
+    "price": {
+      "locator": ".product-price .actual-price, .prices .price-value-1, .prices .price-value-2, .prices .price-value-3, .prices .price-value-4, [itemprop='price'].price-value-1, [itemprop='price'].price-value-2, [itemprop='price'].price-value-3, [itemprop='price'].price-value-4",
+      "fallbackLocators": [".product-price .price:first-of-type", ".prices > .price-value-1, .prices > .price-value-2, .prices > .price-value-3, .prices > .price-value-4"],
+      "type": "text",
+      "description": "Gift card main product price"
+    },
+    "quantityInput": {
+      "locator": "input[name='addtocart_1.EnteredQuantity'], input[name*='EnteredQuantity'], .product-essential .qty-input, .add-to-cart-panel .qty-input, input.qty-input",
+      "fallbackLocators": ["input[name='addtocart_1.EnteredQuantity']", "input[id*='Quantity']"],
+      "strategy": "css",
+      "type": "textbox",
+      "description": "Quantity input"
+    },
+    "addToCartButton": {
+      "locator": "#add-to-cart-button-1, #add-to-cart-button-2, #add-to-cart-button-3, #add-to-cart-button-4, .product-price input[value='Add to cart'], .product-essential input[value='Add to cart'], .add-to-cart-panel input[value='Add to cart']",
+      "fallbackLocators": ["input[id^='add-to-cart-button-']", "button[name='addtocart']"],
+      "strategy": "css",
+      "type": "button",
+      "description": "Main product add to cart button"
+    },
+    "addToWishlistButton": {
+      "locator": ".product-essential input[value='Add to wishlist'], .add-to-cart-panel input[value='Add to wishlist'], .product-price input[value='Add to wishlist']",
+      "fallbackLocators": ["input[value='Add to wishlist']:first-of-type", "button[name='addtowishlist']"],
+      "strategy": "css",
+      "type": "button",
+      "description": "Main product add to wishlist button"
+    },
+    "emailFriendButton": {
+      "locator": ".product-essential input[value='Email a friend'], .add-to-cart-panel input[value='Email a friend'], a[href*='emailafriend']",
+      "fallbackLocators": ["input[value='Email a friend']:first-of-type", "button[name='emailfriend']"],
+      "strategy": "css",
+      "type": "button",
+      "description": "Main product email a friend button"
+    },
+    "addToCompareButton": {
+      "locator": ".product-essential input[value='Add to compare list'], .add-to-cart-panel input[value='Add to compare list']",
+      "fallbackLocators": ["input[value='Add to compare list']:first-of-type", "button[name='compareproducts']"],
+      "strategy": "css",
+      "type": "button",
+      "description": "Main product add to compare list button"
+    },
+    "productTags": {
+      "locator": ".product-tags a, .tags a",
+      "fallbackLocators": [".product-tag a", "[class*='tag'] a"],
+      "type": "link",
+      "description": "Product tags links"
+    },
+    "freeShippingLabel": {
+      "locator": "text=Free shipping",
+      "fallbackLocators": ["text=Free Shipping", ".free-shipping", "text=/free shipping/i", ">> text=Free shipping"],
+      "strategy": "text",
+      "type": "text",
+      "description": "Free shipping label (physical gift cards)"
+    },
+    "deliveryDate": {
+      "locator": "text=Delivery date:",
+      "strategy": "text",
+      "type": "text",
+      "description": "Delivery date info (physical gift cards)"
+    },
+    "notification": {
+      "locator": ".bar-notification",
+      "fallbackLocators": [".message-success", "[class*='notification']"],
+      "type": "status",
+      "description": "Add to cart/wishlist notification"
+    },
+    "reviewLink": {
+      "locator": "a[href*='productreviews']",
+      "fallbackLocators": [".product-reviews a", "text=/review\\(s\\)/" ],
+      "type": "link",
+      "description": "Product reviews link"
+    }
+  }
+}

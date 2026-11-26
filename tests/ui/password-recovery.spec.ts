@@ -36,7 +36,8 @@ test.describe('Authentication - Password Recovery Flow', () => {
     await loginSteps.clickForgotPassword();
     await recoverySteps.verifyPageLoaded();
     await recoverySteps.clickRecover();
-    await recoverySteps.verifyErrorMessage(testData.errorMessages.emailRequired);
+    // App shows "Enter your email" for empty email validation
+    await recoverySteps.verifyErrorMessage('Enter your email');
   });
 
   test('Password recovery with invalid email format @negative', async () => {
@@ -67,5 +68,20 @@ test.describe('Authentication - Password Recovery Flow', () => {
     await recoverySteps.verifyEmailNotFoundError();
     const emailValue = await recoverySteps.getEmailValue();
     expect(emailValue).toBe(testData.invalidData.unregisteredEmail);
+  });
+
+  test('DWS-EXT-030: Verify password recovery page elements @smoke', async () => {
+    await loginSteps.clickForgotPassword();
+    await recoverySteps.verifyPageElementsPresent();
+  });
+
+  test('Verify email field retains value after successful recovery @regression', async () => {
+    await loginSteps.clickForgotPassword();
+    await recoverySteps.verifyPageLoaded();
+    await recoverySteps.recoverPassword(testData.validUser.email);
+    await recoverySteps.verifySuccessMessage();
+    // App retains email after successful submission
+    const emailValue = await recoverySteps.getEmailValue();
+    expect(emailValue).toBe(testData.validUser.email);
   });
 });

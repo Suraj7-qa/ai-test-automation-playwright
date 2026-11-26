@@ -1,0 +1,281 @@
+{
+  "pageName": "MyAccountPage",
+  "pageUrl": "/customer/info",
+  "pageTitle": "Demo Web Shop. Account",
+  "elements": {
+    "pageTitle": {
+      "locator": "h1:has-text('My account'), .page-title h1",
+      "fallbackLocators": [
+        "h1:has-text('My account')",
+        ".page-title h1",
+        "h1"
+      ],
+      "strategy": "role",
+      "role": "heading",
+      "name": "My account",
+      "exact": true,
+      "type": "heading",
+      "description": "My Account page title"
+    },
+    "accountInfoSection": {
+      "locator": ".account, .account-info, .customer-info, .account-details, div:has(h2:has-text('Account')), .page-body",
+      "fallbackLocators": [
+        ".account",
+        ".account-info",
+        ".customer-info",
+        ".account-details",
+        ".account-section",
+        "div.account",
+        ".page-body",
+        "main"
+      ],
+      "type": "section",
+      "description": "Account information section container"
+    },
+    "emailDisplay": {
+      "locator": "input[id='Email'], input[name='Email'], .account-email, span:has-text('@')",
+      "fallbackLocators": [
+        "input[id='Email']",
+        "input[name='Email']",
+        ".account-email",
+        "div:has-text('@')"
+      ],
+      "strategy": "label",
+      "name": "Email:",
+      "exact": false,
+      "type": "textbox",
+      "description": "User email display in account info"
+    },
+    "firstNameDisplay": {
+      "locator": "input[id='FirstName'], input[name='FirstName']",
+      "fallbackLocators": [
+        "input[id='FirstName']",
+        "input[name='FirstName']",
+        "#FirstName"
+      ],
+      "strategy": "label",
+      "name": "First name:",
+      "exact": false,
+      "type": "textbox",
+      "description": "User first name display in account info"
+    },
+    "lastNameDisplay": {
+      "locator": "input[id='LastName'], input[name='LastName']",
+      "fallbackLocators": [
+        "input[id='LastName']",
+        "input[name='LastName']",
+        "#LastName"
+      ],
+      "strategy": "label",
+      "name": "Last name:",
+      "exact": false,
+      "type": "textbox",
+      "description": "User last name display in account info"
+    },
+    "genderDisplay": {
+      "locator": "input[id='Gender_Male'], input[id='Gender_Female'], input[name='Gender']",
+      "fallbackLocators": [
+        "input[id='Gender_Male']",
+        "input[id='Gender_Female']",
+        "input[name='Gender']"
+      ],
+      "strategy": "role",
+      "role": "radio",
+      "name": "Male",
+      "exact": true,
+      "type": "radio",
+      "description": "User gender display in account info"
+    },
+    "dateOfBirthDisplay": {
+      "locator": "select[name='DateOfBirthDay'], select[name='DateOfBirthMonth'], select[name='DateOfBirthYear']",
+      "fallbackLocators": [
+        "select[name='DateOfBirthDay']",
+        "select[name='DateOfBirthMonth']",
+        "select[name='DateOfBirthYear']"
+      ],
+      "strategy": "css",
+      "type": "combobox",
+      "description": "User date of birth display in account info"
+    },
+    "companyDisplay": {
+      "locator": "input[id='Company'], input[name='Company']",
+      "fallbackLocators": [
+        "input[id='Company']",
+        "input[name='Company']",
+        "#Company"
+      ],
+      "strategy": "label",
+      "name": "Company:",
+      "exact": false,
+      "type": "textbox",
+      "description": "User company display in account info"
+    },
+    "newsletterCheckbox": {
+      "locator": "input[id='Newsletter'], input[name='Newsletter']",
+      "fallbackLocators": [
+        "input[id='Newsletter']",
+        "input[name='Newsletter']",
+        "#Newsletter"
+      ],
+      "strategy": "role",
+      "role": "checkbox",
+      "name": "Newsletter",
+      "exact": false,
+      "type": "checkbox",
+      "description": "Newsletter subscription checkbox"
+    },
+    "ordersLink": {
+      "locator": "a[href='/customer/orders']:not(.inactive), a:has-text('Orders'):not(.inactive), a[href*='orders']",
+      "fallbackLocators": [
+        "a[href='/customer/orders']",
+        "a:has-text('Orders')",
+        "a[href*='orders']",
+        ".ico-orders"
+      ],
+      "strategy": "css",
+      "type": "link",
+      "description": "Orders navigation link"
+    },
+    "addressesLink": {
+      "locator": "a[href='/customer/addresses']:not(.inactive), a:has-text('Addresses'):not(.inactive), a[href*='addresses']",
+      "fallbackLocators": [
+        "a[href='/customer/addresses']",
+        "a:has-text('Addresses')",
+        "a[href*='addresses']",
+        ".ico-addresses"
+      ],
+      "strategy": "css",
+      "type": "link",
+      "description": "Addresses navigation link"
+    },
+    "shoppingCartLink": {
+      "locator": "a[href='/cart']:not(.inactive), a:has-text('Shopping cart'):not(.inactive), a[href*='cart']",
+      "fallbackLocators": [
+        "a[href='/cart']",
+        "a:has-text('Shopping cart')",
+        "a[href*='cart']",
+        ".ico-cart"
+      ],
+      "strategy": "css",
+      "type": "link",
+      "description": "Shopping cart navigation link from My Account page"
+    },
+    "wishlistLink": {
+      "locator": "a[href='/wishlist']:not(.inactive), a:has-text('Wishlist'):not(.inactive), a[href*='wishlist']",
+      "fallbackLocators": [
+        "a[href='/wishlist']",
+        "a:has-text('Wishlist')",
+        "a[href*='wishlist']",
+        ".ico-wishlist"
+      ],
+      "strategy": "css",
+      "type": "link",
+      "description": "Wishlist navigation link from My Account page"
+    },
+    "downloadableProductsLink": {
+      "locator": "a[href='/customer/downloadableproducts']:not(.inactive), a:has-text('Downloadable products'):not(.inactive), a[href*='downloadable']",
+      "fallbackLocators": [
+        "a[href='/customer/downloadableproducts']",
+        "a:has-text('Downloadable products')",
+        "a[href*='downloadable']"
+      ],
+      "strategy": "css",
+      "type": "link",
+      "description": "Downloadable products navigation link"
+    },
+    "rewardPointsLink": {
+      "locator": "a[href='/customer/rewardpoints']:not(.inactive), a:has-text('Reward points'):not(.inactive), a[href*='reward']",
+      "fallbackLocators": [
+        "a[href='/customer/rewardpoints']",
+        "a:has-text('Reward points')",
+        "a[href*='reward']"
+      ],
+      "strategy": "css",
+      "type": "link",
+      "description": "Reward points navigation link"
+    },
+    "changePasswordLink": {
+      "locator": "a[href='/customer/changepassword']:not(.inactive), a:has-text('Change password'):not(.inactive), a[href*='changepassword']",
+      "fallbackLocators": [
+        "a[href='/customer/changepassword']",
+        "a:has-text('Change password')",
+        "a[href*='changepassword']"
+      ],
+      "strategy": "css",
+      "type": "link",
+      "description": "Change password navigation link"
+    },
+    "avatar": {
+      "locator": ".avatar, .user-avatar, img[alt*='avatar'], img[alt*='user']",
+      "fallbackLocators": [
+        ".avatar",
+        ".user-avatar",
+        "img[alt*='avatar']"
+      ],
+      "type": "image",
+      "description": "User avatar image"
+    },
+    "saveButton": {
+      "locator": "button[type='submit'], input[value='Save'], button:has-text('Save')",
+      "fallbackLocators": [
+        "button[type='submit']",
+        "input[value='Save']",
+        "button:has-text('Save')",
+        ".save-button"
+      ],
+      "strategy": "role",
+      "role": "button",
+      "name": "Save",
+      "exact": true,
+      "type": "button",
+      "description": "Save account information button"
+    },
+    "editButton": {
+      "locator": "a:has-text('Edit'), button:has-text('Edit')",
+      "fallbackLocators": [
+        "a:has-text('Edit')",
+        "button:has-text('Edit')",
+        ".edit-button"
+      ],
+      "strategy": "role",
+      "role": "button",
+      "name": "Edit",
+      "exact": true,
+      "type": "button",
+      "description": "Edit account information button"
+    },
+    "accountNavigationSidebar": {
+      "locator": ".account-navigation, .sidebar .account, ul[class*='account'], div.block-account-navigation",
+      "fallbackLocators": [
+        ".account-navigation",
+        ".sidebar .account",
+        "ul[class*='account']",
+        "div.block-account-navigation"
+      ],
+      "type": "navigation",
+      "description": "Account navigation sidebar"
+    },
+    "breadcrumbs": {
+      "locator": ".breadcrumb, .breadcrumbs, [class*='breadcrumb']",
+      "fallbackLocators": [
+        ".breadcrumb",
+        ".breadcrumbs",
+        "[class*='breadcrumb']"
+      ],
+      "type": "navigation",
+      "description": "Breadcrumb navigation"
+    }
+  },
+  "forms": {
+    "accountInfoForm": {
+      "locator": "form[action*='customer/info'], form[data-testid='account-form'], .account-form",
+      "fallbackLocators": [
+        "form[action*='customer/info']",
+        "form[data-testid='account-form']",
+        ".account-form"
+      ],
+      "fields": ["emailDisplay", "firstNameDisplay", "lastNameDisplay", "genderDisplay", "companyDisplay", "newsletterCheckbox"],
+      "submitButton": "saveButton"
+    }
+  }
+}

@@ -28,7 +28,7 @@ test.describe('Authentication - Logout Flow', () => {
     await homeSteps.verifyPageLoaded();
   });
 
-  test('Verify logout redirects to home page @regression', async () => {
+  test('Verify logout redirects to home page @regression', async ({ page }) => {
     await homeSteps.clickLogout();
     await homeSteps.verifyPageLoaded();
     const currentUrl = page.url();
@@ -44,11 +44,20 @@ test.describe('Authentication - Logout Flow', () => {
 
   test('Verify user email not displayed after logout @regression', async () => {
     await homeSteps.clickLogout();
-    expect(await homeSteps.isUserEmailVisible()).toBeFalsy();
+    await homeSteps.verifyUserLoggedOut();
+    await homeSteps.verifyUserEmailNotDisplayed();
   });
 
   test('Verify shopping cart shows 0 after logout @regression', async () => {
     await homeSteps.clickLogout();
-    await homeSteps.verifyCartCount(0);
+    await homeSteps.verifyCartCount('(0)');
+  });
+
+  test('Verify logout clears session and redirects to home @regression', async ({ page }) => {
+    await homeSteps.clickLogout();
+    await homeSteps.verifyUserLoggedOut();
+    await homeSteps.verifyPageLoaded();
+    const currentUrl = page.url();
+    expect(currentUrl).toMatch(/\/$/);
   });
 });

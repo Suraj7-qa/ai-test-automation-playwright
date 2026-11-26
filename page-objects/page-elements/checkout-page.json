@@ -1,0 +1,712 @@
+{
+  "pageName": "CheckoutPage",
+  "pageUrl": "/cart",
+  "pageTitle": "Demo Web Shop. Shopping Cart",
+  "elements": {
+    "cartHeading": {
+      "locator": "h1",
+      "strategy": "role",
+      "role": "heading",
+      "name": "Shopping Cart",
+      "exact": true,
+      "type": "heading",
+      "description": "Shopping cart page heading"
+    },
+    "cartEmptyMessage": {
+      "locator": ".order-summary-content",
+      "fallbackLocators": [".cart-empty", ".no-data"],
+      "type": "text",
+      "description": "Empty shopping cart message"
+    },
+    "cartRows": {
+      "locator": ".cart tbody tr",
+      "type": "container",
+      "description": "Shopping cart product rows"
+    },
+    "cartProductName": {
+      "locator": ".product a",
+      "fallbackLocators": [".product-name"],
+      "type": "link",
+      "description": "Product name within a cart row"
+    },
+    "cartQuantityInput": {
+      "locator": "input[name^='itemquantity']",
+      "type": "textbox",
+      "description": "Quantity input in the cart row"
+    },
+    "updateCartButton": {
+      "locator": "input[name='updatecart']",
+      "strategy": "role",
+      "role": "button",
+      "name": "Update shopping cart",
+      "exact": true,
+      "type": "button",
+      "description": "Update cart quantities"
+    },
+    "cartCount": {
+      "locator": ".cart-qty",
+      "type": "text",
+      "description": "Header shopping cart count"
+    },
+    "cartSubtotal": {
+      "locator": ".cart-total .value-summary strong, .order-total .value-summary strong",
+      "fallbackLocators": [".cart-total .value-summary", ".order-total .value-summary"],
+      "type": "text",
+      "description": "Displayed cart total"
+    },
+    "homeFeaturedCards": {
+      "locator": ".product-grid .item-box",
+      "fallbackLocators": [".item-box"],
+      "type": "container",
+      "description": "Featured products on the home page"
+    },
+    "laptopProductLink": {
+      "locator": "a[href='/141-inch-laptop']",
+      "fallbackLocators": [".product-title a"],
+      "strategy": "role",
+      "role": "link",
+      "name": "14.1-inch Laptop",
+      "exact": true,
+      "type": "link",
+      "description": "Featured laptop product link"
+    },
+    "quickAddToCartButton": {
+      "locator": ".product-box-add-to-cart-button",
+      "type": "button",
+      "description": "Quick-add button within a featured product card"
+    },
+    "addToCartNotification": {
+      "locator": ".bar-notification",
+      "type": "status",
+      "description": "Cart success notification"
+    },
+    "shippingEstimator": {
+      "locator": ".estimate-shipping",
+      "type": "region",
+      "description": "Cart shipping estimator"
+    },
+    "shippingCountry": {
+      "locator": ".estimate-shipping select[name='CountryId']",
+      "strategy": "label",
+      "name": "Country:",
+      "exact": true,
+      "type": "select",
+      "description": "Shipping estimate country"
+    },
+    "shippingState": {
+      "locator": ".estimate-shipping select[name='StateProvinceId']",
+      "strategy": "label",
+      "name": "State / province:",
+      "exact": true,
+      "type": "select",
+      "description": "Shipping estimate state or province"
+    },
+    "shippingZip": {
+      "locator": ".estimate-shipping input[name='ZipPostalCode']",
+      "strategy": "label",
+      "name": "Zip / postal code:",
+      "exact": true,
+      "type": "textbox",
+      "description": "Shipping estimate ZIP or postal code"
+    },
+    "estimateShippingButton": {
+      "locator": ".estimate-shipping input[name='estimateshipping']",
+      "strategy": "role",
+      "role": "button",
+      "name": "Estimate shipping",
+      "exact": true,
+      "type": "button",
+      "description": "Calculate shipping options"
+    },
+    "shippingOptions": {
+      "locator": ".estimate-shipping .shipping-options",
+      "fallbackLocators": [".estimate-shipping .shipping-results", ".estimate-shipping"],
+      "type": "region",
+      "description": "Shipping methods returned by the estimate"
+    },
+    "termsCheckbox": {
+      "locator": "input[name='termsofservice']",
+      "type": "checkbox",
+      "description": "Terms of service agreement checkbox"
+    },
+    "checkoutButton": {
+      "locator": "button.checkout-button",
+      "strategy": "role",
+      "role": "button",
+      "name": "Checkout",
+      "exact": true,
+      "type": "button",
+      "description": "Continue from cart to checkout"
+    },
+    "termsWarning": {
+      "locator": ".terms-of-service-warning-box",
+      "fallbackLocators": [".ui-dialog .ui-dialog-content"],
+      "type": "dialog",
+      "description": "Terms of service validation dialog"
+    },
+    "checkoutAsGuestButton": {
+      "locator": ".checkout-as-guest-button",
+      "strategy": "role",
+      "role": "button",
+      "name": "Checkout as Guest",
+      "exact": true,
+      "type": "button",
+      "description": "Proceed without an account"
+    },
+    "checkoutHeading": {
+      "locator": "h1",
+      "strategy": "role",
+      "role": "heading",
+      "name": "Checkout",
+      "exact": true,
+      "type": "heading",
+      "description": "Checkout page heading"
+    },
+    "billingAddressHeading": {
+      "locator": "#billing .step-title",
+      "fallbackLocators": ["#billing .title", "#billing"],
+      "type": "region",
+      "description": "Billing address step"
+    },
+    "billingFirstName": {
+      "locator": "#BillingNewAddress_FirstName",
+      "strategy": "label",
+      "name": "First name:",
+      "exact": true,
+      "type": "textbox",
+      "description": "Billing first name"
+    },
+    "billingLastName": {
+      "locator": "#BillingNewAddress_LastName",
+      "strategy": "label",
+      "name": "Last name:",
+      "exact": true,
+      "type": "textbox",
+      "description": "Billing last name"
+    },
+    "billingEmail": {
+      "locator": "#BillingNewAddress_Email",
+      "strategy": "label",
+      "name": "Email:",
+      "exact": true,
+      "type": "textbox",
+      "description": "Billing email"
+    },
+    "billingCountry": {
+      "locator": "#BillingNewAddress_CountryId",
+      "strategy": "label",
+      "name": "Country:",
+      "exact": true,
+      "type": "select",
+      "description": "Billing country"
+    },
+    "billingState": {
+      "locator": "#BillingNewAddress_StateProvinceId",
+      "strategy": "label",
+      "name": "State / province:",
+      "exact": true,
+      "type": "select",
+      "description": "Billing state or province"
+    },
+    "billingCity": {
+      "locator": "#BillingNewAddress_City",
+      "strategy": "label",
+      "name": "City:",
+      "exact": true,
+      "type": "textbox",
+      "description": "Billing city"
+    },
+    "billingAddress1": {
+      "locator": "#BillingNewAddress_Address1",
+      "strategy": "label",
+      "name": "Address 1:",
+      "exact": true,
+      "type": "textbox",
+      "description": "Billing address line 1"
+    },
+    "billingZip": {
+      "locator": "#BillingNewAddress_ZipPostalCode",
+      "strategy": "label",
+      "name": "Zip / postal code:",
+      "exact": true,
+      "type": "textbox",
+      "description": "Billing ZIP or postal code"
+    },
+    "billingPhone": {
+      "locator": "#BillingNewAddress_PhoneNumber",
+      "strategy": "label",
+      "name": "Phone number:",
+      "exact": true,
+      "type": "textbox",
+      "description": "Billing phone number"
+    },
+    "billingContinueButton": {
+      "locator": "#billing-buttons-container .new-address-next-step-button",
+      "type": "button",
+      "description": "Continue from billing address"
+    },
+    "billingValidationErrors": {
+      "locator": ".field-validation-error",
+      "type": "text",
+      "description": "Billing field validation errors"
+    },
+    "billingCompany": {
+      "locator": "#BillingNewAddress_Company",
+      "strategy": "label",
+      "name": "Company:",
+      "exact": true,
+      "type": "textbox",
+      "description": "Billing company name"
+    },
+    "billingAddress2": {
+      "locator": "#BillingNewAddress_Address2",
+      "strategy": "label",
+      "name": "Address 2:",
+      "exact": true,
+      "type": "textbox",
+      "description": "Billing address line 2"
+    },
+    "billingFax": {
+      "locator": "#BillingNewAddress_FaxNumber",
+      "strategy": "label",
+      "name": "Fax number:",
+      "exact": true,
+      "type": "textbox",
+      "description": "Billing fax number"
+    },
+    "shippingAddressHeading": {
+      "locator": "#shipping .step-title",
+      "fallbackLocators": ["#shipping .title", "#shipping"],
+      "type": "region",
+      "description": "Shipping address step"
+    },
+    "shippingAddressSelector": {
+      "locator": "#shipping-address-select",
+      "strategy": "label",
+      "name": "Select a shipping address from your address book or enter a new address.",
+      "exact": true,
+      "type": "select",
+      "description": "Shipping address selector dropdown"
+    },
+    "shippingFirstName": {
+      "locator": "#ShippingNewAddress_FirstName",
+      "strategy": "label",
+      "name": "First name:",
+      "exact": true,
+      "type": "textbox",
+      "description": "Shipping first name"
+    },
+    "shippingLastName": {
+      "locator": "#ShippingNewAddress_LastName",
+      "strategy": "label",
+      "name": "Last name:",
+      "exact": true,
+      "type": "textbox",
+      "description": "Shipping last name"
+    },
+    "shippingEmail": {
+      "locator": "#ShippingNewAddress_Email",
+      "strategy": "label",
+      "name": "Email:",
+      "exact": true,
+      "type": "textbox",
+      "description": "Shipping email"
+    },
+    "shippingCompany": {
+      "locator": "#ShippingNewAddress_Company",
+      "strategy": "label",
+      "name": "Company:",
+      "exact": true,
+      "type": "textbox",
+      "description": "Shipping company name"
+    },
+    "shippingCountry": {
+      "locator": "#ShippingNewAddress_CountryId",
+      "strategy": "label",
+      "name": "Country:",
+      "exact": true,
+      "type": "select",
+      "description": "Shipping country"
+    },
+    "shippingState": {
+      "locator": "#ShippingNewAddress_StateProvinceId",
+      "strategy": "label",
+      "name": "State / province:",
+      "exact": true,
+      "type": "select",
+      "description": "Shipping state or province"
+    },
+    "shippingCity": {
+      "locator": "#ShippingNewAddress_City",
+      "strategy": "label",
+      "name": "City:",
+      "exact": true,
+      "type": "textbox",
+      "description": "Shipping city"
+    },
+    "shippingAddress1": {
+      "locator": "#ShippingNewAddress_Address1",
+      "strategy": "label",
+      "name": "Address 1:",
+      "exact": true,
+      "type": "textbox",
+      "description": "Shipping address line 1"
+    },
+    "shippingAddress2": {
+      "locator": "#ShippingNewAddress_Address2",
+      "strategy": "label",
+      "name": "Address 2:",
+      "exact": true,
+      "type": "textbox",
+      "description": "Shipping address line 2"
+    },
+    "shippingZip": {
+      "locator": "#ShippingNewAddress_ZipPostalCode",
+      "strategy": "label",
+      "name": "Zip / postal code:",
+      "exact": true,
+      "type": "textbox",
+      "description": "Shipping ZIP or postal code"
+    },
+    "shippingPhone": {
+      "locator": "#ShippingNewAddress_PhoneNumber",
+      "strategy": "label",
+      "name": "Phone number:",
+      "exact": true,
+      "type": "textbox",
+      "description": "Shipping phone number"
+    },
+    "shippingFax": {
+      "locator": "#ShippingNewAddress_FaxNumber",
+      "strategy": "label",
+      "name": "Fax number:",
+      "exact": true,
+      "type": "textbox",
+      "description": "Shipping fax number"
+    },
+    "inStorePickupCheckbox": {
+      "locator": "#PickUpInStore",
+      "type": "checkbox",
+      "description": "In-Store Pickup checkbox"
+    },
+    "shippingContinueButton": {
+      "locator": "#shipping-buttons-container .new-address-next-step-button",
+      "type": "button",
+      "description": "Continue from shipping address"
+    },
+    "shippingMethodHeading": {
+      "locator": "#shipping-method .step-title",
+      "fallbackLocators": ["#shipping-method .title", "#shipping-method"],
+      "type": "region",
+      "description": "Shipping method step"
+    },
+    "shippingMethodGround": {
+      "locator": "input[name='shippingmethod'][value='Ground']",
+      "strategy": "label",
+      "name": "Ground",
+      "exact": false,
+      "type": "radio",
+      "description": "Ground shipping method"
+    },
+    "shippingMethodNextDayAir": {
+      "locator": "input[name='shippingmethod'][value='Next Day Air']",
+      "strategy": "label",
+      "name": "Next Day Air",
+      "exact": false,
+      "type": "radio",
+      "description": "Next Day Air shipping method"
+    },
+    "shippingMethodSecondDayAir": {
+      "locator": "input[name='shippingmethod'][value='2nd Day Air']",
+      "strategy": "label",
+      "name": "2nd Day Air",
+      "exact": false,
+      "type": "radio",
+      "description": "2nd Day Air shipping method"
+    },
+    "shippingMethodContinueButton": {
+      "locator": "#shipping-method-buttons-container .new-address-next-step-button",
+      "type": "button",
+      "description": "Continue from shipping method"
+    },
+    "paymentMethodHeading": {
+      "locator": "#payment-method .step-title",
+      "fallbackLocators": ["#payment-method .title", "#payment-method"],
+      "type": "region",
+      "description": "Payment method step"
+    },
+    "paymentMethodCOD": {
+      "locator": "input[name='paymentmethod'][value='CashOnDelivery']",
+      "strategy": "label",
+      "name": "Cash On Delivery",
+      "exact": false,
+      "type": "radio",
+      "description": "Cash On Delivery payment method"
+    },
+    "paymentMethodCheckMoneyOrder": {
+      "locator": "input[name='paymentmethod'][value='CheckMoneyOrder']",
+      "strategy": "label",
+      "name": "Check / Money Order",
+      "exact": false,
+      "type": "radio",
+      "description": "Check/Money Order payment method"
+    },
+    "paymentMethodCreditCard": {
+      "locator": "input[name='paymentmethod'][value='CreditCard']",
+      "strategy": "label",
+      "name": "Credit Card",
+      "exact": false,
+      "type": "radio",
+      "description": "Credit Card payment method"
+    },
+    "paymentMethodPurchaseOrder": {
+      "locator": "input[name='paymentmethod'][value='PurchaseOrder']",
+      "strategy": "label",
+      "name": "Purchase Order",
+      "exact": false,
+      "type": "radio",
+      "description": "Purchase Order payment method"
+    },
+    "paymentMethodContinueButton": {
+      "locator": "#payment-method-buttons-container .new-address-next-step-button",
+      "type": "button",
+      "description": "Continue from payment method"
+    },
+    "paymentInfoHeading": {
+      "locator": "#payment-info .step-title",
+      "fallbackLocators": ["#payment-info .title", "#payment-info"],
+      "type": "region",
+      "description": "Payment information step"
+    },
+    "paymentInfoCODMessage": {
+      "locator": "#payment-info .payment-info-cod",
+      "fallbackLocators": [".payment-info", "#payment-info"],
+      "type": "text",
+      "description": "COD payment information message"
+    },
+    "creditCardType": {
+      "locator": "#CreditCardType",
+      "strategy": "label",
+      "name": "Credit card type:",
+      "exact": true,
+      "type": "select",
+      "description": "Credit card type selector"
+    },
+    "creditCardHolderName": {
+      "locator": "#CardholderName",
+      "strategy": "label",
+      "name": "Cardholder name:",
+      "exact": true,
+      "type": "textbox",
+      "description": "Credit card holder name"
+    },
+    "creditCardNumber": {
+      "locator": "#CardNumber",
+      "strategy": "label",
+      "name": "Card number:",
+      "exact": true,
+      "type": "textbox",
+      "description": "Credit card number"
+    },
+    "creditCardExpirationMonth": {
+      "locator": "#ExpireMonth",
+      "strategy": "label",
+      "name": "Expire month:",
+      "exact": true,
+      "type": "select",
+      "description": "Credit card expiration month"
+    },
+    "creditCardExpirationYear": {
+      "locator": "#ExpireYear",
+      "strategy": "label",
+      "name": "Expire year:",
+      "exact": true,
+      "type": "select",
+      "description": "Credit card expiration year"
+    },
+    "creditCardCvv": {
+      "locator": "#CardCode",
+      "strategy": "label",
+      "name": "Card code:",
+      "exact": true,
+      "type": "textbox",
+      "description": "Credit card CVV code"
+    },
+    "paymentInfoContinueButton": {
+      "locator": "#payment-info-buttons-container .new-address-next-step-button",
+      "type": "button",
+      "description": "Continue from payment information"
+    },
+    "confirmOrderHeading": {
+      "locator": "#confirm-order .step-title",
+      "fallbackLocators": ["#confirm-order .title", "#confirm-order"],
+      "type": "region",
+      "description": "Confirm order step"
+    },
+    "confirmOrderBillingAddress": {
+      "locator": "#confirm-order .billing-address",
+      "fallbackLocators": [".confirm-order .billing-address"],
+      "type": "text",
+      "description": "Billing address in order confirmation"
+    },
+    "confirmOrderShippingAddress": {
+      "locator": "#confirm-order .shipping-address",
+      "fallbackLocators": [".confirm-order .shipping-address"],
+      "type": "text",
+      "description": "Shipping address in order confirmation"
+    },
+    "confirmOrderShippingMethod": {
+      "locator": "#confirm-order .shipping-method",
+      "fallbackLocators": [".confirm-order .shipping-method"],
+      "type": "text",
+      "description": "Shipping method in order confirmation"
+    },
+    "confirmOrderPaymentMethod": {
+      "locator": "#confirm-order .payment-method",
+      "fallbackLocators": [".confirm-order .payment-method"],
+      "type": "text",
+      "description": "Payment method in order confirmation"
+    },
+    "confirmOrderItems": {
+      "locator": "#confirm-order .order-summary tbody tr",
+      "type": "container",
+      "description": "Order items in confirmation"
+    },
+    "confirmOrderSubTotal": {
+      "locator": "#confirm-order .order-summary .subtotal .value",
+      "fallbackLocators": [".order-summary .subtotal .value", ".subtotal .value"],
+      "type": "text",
+      "description": "Order subtotal"
+    },
+    "confirmOrderShipping": {
+      "locator": "#confirm-order .order-summary .shipping .value",
+      "fallbackLocators": [".order-summary .shipping .value", ".shipping .value"],
+      "type": "text",
+      "description": "Order shipping cost"
+    },
+    "confirmOrderPaymentFee": {
+      "locator": "#confirm-order .order-summary .payment-fee .value",
+      "fallbackLocators": [".order-summary .payment-fee .value", ".payment-fee .value"],
+      "type": "text",
+      "description": "Payment method additional fee"
+    },
+    "confirmOrderTax": {
+      "locator": "#confirm-order .order-summary .tax .value",
+      "fallbackLocators": [".order-summary .tax .value", ".tax .value"],
+      "type": "text",
+      "description": "Order tax"
+    },
+    "confirmOrderDiscount": {
+      "locator": "#confirm-order .order-summary .discount .value",
+      "fallbackLocators": [".order-summary .discount .value", ".discount .value"],
+      "type": "text",
+      "description": "Order discount"
+    },
+    "confirmOrderTotal": {
+      "locator": "#confirm-order .order-summary .total .value",
+      "fallbackLocators": [".order-summary .total .value", ".total .value"],
+      "type": "text",
+      "description": "Order total"
+    },
+    "confirmOrderButton": {
+      "locator": "#confirm-order-buttons-container .confirm-order-next-step-button",
+      "strategy": "role",
+      "role": "button",
+      "name": "Confirm",
+      "exact": true,
+      "type": "button",
+      "description": "Confirm order button"
+    },
+    "orderCompletedHeading": {
+      "locator": "h1",
+      "strategy": "role",
+      "role": "heading",
+      "name": "Thank you",
+      "exact": true,
+      "type": "heading",
+      "description": "Order completed page heading"
+    },
+    "orderSuccessMessage": {
+      "locator": ".order-completed .success-message",
+      "fallbackLocators": [".order-success", ".success-message"],
+      "type": "text",
+      "description": "Order success message"
+    },
+    "orderNumber": {
+      "locator": ".order-number",
+      "fallbackLocators": [".order-completed .order-number"],
+      "type": "text",
+      "description": "Order number"
+    },
+    "orderDetailsLink": {
+      "locator": ".order-details-link a",
+      "strategy": "role",
+      "role": "link",
+      "name": "Click here for order details",
+      "exact": true,
+      "type": "link",
+      "description": "Order details link"
+    },
+    "orderCompletedContinueButton": {
+      "locator": ".order-completed .continue-button",
+      "strategy": "role",
+      "role": "button",
+      "name": "Continue",
+      "exact": true,
+      "type": "button",
+      "description": "Continue button on order completed page"
+    },
+    "couponCodeInput": {
+      "locator": ".discount-coupon input[name='discountcouponcode']",
+      "strategy": "label",
+      "name": "Enter your coupon here",
+      "exact": true,
+      "type": "textbox",
+      "description": "Coupon code input"
+    },
+    "applyCouponButton": {
+      "locator": ".discount-coupon input[name='applydiscountcouponcode']",
+      "strategy": "role",
+      "role": "button",
+      "name": "Apply coupon",
+      "exact": true,
+      "type": "button",
+      "description": "Apply coupon button"
+    },
+    "giftCardInput": {
+      "locator": ".gift-card input[name='giftcardcouponcode']",
+      "strategy": "label",
+      "name": "Enter gift card code",
+      "exact": true,
+      "type": "textbox",
+      "description": "Gift card code input"
+    },
+    "addGiftCardButton": {
+      "locator": ".gift-card input[name='applygiftcardcouponcode']",
+      "strategy": "role",
+      "role": "button",
+      "name": "Add gift card",
+      "exact": true,
+      "type": "button",
+      "description": "Add gift card button"
+    },
+    "continueShoppingButton": {
+      "locator": "input[name='continueShopping']",
+      "strategy": "role",
+      "role": "button",
+      "name": "Continue shopping",
+      "exact": true,
+      "type": "button",
+      "description": "Continue shopping button"
+    },
+    "backButton": {
+      "locator": "a[href='#']",
+      "strategy": "role",
+      "role": "link",
+      "name": "Back",
+      "exact": true,
+      "type": "link",
+      "description": "Back button in checkout steps"
+    }
+  }
+}

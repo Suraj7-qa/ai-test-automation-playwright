@@ -168,4 +168,67 @@ export class LoginPageSteps {
   async getErrorMessage(): Promise<string> {
     return await this.commons.getText(this.elements.getLocator('errorMessage'));
   }
+
+  // ===== EXTENDED AUTHENTICATION TEST METHODS =====
+
+  // Login with only email filled (no password)
+  async loginWithOnlyEmail(email: string): Promise<void> {
+    await this.enterEmail(email);
+    await this.clickLogin();
+  }
+
+  // Login with only password filled (no email)
+  async loginWithOnlyPassword(password: string): Promise<void> {
+    await this.enterPassword(password);
+    await this.clickLogin();
+  }
+
+  // Login with special characters in email
+  async loginWithSpecialCharsEmail(email: string, password: string): Promise<void> {
+    await this.login(email, password);
+  }
+
+  // Login with very long password
+  async loginWithLongPassword(email: string, password: string): Promise<void> {
+    await this.login(email, password);
+  }
+
+  // Multiple failed login attempts (simulate brute force)
+  async multipleFailedLoginAttempts(email: string, wrongPassword: string, attempts: number): Promise<void> {
+    for (let i = 0; i < attempts; i++) {
+      await this.clearForm();
+      await this.login(email, wrongPassword);
+      // Wait a bit between attempts
+      await this.page.waitForTimeout(500);
+    }
+  }
+
+  // Verify email field retains value after failed login
+  async verifyEmailRetainedAfterFailedLogin(expectedEmail: string): Promise<void> {
+    const actualEmail = await this.getEmailValue();
+    expect(actualEmail).toBe(expectedEmail);
+  }
+
+  // Verify all page elements are present
+  async verifyPageElementsPresent(): Promise<void> {
+    await this.commons.assertVisible(this.elements.getLocator('pageTitle'));
+    await this.commons.assertVisible(this.elements.getLocator('emailInput'));
+    await this.commons.assertVisible(this.elements.getLocator('passwordInput'));
+    await this.commons.assertVisible(this.elements.getLocator('rememberMeCheckbox'));
+    await this.commons.assertVisible(this.elements.getLocator('loginButton'));
+    await this.commons.assertVisible(this.elements.getLocator('forgotPasswordLink'));
+    await this.commons.assertVisible(this.elements.getLocator('registerLink'));
+  }
+
+  // Click remember me checkbox
+  async clickRememberMe(): Promise<void> {
+    await this.commons.click(this.elements.getLocator('rememberMeCheckbox'));
+  }
+
+  // Verify remember me persists after login
+  async verifyRememberMePersists(): Promise<void> {
+    const checkbox = this.elements.getLocator('rememberMeCheckbox');
+    const isChecked = await checkbox.isChecked();
+    expect(isChecked).toBeTruthy();
+  }
 }

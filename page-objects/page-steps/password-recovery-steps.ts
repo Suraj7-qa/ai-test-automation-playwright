@@ -100,4 +100,49 @@ export class PasswordRecoveryPageSteps {
   async getErrorMessage(): Promise<string> {
     return await this.commons.getText(this.elements.getLocator('errorMessage'));
   }
+
+  // ===== EXTENDED AUTHENTICATION TEST METHODS =====
+
+  // Submit with empty email
+  async submitEmptyEmail(): Promise<void> {
+    await this.clickRecover();
+  }
+
+  // Submit with invalid email format
+  async submitInvalidEmail(email: string): Promise<void> {
+    await this.enterEmail(email);
+    await this.clickRecover();
+  }
+
+  // Verify invalid email format error
+  async verifyInvalidEmailFormatError(): Promise<void> {
+    await this.commons.waitForVisible(this.elements.getLocator('emailFieldError'));
+    await this.commons.assertContainsText(this.elements.getLocator('emailFieldError'), 'Wrong email');
+  }
+
+  // Verify back to login link navigation
+  async verifyBackToLoginNavigation(): Promise<void> {
+    await this.clickBackToLogin();
+    await this.commons.assertTitle(/Login/);
+  }
+
+  // Verify all page elements are present
+  async verifyPageElementsPresent(): Promise<void> {
+    await this.commons.assertVisible(this.elements.getLocator('pageTitle'));
+    await this.commons.assertVisible(this.elements.getLocator('emailInput'));
+    await this.commons.assertVisible(this.elements.getLocator('recoverButton'));
+    await this.commons.assertVisible(this.elements.getLocator('backToLoginLink'));
+  }
+
+  // Verify email field retains value after error
+  async verifyEmailRetainedAfterError(expectedEmail: string): Promise<void> {
+    const actualEmail = await this.getEmailValue();
+    expect(actualEmail).toBe(expectedEmail);
+  }
+
+  // Verify email is cleared after successful submission
+  async verifyEmailClearedAfterSuccess(): Promise<void> {
+    const emailValue = await this.getEmailValue();
+    expect(emailValue).toBe('');
+  }
 }

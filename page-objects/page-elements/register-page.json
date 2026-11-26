@@ -51,20 +51,16 @@
       "description": "Email address input field"
     },
     "passwordInput": {
-      "locator": "input[id='Password'], input[name='Password']",
+      "locator": "input[id='Password']",
       "fallbackLocators": ["input[id='Password']", "input[name='Password']", "#Password"],
-      "strategy": "label",
-      "name": "Password:",
-      "exact": false,
+      "strategy": "css",
       "type": "textbox",
       "description": "Password input field"
     },
     "confirmPasswordInput": {
-      "locator": "input[id='ConfirmPassword'], input[name='ConfirmPassword']",
+      "locator": "input[id='ConfirmPassword']",
       "fallbackLocators": ["input[id='ConfirmPassword']", "input[name='ConfirmPassword']", "#ConfirmPassword"],
-      "strategy": "label",
-      "name": "Confirm password:",
-      "exact": false,
+      "strategy": "css",
       "type": "textbox",
       "description": "Confirm password input field"
     },
@@ -220,16 +216,15 @@
       "description": "Registration success message"
     },
     "continueButton": {
-      "locator": "a[data-testid='continue-button'], a:has-text('Continue'), button:has-text('Continue'), input[value='Continue']",
+      "locator": "a:has-text('Continue'), button:has-text('Continue'), input[value='Continue'], .buttons a, .result a",
       "fallbackLocators": [
         "a:has-text('Continue')",
         "button:has-text('Continue')",
-        "input[value='Continue']"
+        "input[value='Continue']",
+        ".buttons a",
+        ".result a"
       ],
-      "strategy": "role",
-      "role": "link",
-      "name": "Continue",
-      "exact": true,
+      "strategy": "css",
       "type": "button",
       "description": "Continue button after successful registration"
     },

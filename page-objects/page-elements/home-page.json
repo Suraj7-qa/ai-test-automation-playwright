@@ -112,10 +112,8 @@
     },
     "newsletterEmail": {
       "locator": "input[id='newsletter-email'], input[name='NewsletterEmail']",
-      "fallbackLocators": ["input[id='newsletter-email']", "input[name='NewsletterEmail']", "input[type='email'][name='NewsletterEmail']"],
-      "strategy": "placeholder",
-      "name": "Sign up for our newsletter",
-      "exact": false,
+      "fallbackLocators": ["input[id='newsletter-email']", "input[name='NewsletterEmail']"],
+      "strategy": "css",
       "type": "textbox",
       "description": "Newsletter email input"
     },
@@ -131,10 +129,8 @@
     },
     "searchInput": {
       "locator": "input[id='small-searchterms'], input[name='q']",
-      "fallbackLocators": ["input[id='small-searchterms']", "input[name='q']", "input[type='search']"],
-      "strategy": "placeholder",
-      "name": "Search store",
-      "exact": false,
+      "fallbackLocators": ["input[id='small-searchterms']", "input[name='q']"],
+      "strategy": "css",
       "type": "textbox",
       "description": "Search input field"
     },
@@ -233,6 +229,56 @@
       ],
       "type": "navigation",
       "description": "Breadcrumb navigation"
+    },
+    "welcomeHeading": {
+      "locator": ".topic-html-content-header h2:has-text('Welcome to our store'), h2:has-text('Welcome to our store')",
+      "strategy": "role",
+      "role": "heading",
+      "name": "Welcome to our store",
+      "exact": true,
+      "fallbackLocators": ["h2:has-text('Welcome to our store')"],
+      "type": "heading",
+      "description": "Home page welcome heading"
+    },
+    "featuredProductCards": {
+      "locator": ".topic-html-content + .product-grid .item-box, .topic-html-content ~ .product-grid .item-box, .product-grid .item-box",
+      "fallbackLocators": [".product-grid .item-box", ".item-box"],
+      "type": "container",
+      "description": "Featured products displayed on the Home page"
+    },
+    "featuredProductTitle": {
+      "locator": ".product-title a",
+      "fallbackLocators": ["h2.product-title a"],
+      "type": "link",
+      "description": "Featured product title link"
+    },
+    "featuredProductImage": {
+      "locator": ".picture img",
+      "fallbackLocators": ["img"],
+      "type": "image",
+      "description": "Featured product image"
+    },
+    "featuredAddToCartButton": {
+      "locator": ".product-box-add-to-cart-button",
+      "fallbackLocators": ["input[value='Add to cart']"],
+      "strategy": "role",
+      "role": "button",
+      "name": "Add to cart",
+      "exact": true,
+      "type": "button",
+      "description": "Add featured product to cart button"
+    },
+    "newsletterResult": {
+      "locator": "#newsletter-result-block, .newsletter-validation",
+      "fallbackLocators": ["#newsletter-result-block", ".newsletter-validation"],
+      "type": "text",
+      "description": "Newsletter validation or success result"
+    },
+    "addToCartNotification": {
+      "locator": ".bar-notification",
+      "fallbackLocators": [".message-success", "[class*='notification']"],
+      "type": "status",
+      "description": "Featured product add-to-cart notification"
     }
   },
   "forms": {

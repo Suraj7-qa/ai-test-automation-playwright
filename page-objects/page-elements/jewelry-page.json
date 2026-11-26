@@ -1,0 +1,157 @@
+{
+  "pageName": "JewelryPage",
+  "pageUrl": "/jewelry",
+  "pageTitle": "Demo Web Shop. Jewelry",
+  "elements": {
+    "categoryHeading": {
+      "locator": "h1",
+      "strategy": "role",
+      "role": "heading",
+      "name": "Jewelry",
+      "exact": true,
+      "type": "heading",
+      "description": "Jewelry category heading"
+    },
+    "headerTopMenu": {
+      "locator": "ul.top-menu",
+      "fallbackLocators": ["ul[class*='top-menu']"],
+      "type": "navigation",
+      "description": "Main header category navigation"
+    },
+    "productCards": {
+      "locator": ".item-box",
+      "fallbackLocators": [".product-item"],
+      "type": "container",
+      "description": "Jewelry product cards"
+    },
+    "productTitleLink": {
+      "locator": ".product-title a",
+      "fallbackLocators": [".product-name a"],
+      "strategy": "css",
+      "type": "link",
+      "description": "Product title link"
+    },
+    "productCardPrice": {
+      "locator": ".actual-price",
+      "fallbackLocators": [".prices .price", ".price"],
+      "type": "text",
+      "description": "Product card price"
+    },
+    "productCardImage": {
+      "locator": ".picture img",
+      "fallbackLocators": [".product-image img"],
+      "type": "image",
+      "description": "Product card image"
+    },
+    "sortByDropdown": {
+      "locator": "select[name='products-orderby']",
+      "strategy": "css",
+      "type": "select",
+      "description": "Jewelry sorting dropdown"
+    },
+    "viewModeDropdown": {
+      "locator": "select[name='products-viewmode']",
+      "strategy": "css",
+      "type": "select",
+      "description": "Jewelry view mode dropdown"
+    },
+    "pageSizeDropdown": {
+      "locator": "select[name='products-pagesize']",
+      "strategy": "css",
+      "type": "select",
+      "description": "Jewelry page size dropdown"
+    },
+    "nextPageLink": {
+      "locator": ".pager a",
+      "strategy": "role",
+      "role": "link",
+      "name": "Next",
+      "exact": true,
+      "fallbackLocators": [".pager a[rel='next']"],
+      "type": "link",
+      "description": "Jewelry pager next link"
+    },
+    "priceFilterUnder500": {
+      "locator": "a[href*='price=0-500']",
+      "fallbackLocators": [".filter-price a:has-text('0.00 - 500.00')", ".block a:has-text('0.00 - 500.00')"],
+      "strategy": "text",
+      "name": "0.00 - 500.00",
+      "exact": true,
+      "type": "link",
+      "description": "Jewelry under 500 price filter"
+    },
+    "configMaterialSelect": {
+      "locator": "select[name*='product_attribute'][name$='_9_15']",
+      "fallbackLocators": ["#product_attribute_71_9_15", "select[name='product_attribute_71_9_15']"],
+      "strategy": "css",
+      "type": "select",
+      "description": "Create Your Own Jewelry material"
+    },
+    "configLengthInput": {
+      "locator": "input[name*='product_attribute'][name$='_10_16']",
+      "fallbackLocators": ["#product_attribute_71_10_16", "input[name='product_attribute_71_10_16']"],
+      "strategy": "css",
+      "type": "textbox",
+      "description": "Create Your Own Jewelry length"
+    },
+    "pendantHeart": {
+      "locator": "input[value='49']",
+      "fallbackLocators": ["#product_attribute_71_11_17_49", "input[id*='_11_17'][id$='_49']"],
+      "strategy": "text",
+      "name": "Heart",
+      "exact": true,
+      "type": "radio",
+      "description": "Heart pendant option"
+    },
+    "pendantLadybug": {
+      "locator": "input[value='48']",
+      "fallbackLocators": ["#product_attribute_71_11_17_48"],
+      "strategy": "text",
+      "name": "Ladybug",
+      "exact": true,
+      "type": "radio",
+      "description": "Ladybug pendant option"
+    },
+    "quantityInput": {
+      "locator": "input[id*='EnteredQuantity']",
+      "fallbackLocators": [".qty-input"],
+      "strategy": "label",
+      "name": "Qty:",
+      "exact": false,
+      "type": "textbox",
+      "description": "Jewelry detail quantity"
+    },
+    "detailAddToCart": {
+      "locator": ".product-essential input[value='Add to cart'], .overview input[value='Add to cart']",
+      "fallbackLocators": ["input[id^='add-to-cart-button']", "input[value='Add to cart']"],
+      "strategy": "css",
+      "type": "button",
+      "description": "Jewelry detail add to cart"
+    },
+    "addToCartNotification": {
+      "locator": ".bar-notification",
+      "fallbackLocators": [".message-success", "[class*='notification']"],
+      "type": "status",
+      "description": "Cart or validation notification"
+    },
+    "cartCount": {
+      "locator": ".cart-qty",
+      "fallbackLocators": ["span[data-testid='cart-count']"],
+      "strategy": "css",
+      "type": "text",
+      "description": "Shopping cart count"
+    },
+    "stockMessage": {
+      "locator": ".stock",
+      "fallbackLocators": [".availability"],
+      "type": "text",
+      "description": "Product availability text"
+    },
+    "breadcrumb": {
+      "locator": ".breadcrumb",
+      "fallbackLocators": [".breadcrumbs", "[class*='breadcrumb']"],
+      "type": "navigation",
+      "description": "Jewelry breadcrumb"
+    }
+  }
+}

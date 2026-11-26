@@ -1,0 +1,151 @@
+{
+  "pageName": "WishlistPage",
+  "pageUrl": "/wishlist",
+  "pageTitle": "Demo Web Shop. Wishlist",
+  "elements": {
+    "pageHeading": {
+      "locator": "h1",
+      "strategy": "role",
+      "role": "heading",
+      "name": "Wishlist",
+      "exact": true,
+      "type": "heading",
+      "description": "Wishlist page heading"
+    },
+    "emptyWishlistMessage": {
+      "locator": "text=The wishlist is empty!",
+      "strategy": "text",
+      "name": "The wishlist is empty!",
+      "exact": true,
+      "type": "text",
+      "description": "Empty wishlist message"
+    },
+    "wishlistTable": {
+      "locator": ".wishlist-content table, table[class*='wishlist']",
+      "fallbackLocators": [".cart table", "table"],
+      "strategy": "css",
+      "type": "table",
+      "description": "Wishlist items table"
+    },
+    "wishlistRows": {
+      "locator": ".wishlist-content table tbody tr, table tbody tr",
+      "fallbackLocators": ["tr[class*='wishlist-item']"],
+      "strategy": "css",
+      "type": "row",
+      "description": "Wishlist item rows"
+    },
+    "removeCheckbox": {
+      "locator": "td:first-child input[type='checkbox']",
+      "fallbackLocators": ["input[name*='removefromcart']", "td.remove-from-cart input[type='checkbox']"],
+      "strategy": "css",
+      "type": "checkbox",
+      "description": "Remove item checkbox"
+    },
+    "addToCartCheckbox": {
+      "locator": "td:nth-child(2) input[type='checkbox']",
+      "fallbackLocators": ["input[name*='addtocart']", "td.add-to-cart input[type='checkbox']"],
+      "strategy": "css",
+      "type": "checkbox",
+      "description": "Add to cart checkbox"
+    },
+    "productImage": {
+      "locator": "td.picture img, td:has(img) img",
+      "fallbackLocators": [".product-image img", "td img"],
+      "strategy": "css",
+      "type": "image",
+      "description": "Product image in wishlist"
+    },
+    "productNameLink": {
+      "locator": "td.product a, td:has(a) a",
+      "fallbackLocators": [".product-name a", "td a"],
+      "strategy": "css",
+      "type": "link",
+      "description": "Product name link in wishlist"
+    },
+    "productPrice": {
+      "locator": "td.price, td:contains('00')",
+      "fallbackLocators": [".product-price", "td.unit-price"],
+      "strategy": "css",
+      "type": "text",
+      "description": "Product price in wishlist"
+    },
+    "quantityInput": {
+      "locator": "td.quantity input, td.qty input",
+      "fallbackLocators": ["input[name*='quantity']", "input.qty-input"],
+      "strategy": "css",
+      "type": "textbox",
+      "description": "Quantity input in wishlist"
+    },
+    "productTotal": {
+      "locator": "td.subtotal, td.total",
+      "fallbackLocators": [".product-subtotal", "td.product-total"],
+      "strategy": "css",
+      "type": "text",
+      "description": "Product total price in wishlist"
+    },
+    "updateWishlistButton": {
+      "locator": "input[value='Update wishlist'], button:has-text('Update wishlist')",
+      "fallbackLocators": ["button[name='updatecart']", "input[onclick*='wishlist']"],
+      "strategy": "text",
+      "name": "Update wishlist",
+      "exact": true,
+      "type": "button",
+      "description": "Update wishlist button"
+    },
+    "addToCartButton": {
+      "locator": "input[value='Add to cart'], button:has-text('Add to cart')",
+      "fallbackLocators": ["button[name='addtocart']", "input[onclick*='addtocart']"],
+      "strategy": "text",
+      "name": "Add to cart",
+      "exact": true,
+      "type": "button",
+      "description": "Add selected to cart button"
+    },
+    "emailFriendButton": {
+      "locator": "input[value='Email a friend'], button:has-text('Email a friend')",
+      "fallbackLocators": ["button[name='emailfriend']", "a[href*='emailafriend']"],
+      "strategy": "text",
+      "name": "Email a friend",
+      "exact": true,
+      "type": "button",
+      "description": "Email a friend button"
+    },
+    "shareWishlistUrl": {
+      "locator": "a[href*='/wishlist/']",
+      "fallbackLocators": [".wishlist-url a", "a[href*='wishlist']"],
+      "strategy": "css",
+      "type": "link",
+      "description": "Shareable wishlist URL"
+    },
+    "shareWishlistLabel": {
+      "locator": "text=Your wishlist URL for sharing:",
+      "strategy": "text",
+      "name": "Your wishlist URL for sharing:",
+      "exact": true,
+      "type": "text",
+      "description": "Share wishlist label"
+    },
+    "wishlistCountHeader": {
+      "locator": "a[href='/wishlist']",
+      "fallbackLocators": [".wishlist-qty", "span.wishlist-count"],
+      "strategy": "css",
+      "type": "link",
+      "description": "Wishlist count in header"
+    },
+    "addToWishlistButton": {
+      "locator": "input[value='Add to wishlist'], button:has-text('Add to wishlist')",
+      "fallbackLocators": ["button[onclick*='wishlist']", "input[onclick*='wishlist']"],
+      "strategy": "text",
+      "name": "Add to wishlist",
+      "exact": true,
+      "type": "button",
+      "description": "Add to wishlist button on product page"
+    },
+    "wishlistNotification": {
+      "locator": ".bar-notification",
+      "fallbackLocators": [".message-success", "[class*='notification']"],
+      "type": "status",
+      "description": "Wishlist add/remove notification"
+    }
+  }
+}

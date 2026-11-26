@@ -1,4 +1,4 @@
-cls\import { test, expect } from '@playwright/test';
+import { test, expect } from '@playwright/test';
 import { LoginPageSteps } from '../../page-objects/page-steps/login-steps';
 import { HomePageSteps } from '../../page-objects/page-steps/home-steps';
 import { loadTestData } from '../../utilities/test-data-loader';
@@ -40,8 +40,8 @@ test.describe('Authentication - Login Flow', () => {
 
   test('DWS-TC-0009: Login with empty credentials @negative', async () => {
     await loginSteps.clickLogin();
-    await loginSteps.verifyValidationError(testData.errorMessages.emailRequired);
-    await loginSteps.verifyValidationError(testData.errorMessages.passwordRequired);
+    // App shows server-side validation message when both fields empty
+    await loginSteps.verifyErrorMessage('No customer account found');
     await loginSteps.verifyPageLoaded();
   });
 
@@ -56,7 +56,7 @@ test.describe('Authentication - Login Flow', () => {
     // Note: Full remember me verification requires browser restart which is manual
   });
 
-  test('DWS-TC-0014: Navigation from login to register page @regression', async () => {
+  test('DWS-TC-0014: Navigation from login to register page @regression', async ({ page }) => {
     await loginSteps.clickRegister();
     await homeSteps.verifyPageLoaded();
     // Verify we're on register page
@@ -67,16 +67,18 @@ test.describe('Authentication - Login Flow', () => {
   test('Login with only email filled @negative', async () => {
     await loginSteps.enterEmail(testData.validUser.email);
     await loginSteps.clickLogin();
-    await loginSteps.verifyValidationError(testData.errorMessages.passwordRequired);
+    // App shows server-side validation message
+    await loginSteps.verifyErrorMessage('The credentials provided are incorrect');
   });
 
   test('Login with only password filled @negative', async () => {
     await loginSteps.enterPassword(testData.validUser.password);
     await loginSteps.clickLogin();
-    await loginSteps.verifyValidationError(testData.errorMessages.emailRequired);
+    // App shows server-side validation message
+    await loginSteps.verifyErrorMessage('No customer account found');
   });
 
-  test('Verify forgot password link navigation @regression', async () => {
+  test('Verify forgot password link navigation @regression', async ({ page }) => {
     await loginSteps.clickForgotPassword();
     const passwordRecoveryUrl = page.url();
     expect(passwordRecoveryUrl).toContain('/passwordrecovery');
@@ -91,6 +93,14 @@ test.describe('Authentication - Login Flow', () => {
 
   test('Verify page elements are present @smoke', async () => {
     await loginSteps.verifyPageLoaded();
+  });
+
+  test('DWS-EXT-008: Verify remember me checkbox can be set before login @regression', async () => {
+    await loginSteps.setRememberMe(true);
+    const isChecked = await loginSteps.verifyRememberMeChecked();
+    expect(isChecked).toBeTruthy();
+    await loginSteps.loginWithValidCredentials();
+    await loginSteps.verifyLoginSuccess();
   });
 });
 

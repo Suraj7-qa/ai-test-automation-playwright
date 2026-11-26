@@ -12,10 +12,22 @@
       "type": "heading",
       "description": "Current category heading"
     },
+    "headerTopMenu": {
+      "locator": "ul.top-menu",
+      "fallbackLocators": ["ul[class*='top-menu']"],
+      "type": "navigation",
+      "description": "Main header category navigation"
+    },
     "computersSubcategoryLinks": {
       "locator": "h2 a[href='/desktops'], h2 a[href='/notebooks'], h2 a[href='/accessories']",
       "type": "link",
       "description": "Computers subcategory links"
+    },
+    "sidebarDesktopsLink": {
+      "locator": ".block-category-navigation .listbox li a[href='/desktops']",
+      "strategy": "css",
+      "type": "link",
+      "description": "Desktops sidebar link"
     },
     "sidebarNotebooksLink": {
       "locator": ".block-category-navigation a[href='/notebooks']",
@@ -65,9 +77,7 @@
         "select[id*='sort']",
         ".sort-by select"
       ],
-      "strategy": "label",
-      "name": "Sort by:",
-      "exact": false,
+      "strategy": "css",
       "type": "select",
       "description": "Catalogue sort order"
     },
@@ -210,14 +220,11 @@
       "description": "Desktop product quantity input"
     },
     "desktopAddToCartButton": {
-      "locator": "#product-details-form button[id*='add-to-cart']",
+      "locator": "#product-details-form button[id*='add-to-cart'], #product-details-form input[id*='add-to-cart']",
       "fallbackLocators": [
         "#product-details-form .add-to-cart-button"
       ],
-      "strategy": "role",
-      "role": "button",
-      "name": "Add to cart",
-      "exact": true,
+      "strategy": "css",
       "type": "button",
       "description": "Add configured desktop to cart"
     },
@@ -250,6 +257,73 @@
       "exact": true,
       "type": "textbox",
       "description": "Quantity input in the shopping cart"
+    },
+    "viewModeDropdown": {
+      "locator": "select[id*='products-viewmode']",
+      "fallbackLocators": ["select[id*='viewmode']", ".view-mode select"],
+      "strategy": "label",
+      "name": "View:",
+      "exact": false,
+      "type": "select",
+      "description": "Catalogue view mode (Grid/List)"
+    },
+    "pageSizeDropdown": {
+      "locator": "select[id*='products-pagesize']",
+      "fallbackLocators": ["select[id*='pagesize']", ".page-size select"],
+      "strategy": "label",
+      "name": "Display:",
+      "exact": false,
+      "type": "select",
+      "description": "Products per page"
+    },
+    "cardAddToCartButton": {
+      "locator": ".product-box-add-to-cart-button",
+      "strategy": "css",
+      "type": "button",
+      "description": "Add to cart button within a product card"
+    },
+    "cardCompareButton": {
+      "locator": ".compare-button, .add-to-compare-list, a[href*='comparelist']",
+      "strategy": "role",
+      "role": "button",
+      "name": "Add to compare list",
+      "exact": true,
+      "type": "button",
+      "description": "Add to compare list button within a product card"
+    },
+    "productReviewLink": {
+      "locator": "a[href*='productreviews']",
+      "strategy": "role",
+      "role": "link",
+      "name": "Reviews",
+      "exact": true,
+      "type": "link",
+      "description": "Product reviews link on detail page"
+    },
+    "emailFriendButton": {
+      "locator": "a[href*='productemailafriend'], button:has-text('Email a friend')",
+      "strategy": "role",
+      "role": "button",
+      "name": "Email a friend",
+      "exact": true,
+      "type": "button",
+      "description": "Email a friend button on detail page"
+    },
+    "desktopOsOption": {
+      "locator": "#product-details-form input[type='radio'][name='product_attribute_16_4_6'][value='19']",
+      "strategy": "label",
+      "name": "Windows 8 Pro [+50.00]",
+      "exact": true,
+      "type": "radio",
+      "description": "OS configuration option"
+    },
+    "desktopSoftwareOptions": {
+      "locator": "#product-details-form input[type='checkbox'][name='product_attribute_16_7_6']",
+      "strategy": "label",
+      "name": "Microsoft Office [+50.00]",
+      "exact": true,
+      "type": "checkbox",
+      "description": "Software configuration option"
     }
   }
 }

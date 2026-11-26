@@ -130,7 +130,17 @@ export class HomePageSteps {
     await this.commons.assertVisible(this.elements.getLocator('loginLink'));
     await this.commons.assertVisible(this.elements.getLocator('registerLink'));
     await this.commons.assertHidden(this.elements.getLocator('logoutLink'));
-    await this.commons.assertHidden(this.elements.getLocator('userEmail'));
+    // Note: userEmail (.account link) is always visible, just changes text
+    // Use verifyUserEmailNotDisplayed() to check email is not shown
+  }
+
+  // Verify user email is not displayed (account link doesn't contain email)
+  async verifyUserEmailNotDisplayed(): Promise<void> {
+    const accountLink = this.elements.getLocator('userEmail');
+    await this.commons.waitForVisible(accountLink);
+    const text = await this.commons.getText(accountLink);
+    // Should not contain email pattern when logged out
+    expect(text).not.toMatch(/@/);
   }
 
   // Verify shopping cart count
@@ -275,5 +285,105 @@ export class HomePageSteps {
     const locator = this.page.locator('.breadcrumb a, .breadcrumbs a, [class*="breadcrumb"] a').filter({ hasText: text }).first();
     await this.commons.click(locator);
     await this.commons.waitForPageLoad();
+  }
+
+  // ========== Home Page Smoke ==========
+
+  async verifyHomePageLoaded(): Promise<void> {
+    await this.navigate();
+    await expect(this.page).toHaveURL(/\/$/);
+    await expect(this.page).toHaveTitle(/Demo Web Shop/);
+    await expect(this.elements.getLocator('header')).toBeVisible();
+    await expect(this.elements.getLocator('searchInput')).toBeVisible();
+  }
+
+  async verifyGuestHeader(): Promise<void> {
+    await this.navigate();
+    await expect(this.elements.getLocator('registerLink')).toBeVisible();
+    await expect(this.elements.getLocator('loginLink')).toBeVisible();
+    await expect(this.page.locator('.header-links a.ico-cart').first()).toBeVisible();
+    await expect(this.page.locator('.header-links a.ico-wishlist').first()).toBeVisible();
+  }
+
+  async verifyWelcomeAndFeaturedProducts(): Promise<void> {
+    await this.navigate();
+    await expect(this.elements.getLocator('welcomeHeading')).toBeVisible();
+    const cards = this.page.locator(this.pageElements.elements.featuredProductCards.locator);
+    await expect(cards).toHaveCount(6);
+
+    const names = await cards.locator(this.pageElements.elements.featuredProductTitle.locator).allTextContents();
+    expect(names).toEqual(expect.arrayContaining([
+      '$25 Virtual Gift Card',
+      '14.1-inch Laptop',
+      'Build your own cheap computer',
+      'Build your own computer',
+      'Build your own expensive computer',
+      'Simple Computer'
+    ]));
+  }
+
+  async searchFromHome(term: string, expectedUrl: RegExp): Promise<void> {
+    await this.navigate();
+    await this.elements.fill('searchInput', term);
+    await this.elements.click('searchButton');
+    await expect(this.page).toHaveURL(expectedUrl);
+  }
+
+  async searchForLaptop(): Promise<void> {
+    await this.searchFromHome('laptop', /\/search\?q=laptop/);
+    await expect(this.page.locator('.product-title')).toContainText(['14.1-inch Laptop']);
+  }
+
+  async searchWithEmptyKeyword(): Promise<void> {
+    await this.navigate();
+    await this.elements.fill('searchInput', '');
+    await this.elements.click('searchButton');
+    await expect(this.page).toHaveURL(/\/$/);
+  }
+
+  async verifyEmptyNewsletterEmail(): Promise<void> {
+    await this.navigate();
+    await this.elements.fill('newsletterEmail', '');
+    await this.elements.click('newsletterSubscribeButton');
+    await expect(this.elements.getLocator('newsletterResult')).toHaveText(/Enter valid email/);
+  }
+
+  async verifyInvalidNewsletterEmail(): Promise<void> {
+    await this.navigate();
+    await this.elements.fill('newsletterEmail', 'invalid-email');
+    await this.elements.click('newsletterSubscribeButton');
+    await expect(this.elements.getLocator('newsletterResult')).toHaveText(/Enter valid email/);
+  }
+
+  async verifyLogoNavigation(): Promise<void> {
+    await this.page.goto('/jewelry', { waitUntil: 'domcontentloaded' });
+    await this.elements.click('logoLink');
+    await expect(this.page).toHaveURL(/\/$/);
+  }
+
+  async verifyFeaturedProductCart(): Promise<void> {
+    await this.navigate();
+    const laptop = this.page.locator(this.pageElements.elements.featuredProductCards.locator)
+      .filter({ has: this.page.getByRole('link', { name: '14.1-inch Laptop', exact: true }) });
+    await expect(laptop).toHaveCount(1);
+    await laptop.locator(this.pageElements.elements.featuredAddToCartButton.locator).first().click();
+    await expect(this.elements.getLocator('addToCartNotification')).toContainText('added to your shopping cart');
+    await expect(this.elements.getLocator('cartCount')).toContainText('(1)');
+  }
+
+  async verifySidebarJewelryNavigation(): Promise<void> {
+    await this.navigate();
+    await this.elements.getLocator('sidebarCategoryNavigation')
+      .getByRole('link', { name: 'Jewelry', exact: true }).click();
+    await expect(this.page).toHaveURL(/\/jewelry$/);
+    await expect(this.page.getByRole('heading', { name: 'Jewelry', exact: true })).toBeVisible();
+  }
+
+  async verifyMobileLayout(): Promise<void> {
+    await this.page.setViewportSize({ width: 375, height: 812 });
+    await this.navigate();
+    await expect(this.elements.getLocator('header')).toBeVisible();
+    await expect(this.elements.getLocator('searchInput')).toBeVisible();
+    await expect(this.page.locator('body')).not.toHaveCSS('overflow-x', 'scroll');
   }
 }

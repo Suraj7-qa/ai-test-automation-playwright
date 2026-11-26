@@ -238,4 +238,182 @@ export class RegisterPageSteps {
       await this.commons.assertValue(this.elements.getLocator('emailInput'), expectedData.email);
     }
   }
+
+  // ===== EXTENDED AUTHENTICATION TEST METHODS =====
+
+  // Register with only first name missing
+  async registerMissingFirstName(userData: {
+    gender: 'Male' | 'Female';
+    lastName: string;
+    email: string;
+    password: string;
+    confirmPassword: string;
+  }): Promise<void> {
+    await this.selectGender(userData.gender);
+    await this.enterLastName(userData.lastName);
+    await this.enterEmail(userData.email);
+    await this.enterPassword(userData.password);
+    await this.enterConfirmPassword(userData.confirmPassword);
+    await this.clickRegister();
+  }
+
+  // Register with only last name missing
+  async registerMissingLastName(userData: {
+    gender: 'Male' | 'Female';
+    firstName: string;
+    email: string;
+    password: string;
+    confirmPassword: string;
+  }): Promise<void> {
+    await this.selectGender(userData.gender);
+    await this.enterFirstName(userData.firstName);
+    await this.enterEmail(userData.email);
+    await this.enterPassword(userData.password);
+    await this.enterConfirmPassword(userData.confirmPassword);
+    await this.clickRegister();
+  }
+
+  // Register with only email missing
+  async registerMissingEmail(userData: {
+    gender: 'Male' | 'Female';
+    firstName: string;
+    lastName: string;
+    password: string;
+    confirmPassword: string;
+  }): Promise<void> {
+    await this.selectGender(userData.gender);
+    await this.enterFirstName(userData.firstName);
+    await this.enterLastName(userData.lastName);
+    await this.enterPassword(userData.password);
+    await this.enterConfirmPassword(userData.confirmPassword);
+    await this.clickRegister();
+  }
+
+  // Register with only password missing
+  async registerMissingPassword(userData: {
+    gender: 'Male' | 'Female';
+    firstName: string;
+    lastName: string;
+    email: string;
+    confirmPassword: string;
+  }): Promise<void> {
+    await this.selectGender(userData.gender);
+    await this.enterFirstName(userData.firstName);
+    await this.enterLastName(userData.lastName);
+    await this.enterEmail(userData.email);
+    await this.enterConfirmPassword(userData.confirmPassword);
+    await this.clickRegister();
+  }
+
+  // Register with only confirm password missing
+  async registerMissingConfirmPassword(userData: {
+    gender: 'Male' | 'Female';
+    firstName: string;
+    lastName: string;
+    email: string;
+    password: string;
+  }): Promise<void> {
+    await this.selectGender(userData.gender);
+    await this.enterFirstName(userData.firstName);
+    await this.enterLastName(userData.lastName);
+    await this.enterEmail(userData.email);
+    await this.enterPassword(userData.password);
+    await this.clickRegister();
+  }
+
+  // Register with Female gender
+  async registerWithFemaleGender(userData: {
+    firstName: string;
+    lastName: string;
+    email: string;
+    password: string;
+    confirmPassword: string;
+  }): Promise<void> {
+    await this.selectGender('Female');
+    await this.enterFirstName(userData.firstName);
+    await this.enterLastName(userData.lastName);
+    await this.enterEmail(userData.email);
+    await this.enterPassword(userData.password);
+    await this.enterConfirmPassword(userData.confirmPassword);
+    await this.clickRegister();
+  }
+
+  // Register with short password
+  async registerWithShortPassword(userData: {
+    gender: 'Male' | 'Female';
+    firstName: string;
+    lastName: string;
+    email: string;
+    password: string;
+    confirmPassword: string;
+  }): Promise<void> {
+    await this.register(userData);
+  }
+
+  // Verify all page elements are present
+  async verifyPageElementsPresent(): Promise<void> {
+    await this.commons.assertVisible(this.elements.getLocator('pageTitle'));
+    await this.commons.assertVisible(this.elements.getLocator('genderMaleRadio'));
+    await this.commons.assertVisible(this.elements.getLocator('genderFemaleRadio'));
+    await this.commons.assertVisible(this.elements.getLocator('firstNameInput'));
+    await this.commons.assertVisible(this.elements.getLocator('lastNameInput'));
+    await this.commons.assertVisible(this.elements.getLocator('emailInput'));
+    await this.commons.assertVisible(this.elements.getLocator('passwordInput'));
+    await this.commons.assertVisible(this.elements.getLocator('confirmPasswordInput'));
+    await this.commons.assertVisible(this.elements.getLocator('registerButton'));
+  }
+
+  // Verify form clears properly
+  async verifyFormCleared(): Promise<void> {
+    const firstName = await this.getFirstNameValue();
+    const lastName = await this.getLastNameValue();
+    const email = await this.getEmailValue();
+    expect(firstName).toBe('');
+    expect(lastName).toBe('');
+    expect(email).toBe('');
+  }
+
+  // Register with special characters in name
+  async registerWithSpecialCharsName(userData: {
+    gender: 'Male' | 'Female';
+    firstName: string;
+    lastName: string;
+    email: string;
+    password: string;
+    confirmPassword: string;
+  }): Promise<void> {
+    await this.register(userData);
+  }
+
+  // Register with very long email
+  async registerWithLongEmail(userData: {
+    gender: 'Male' | 'Female';
+    firstName: string;
+    lastName: string;
+    email: string;
+    password: string;
+    confirmPassword: string;
+  }): Promise<void> {
+    await this.register(userData);
+  }
+
+  // Multiple registration attempts with different emails
+  async multipleRegistrationAttempts(baseUserData: {
+    gender: 'Male' | 'Female';
+    firstName: string;
+    lastName: string;
+    password: string;
+    confirmPassword: string;
+  }, emails: string[]): Promise<void> {
+    for (const email of emails) {
+      await this.clearForm();
+      await this.register({
+        ...baseUserData,
+        email,
+        confirmPassword: baseUserData.password
+      });
+      // Check if successful or duplicate
+      await this.page.waitForTimeout(500);
+    }
+  }
 }

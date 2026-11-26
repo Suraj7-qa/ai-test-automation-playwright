@@ -1,0 +1,327 @@
+{
+  "pageName": "SearchPage",
+  "pageUrl": "/search",
+  "pageTitle": "Search",
+  "elements": {
+    "header": {
+      "locator": "header, #header, .header",
+      "fallbackLocators": [
+        "header",
+        "#header",
+        ".header"
+      ],
+      "type": "header",
+      "description": "Header section"
+    },
+    "searchInput": {
+      "locator": "input[id='small-searchterms'], input[name='q']",
+      "fallbackLocators": ["input[id='small-searchterms']", "input[name='q']", "input[type='search']"],
+      "strategy": "placeholder",
+      "name": "Search store",
+      "exact": false,
+      "type": "textbox",
+      "description": "Search input field in header"
+    },
+    "searchButton": {
+      "locator": "button[type='submit'], input[value='Search']",
+      "fallbackLocators": ["button[type='submit']", "input[value='Search']", "button:has-text('Search')"],
+      "strategy": "role",
+      "role": "button",
+      "name": "Search",
+      "exact": true,
+      "type": "button",
+      "description": "Search button"
+    },
+    "searchResultsHeading": {
+      "locator": "h1:has-text('Search'), .page-title h1, .topic-html-content-header h1",
+      "fallbackLocators": ["h1:has-text('Search')", ".page-title h1", ".topic-html-content-header h1"],
+      "strategy": "role",
+      "role": "heading",
+      "name": "Search",
+      "exact": true,
+      "type": "heading",
+      "description": "Search results page heading"
+    },
+    "noProductsMessage": {
+      "locator": ".no-result, .result:has-text('No products'), .content:has-text('No products were found')",
+      "fallbackLocators": [".no-result", ".result:has-text('No products')", ".content:has-text('No products were found')"],
+      "type": "text",
+      "description": "No products found message"
+    },
+    "productGrid": {
+      "locator": ".product-grid, .products-grid, .item-grid",
+      "fallbackLocators": [".product-grid", ".products-grid", ".item-grid"],
+      "type": "container",
+      "description": "Product grid container"
+    },
+    "productItems": {
+      "locator": ".product-grid .item-box, .products-grid .item-box, .item-grid .item-box",
+      "fallbackLocators": [".product-grid .item-box", ".products-grid .item-box", ".item-grid .item-box", ".item-box"],
+      "type": "container",
+      "description": "Individual product items in search results"
+    },
+    "productTitle": {
+      "locator": ".product-title a, h2.product-title a",
+      "fallbackLocators": [".product-title a", "h2.product-title a"],
+      "strategy": "role",
+      "role": "link",
+      "type": "link",
+      "description": "Product title link"
+    },
+    "productImage": {
+      "locator": ".picture img, .product-image img",
+      "fallbackLocators": [".picture img", ".product-image img", "img"],
+      "type": "image",
+      "description": "Product image"
+    },
+    "productPrice": {
+      "locator": ".prices .price, .product-price .price, .actual-price",
+      "fallbackLocators": [
+        ".prices .price",
+        ".product-price .price",
+        ".actual-price",
+        "[class*='price']"
+      ],
+      "type": "text",
+      "description": "Product current price"
+    },
+    "productReviewCount": {
+      "locator": "a[href*='productreviews'], .review-count, .reviews-link",
+      "fallbackLocators": [
+        "a[href*='productreviews']",
+        ".review-count",
+        ".reviews-link"
+      ],
+      "strategy": "role",
+      "role": "link",
+      "name": "review(s)",
+      "exact": false,
+      "type": "link",
+      "description": "Product review count link"
+    },
+    "addToCartButton": {
+      "locator": ".item-box .add-to-cart-button, .product-grid .add-to-cart-button, button:has-text('Add to cart')",
+      "fallbackLocators": [
+        ".add-to-cart-button",
+        "button[onclick*='addtocart']",
+        "button:has-text('Add to cart')",
+        "input[value='Add to cart']"
+      ],
+      "strategy": "role",
+      "role": "button",
+      "name": "Add to cart",
+      "exact": true,
+      "type": "button",
+      "description": "Add to cart button on search results"
+    },
+    "addToCartNotification": {
+      "locator": ".bar-notification, .message-success",
+      "fallbackLocators": [".bar-notification", ".message-success", "[class*='notification']"],
+      "type": "status",
+      "description": "Add to cart success notification"
+    },
+    "sortByDropdown": {
+      "locator": "select[id*='sort'], select[name*='sort'], .sort-by select",
+      "fallbackLocators": [
+        "select[id*='sort']",
+        "select[name*='sort']",
+        ".sort-by select"
+      ],
+      "strategy": "label",
+      "name": "Sort by:",
+      "exact": false,
+      "type": "select",
+      "description": "Sort by dropdown"
+    },
+    "displayDropdown": {
+      "locator": "select[id*='view'], select[name*='view'], .view-mode select",
+      "fallbackLocators": [
+        "select[id*='view']",
+        "select[name*='view']",
+        ".view-mode select"
+      ],
+      "strategy": "label",
+      "name": "View:",
+      "exact": false,
+      "type": "select",
+      "description": "Display/View as dropdown (Grid/List)"
+    },
+    "displayPerPageDropdown": {
+      "locator": "select[id*='pagesize'], select[name*='pagesize'], .page-size select",
+      "fallbackLocators": [
+        "select[id*='pagesize']",
+        "select[name*='pagesize']",
+        ".page-size select"
+      ],
+      "strategy": "label",
+      "name": "Display:",
+      "exact": false,
+      "type": "select",
+      "description": "Items per page dropdown"
+    },
+    "advancedSearchCheckbox": {
+      "locator": "input[id*='advs'], input[name*='advs'], input[type='checkbox']:has(+ label:has-text('Advanced search'))",
+      "fallbackLocators": [
+        "input[id*='advs']",
+        "input[name*='advs']",
+        "input[type='checkbox']:has(+ label:has-text('Advanced search'))",
+        "input[type='checkbox']:has(+ label:has-text('Advanced'))"
+      ],
+      "strategy": "label",
+      "name": "Advanced search",
+      "exact": false,
+      "type": "checkbox",
+      "description": "Advanced search checkbox"
+    },
+    "categoryDropdown": {
+      "locator": "select[id*='cid'], select[name*='cid'], select[id*='category']",
+      "fallbackLocators": [
+        "select[id*='cid']",
+        "select[name*='cid']",
+        "select[id*='category']",
+        "select[name*='category']"
+      ],
+      "strategy": "label",
+      "name": "Category:",
+      "exact": false,
+      "type": "select",
+      "description": "Category filter dropdown"
+    },
+    "manufacturerDropdown": {
+      "locator": "select[id*='mid'], select[name*='mid'], select[id*='manufacturer']",
+      "fallbackLocators": [
+        "select[id*='mid']",
+        "select[name*='mid']",
+        "select[id*='manufacturer']",
+        "select[name*='manufacturer']"
+      ],
+      "strategy": "label",
+      "name": "Manufacturer:",
+      "exact": false,
+      "type": "select",
+      "description": "Manufacturer filter dropdown"
+    },
+    "priceFromInput": {
+      "locator": "input[id*='pf'], input[name*='pf'], input[id*='pricefrom'], input[name*='pricefrom']",
+      "fallbackLocators": [
+        "input[id*='pf']",
+        "input[name*='pf']",
+        "input[id*='pricefrom']",
+        "input[name*='pricefrom']"
+      ],
+      "strategy": "label",
+      "name": "Price from:",
+      "exact": false,
+      "type": "textbox",
+      "description": "Price from input"
+    },
+    "priceToInput": {
+      "locator": "input[id*='pt'], input[name*='pt'], input[id*='priceto'], input[name*='priceto']",
+      "fallbackLocators": [
+        "input[id*='pt']",
+        "input[name*='pt']",
+        "input[id*='priceto']",
+        "input[name*='priceto']"
+      ],
+      "strategy": "label",
+      "name": "Price to:",
+      "exact": false,
+      "type": "textbox",
+      "description": "Price to input"
+    },
+    "searchInDescriptionCheckbox": {
+      "locator": "input[id*='sid'], input[name*='sid'], input[type='checkbox']:has(+ label:has-text('Search in product descriptions'))",
+      "fallbackLocators": [
+        "input[id*='sid']",
+        "input[name*='sid']",
+        "input[type='checkbox']:has(+ label:has-text('Search in product descriptions'))"
+      ],
+      "strategy": "label",
+      "name": "Search in product descriptions",
+      "exact": false,
+      "type": "checkbox",
+      "description": "Search in product descriptions checkbox"
+    },
+    "searchSubCategoriesCheckbox": {
+      "locator": "input[id*='isc'], input[name*='isc'], input[type='checkbox']:has(+ label:has-text('Automatically search sub categories'))",
+      "fallbackLocators": [
+        "input[id*='isc']",
+        "input[name*='isc']",
+        "input[type='checkbox']:has(+ label:has-text('Automatically search sub categories'))"
+      ],
+      "strategy": "label",
+      "name": "Automatically search sub categories",
+      "exact": false,
+      "type": "checkbox",
+      "description": "Automatically search sub categories checkbox"
+    },
+    "advancedSearchButton": {
+      "locator": "button[type='submit']:has-text('Search'), input[value='Search']:not([id='small-search-box-form']), button:has-text('Search'):not([id*='small'])",
+      "fallbackLocators": [
+        "button[type='submit']:has-text('Search')",
+        "input[value='Search']:not([id='small-search-box-form'])",
+        "button:has-text('Search')"
+      ],
+      "strategy": "role",
+      "role": "button",
+      "name": "Search",
+      "exact": true,
+      "type": "button",
+      "description": "Advanced search button"
+    },
+    "searchResultsKeywordInput": {
+      "locator": "input[id='q'], input[name='q']",
+      "fallbackLocators": ["input[id='q']", "input[name='q']"],
+      "strategy": "placeholder",
+      "name": "Search store",
+      "exact": false,
+      "type": "textbox",
+      "description": "Search keyword input on results page"
+    },
+    "breadcrumb": {
+      "locator": ".breadcrumb, .breadcrumbs, [class*='breadcrumb']",
+      "fallbackLocators": [".breadcrumb", ".breadcrumbs", "[class*='breadcrumb']"],
+      "type": "navigation",
+      "description": "Breadcrumb navigation"
+    },
+    "pagination": {
+      "locator": ".pager, .pagination, [class*='pager']",
+      "fallbackLocators": [".pager", ".pagination", "[class*='pager']"],
+      "type": "navigation",
+      "description": "Pagination controls"
+    },
+    "pageSizeInfo": {
+      "locator": ".page-size, .results-per-page, [class*='pagesize']",
+      "fallbackLocators": [".page-size", ".results-per-page", "[class*='pagesize']"],
+      "type": "text",
+      "description": "Items per page info"
+    }
+  },
+  "forms": {
+    "headerSearchForm": {
+      "locator": "form[action*='search'], #small-search-box-form",
+      "fields": ["searchInput"],
+      "submitButton": "searchButton"
+    },
+    "resultsSearchForm": {
+      "locator": "form[action*='search']",
+      "fields": ["searchResultsKeywordInput"],
+      "submitButton": "searchButton"
+    },
+    "advancedSearchForm": {
+      "locator": "form[action*='search']:has(input[id*='advs'])",
+      "fields": ["advancedSearchCheckbox", "categoryDropdown", "manufacturerDropdown", "priceFromInput", "priceToInput", "searchInDescriptionCheckbox", "searchSubCategoriesCheckbox"],
+      "submitButton": "advancedSearchButton"
+    },
+    "sortForm": {
+      "locator": "form[action*='sort'], .sort-by form",
+      "fields": ["sortByDropdown"],
+      "submitButton": null
+    },
+    "displayForm": {
+      "locator": "form[action*='view'], .view-mode form",
+      "fields": ["displayDropdown", "displayPerPageDropdown"],
+      "submitButton": null
+    }
+  }
+}

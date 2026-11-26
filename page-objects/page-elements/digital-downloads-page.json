@@ -1,0 +1,249 @@
+{
+  "pageName": "DigitalDownloadsPage",
+  "pageUrl": "/digital-downloads",
+  "pageTitle": "Demo Web Shop. Digital downloads",
+  "elements": {
+    "pageHeading": {
+      "locator": "h1:has-text('Digital downloads')",
+      "fallbackLocators": [
+        "h1.page-title",
+        ".page-title h1",
+        "h1:has-text('Digital downloads')"
+      ],
+      "strategy": "role",
+      "role": "heading",
+      "name": "Digital downloads",
+      "exact": true,
+      "type": "heading",
+      "description": "Digital Downloads category page heading"
+    },
+    "breadcrumb": {
+      "locator": ".breadcrumb, .breadcrumbs, [class*='breadcrumb']",
+      "fallbackLocators": [
+        ".breadcrumb",
+        ".breadcrumbs",
+        "[class*='breadcrumb']"
+      ],
+      "type": "navigation",
+      "description": "Breadcrumb trail"
+    },
+    "breadcrumbHome": {
+      "locator": ".breadcrumb a:has-text('Home'), .breadcrumbs a:has-text('Home')",
+      "fallbackLocators": [
+        ".breadcrumb a[href='/']",
+        ".breadcrumbs a[href='/']"
+      ],
+      "strategy": "role",
+      "role": "link",
+      "name": "Home",
+      "exact": true,
+      "type": "link",
+      "description": "Home link in breadcrumb"
+    },
+    "breadcrumbDigitalDownloads": {
+      "locator": ".breadcrumb strong:has-text('Digital downloads'), .breadcrumbs strong:has-text('Digital downloads')",
+      "fallbackLocators": [
+        ".breadcrumb strong",
+        ".breadcrumbs strong"
+      ],
+      "strategy": "text",
+      "name": "Digital downloads",
+      "exact": true,
+      "type": "text",
+      "description": "Digital downloads in breadcrumb (current page)"
+    },
+    "productGrid": {
+      "locator": ".product-grid, .products-container, .product-list",
+      "fallbackLocators": [
+        ".product-grid",
+        ".products-container",
+        ".product-list",
+        "div[class*='product-grid']"
+      ],
+      "type": "container",
+      "description": "Product grid container"
+    },
+    "productItem": {
+      "locator": ".product-grid .item-box, .products-container .item-box, .product-list .item-box",
+      "fallbackLocators": [
+        ".item-box",
+        ".product-item",
+        "[class*='product-item']"
+      ],
+      "type": "container",
+      "description": "Individual product item"
+    },
+    "productNameLink": {
+      "locator": ".product-title a, .product-name a, h2.product-title a",
+      "fallbackLocators": [
+        ".product-title a",
+        ".product-name a",
+        "h2.product-title a",
+        "a[href*='digital-album']",
+        "a[href*='software']"
+      ],
+      "strategy": "role",
+      "role": "link",
+      "type": "link",
+      "description": "Product name link to detail page"
+    },
+    "productImage": {
+      "locator": ".picture img, .product-image img, .product-picture img",
+      "fallbackLocators": [
+        ".picture img",
+        ".product-image img",
+        "img[alt*='Picture of']"
+      ],
+      "type": "image",
+      "description": "Product image"
+    },
+    "productPrice": {
+      "locator": ".prices .price, .product-price .price, .actual-price",
+      "fallbackLocators": [
+        ".prices .price",
+        ".product-price .price",
+        ".actual-price",
+        "[class*='price']"
+      ],
+      "type": "text",
+      "description": "Product current price"
+    },
+    "productOldPrice": {
+      "locator": ".old-price, .product-old-price, .strike-through",
+      "fallbackLocators": [
+        ".old-price",
+        ".product-old-price",
+        "s",
+        "strike"
+      ],
+      "type": "text",
+      "description": "Product old price (discounted)"
+    },
+    "productReviewCount": {
+      "locator": "a[href*='productreviews'], .review-count, .reviews-link",
+      "fallbackLocators": [
+        "a[href*='productreviews']",
+        ".review-count",
+        ".reviews-link"
+      ],
+      "strategy": "role",
+      "role": "link",
+      "name": "review(s)",
+      "exact": false,
+      "type": "link",
+      "description": "Product review count link"
+    },
+    "addToCartButtonCategory": {
+      "locator": ".item-box .add-to-cart-button, .product-grid .add-to-cart-button, button:has-text('Add to cart')",
+      "fallbackLocators": [
+        ".add-to-cart-button",
+        "button[onclick*='addtocart']",
+        "button:has-text('Add to cart')",
+        "input[value='Add to cart']"
+      ],
+      "strategy": "role",
+      "role": "button",
+      "name": "Add to cart",
+      "exact": true,
+      "type": "button",
+      "description": "Add to cart button on category page"
+    },
+    "sortByDropdown": {
+      "locator": "select[id*='sort'], select[name*='sort'], .sort-by select",
+      "fallbackLocators": [
+        "select[id*='sort']",
+        "select[name*='sort']",
+        ".sort-by select"
+      ],
+      "strategy": "label",
+      "name": "Sort by:",
+      "exact": false,
+      "type": "select",
+      "description": "Sort by dropdown"
+    },
+    "displayDropdown": {
+      "locator": "select[id*='view'], select[name*='view'], .view-mode select",
+      "fallbackLocators": [
+        "select[id*='view']",
+        "select[name*='view']",
+        ".view-mode select"
+      ],
+      "strategy": "label",
+      "name": "View:",
+      "exact": false,
+      "type": "select",
+      "description": "Display/View as dropdown (Grid/List)"
+    },
+    "displayPerPageDropdown": {
+      "locator": "select[id*='pagesize'], select[name*='pagesize'], .page-size select",
+      "fallbackLocators": [
+        "select[id*='pagesize']",
+        "select[name*='pagesize']",
+        ".page-size select"
+      ],
+      "strategy": "label",
+      "name": "Display:",
+      "exact": false,
+      "type": "select",
+      "description": "Items per page dropdown"
+    },
+    "sidebarCategories": {
+      "locator": ".block-category-navigation, .side-2 .block-category-navigation",
+      "fallbackLocators": [
+        ".block-category-navigation",
+        ".side-2 .block-category-navigation"
+      ],
+      "type": "navigation",
+      "description": "Sidebar category navigation"
+    },
+    "sidebarDigitalDownloadsLink": {
+      "locator": ".block-category-navigation a[href='/digital-downloads'], .block-category-navigation a:has-text('Digital downloads')",
+      "fallbackLocators": [
+        ".block-category-navigation a[href='/digital-downloads']",
+        ".block-category-navigation a:has-text('Digital downloads')"
+      ],
+      "strategy": "role",
+      "role": "link",
+      "name": "Digital downloads",
+      "exact": true,
+      "type": "link",
+      "description": "Digital downloads link in sidebar"
+    },
+    "searchInput": {
+      "locator": "input[id='small-searchterms'], input[name='q']",
+      "fallbackLocators": ["input[id='small-searchterms']", "input[name='q']", "input[type='search']"],
+      "strategy": "placeholder",
+      "name": "Search store",
+      "exact": false,
+      "type": "textbox",
+      "description": "Search input field"
+    },
+    "searchButton": {
+      "locator": "button[type='submit'], input[value='Search']",
+      "fallbackLocators": ["button[type='submit']", "input[value='Search']", "button:has-text('Search')"],
+      "strategy": "role",
+      "role": "button",
+      "name": "Search",
+      "exact": true,
+      "type": "button",
+      "description": "Search button"
+    }
+  },
+  "forms": {
+    "sortForm": {
+      "locator": "form[action*='sort'], .sort-by form",
+      "fields": ["sortByDropdown"],
+      "submitButton": null
+    },
+    "displayForm": {
+      "locator": "form[action*='view'], .view-mode form",
+      "fields": ["displayDropdown", "displayPerPageDropdown"],
+      "submitButton": null
+    },
+    "searchForm": {
+      "locator": "form[action*='search'], #small-search-box-form",
+      "fields": ["searchInput"],
+      "submitButton": "searchButton"
+    }
+  }
+}

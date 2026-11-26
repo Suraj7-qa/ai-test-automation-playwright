@@ -1,0 +1,179 @@
+{
+  "pageName": "ApparelShoesPage",
+  "pageUrl": "/apparel-shoes",
+  "pageTitle": "Demo Web Shop. Apparel & Shoes",
+  "elements": {
+    "headerTopMenu": {
+      "locator": "ul.top-menu",
+      "fallbackLocators": ["ul[class*='top-menu']"],
+      "type": "navigation",
+      "description": "Main header category navigation"
+    },
+    "categoryHeading": {
+      "locator": "h1",
+      "strategy": "role",
+      "role": "heading",
+      "name": "Apparel & Shoes",
+      "exact": true,
+      "type": "heading",
+      "description": "Apparel & Shoes category heading"
+    },
+    "sidebarApparelLink": {
+      "locator": ".block-category-navigation a[href='/apparel-shoes']",
+      "strategy": "role",
+      "role": "link",
+      "name": "Apparel & Shoes",
+      "exact": true,
+      "type": "link",
+      "description": "Apparel & Shoes sidebar link"
+    },
+    "sidebarShoesLink": {
+      "locator": ".block-category-navigation a[href='/shoes']",
+      "strategy": "role",
+      "role": "link",
+      "name": "Shoes",
+      "exact": true,
+      "type": "link",
+      "description": "Shoes sidebar link"
+    },
+    "productCards": {
+      "locator": ".item-box",
+      "fallbackLocators": [".product-item"],
+      "type": "container",
+      "description": "Product cards on the Apparel & Shoes category page"
+    },
+    "productTitleLink": {
+      "locator": ".product-title a",
+      "fallbackLocators": [".product-name a"],
+      "type": "link",
+      "description": "Product title link within a product card"
+    },
+    "productCardImage": {
+      "locator": ".picture img",
+      "fallbackLocators": [".product-image img", "img[alt*='Picture of']"],
+      "type": "image",
+      "description": "Product image within a product card"
+    },
+    "productCardPrice": {
+      "locator": ".prices .price, .price",
+      "fallbackLocators": [".actual-price", "[class*='price']"],
+      "type": "text",
+      "description": "Product price within a product card"
+    },
+    "sortByDropdown": {
+      "locator": "select[name='products-orderby']",
+      "strategy": "css",
+      "type": "select",
+      "description": "Unlabelled product sorting control"
+    },
+    "viewModeDropdown": {
+      "locator": "select[name='products-viewmode']",
+      "strategy": "css",
+      "type": "select",
+      "description": "Unlabelled product view mode control"
+    },
+    "pageSizeDropdown": {
+      "locator": "select[name='products-pagesize']",
+      "strategy": "css",
+      "type": "select",
+      "description": "Unlabelled product page size control"
+    },
+    "nextPageLink": {
+      "locator": ".pager a",
+      "fallbackLocators": [".pager a[rel='next']"],
+      "strategy": "role",
+      "role": "link",
+      "name": "Next",
+      "exact": true,
+      "type": "link",
+      "description": "Next page link in the product pager"
+    },
+    "cardAddToCartButton": {
+      "locator": ".add-to-cart-button, .product-box-add-to-cart-button",
+      "strategy": "role",
+      "role": "button",
+      "name": "Add to cart",
+      "exact": true,
+      "type": "button",
+      "description": "Add to cart button within a product card"
+    },
+    "productDetailsRegion": {
+      "locator": ".product-essential",
+      "fallbackLocators": [".product-details-page .overview"],
+      "type": "region",
+      "description": "Main product information and purchase form"
+    },
+    "quantityInput": {
+      "locator": "input[id*='_EnteredQuantity']",
+      "strategy": "label",
+      "name": "Qty:",
+      "exact": false,
+      "type": "textbox",
+      "description": "Labeled quantity input on the product detail page"
+    },
+    "notification": {
+      "locator": ".bar-notification",
+      "type": "status",
+      "description": "Cart or validation notification"
+    },
+    "cartCount": {
+      "locator": ".cart-qty",
+      "type": "text",
+      "description": "Shopping cart item count in the header"
+    },
+    "stockMessage": {
+      "locator": ".stock",
+      "type": "text",
+      "description": "Product stock availability message"
+    },
+    "customTextInput": {
+      "locator": "#product_attribute_24_2_9",
+      "strategy": "css",
+      "type": "textbox",
+      "description": "Custom T-Shirt text field"
+    },
+    "emailFriendButton": {
+      "locator": "a[href*='productemailafriend'], button:has-text('Email a friend')",
+      "strategy": "role",
+      "role": "button",
+      "name": "Email a friend",
+      "exact": true,
+      "type": "button",
+      "description": "Email a friend button on detail page"
+    },
+    "compareListButton": {
+      "locator": "a[href*='comparelist'], button:has-text('Add to compare list')",
+      "strategy": "role",
+      "role": "button",
+      "name": "Add to compare list",
+      "exact": true,
+      "type": "button",
+      "description": "Add to compare list button on detail page"
+    },
+    "reviewLink": {
+      "locator": "a[href*='productreviews']",
+      "strategy": "role",
+      "role": "link",
+      "name": "Reviews",
+      "exact": true,
+      "type": "link",
+      "description": "Product reviews link on detail page"
+    },
+    "searchInput": {
+      "locator": "input[id='small-searchterms']",
+      "fallbackLocators": ["input[name='q']", "#small-search-box-form input[type='text']"],
+      "strategy": "css",
+      "type": "textbox",
+      "description": "Search input field"
+    },
+    "searchButton": {
+      "locator": "button[type='submit'][value='Search'], input[value='Search'], button:has-text('Search')",
+      "strategy": "role",
+      "role": "button",
+      "name": "Search",
+      "exact": true,
+      "type": "button",
+      "description": "Search submit button"
+    }
+  }
+}

@@ -1,22 +1,17 @@
 {
   "pageName": "DigitalProductDetailPage",
-  "pageUrl": "/digital-album",
-  "pageTitle": "Demo Web Shop. Digital Album",
+  "pageUrl": "/album-3",
+  "pageTitle": "Demo Web Shop. 3rd Album",
   "elements": {
     "productName": {
-      "locator": "h1:has-text('Digital Album'), h1:has-text('Software'), .product-name h1, .product-title h1",
-      "strategy": "role",
-      "role": "heading",
-      "name": "Digital Album",
-      "exact": true,
+      "locator": "h1",
+      "strategy": "css",
       "fallbackLocators": [
-        "h1",
         ".product-name",
-        ".product-title",
-        "h1:has-text('Software')"
+        ".product-title"
       ],
       "type": "heading",
-      "description": "Product name heading"
+      "description": "Product name heading (e.g., 3rd Album, Music 2)"
     },
     "productShortDescription": {
       "locator": ".short-description, .product-short-description, div[class*='short-description']",
@@ -103,42 +98,37 @@
       "description": "Quantity input field"
     },
     "addToCartButton": {
-      "locator": "button[id*='add-to-cart'], button[name*='add-to-cart'], button.add-to-cart-button, button:has-text('Add to cart')",
+      "locator": "input[value='Add to cart'], button[id*='add-to-cart'], button[name*='add-to-cart'], button.add-to-cart-button, button:has-text('Add to cart')",
       "fallbackLocators": [
+        "input[value='Add to cart']",
         "button[id*='add-to-cart']",
         "button[name*='add-to-cart']",
         ".add-to-cart-button",
-        "button:has-text('Add to cart')",
-        "input[value='Add to cart']"
+        "button:has-text('Add to cart')"
       ],
+      "strategy": "css",
       "type": "button",
       "description": "Add to cart button"
     },
     "emailFriendButton": {
-      "locator": "button:has-text('Email a friend')",
+      "locator": "input[value='Email a friend'], button:has-text('Email a friend'), a[href*='emailafriend']",
       "fallbackLocators": [
+        "input[value='Email a friend']",
         "button:has-text('Email a friend')",
-        "button[id*='email-friend']",
-        "button[name*='email-friend']"
+        "a[href*='emailafriend']"
       ],
-      "strategy": "role",
-      "role": "button",
-      "name": "Email a friend",
-      "exact": true,
+      "strategy": "css",
       "type": "button",
       "description": "Email a friend button"
     },
     "compareListButton": {
-      "locator": "button:has-text('Add to compare list')",
+      "locator": "input[value='Add to compare list'], button:has-text('Add to compare list'), a[href*='comparelist']",
       "fallbackLocators": [
+        "input[value='Add to compare list']",
         "button:has-text('Add to compare list')",
-        "button[id*='compare']",
-        "button[name*='compare']"
+        "a[href*='comparelist']"
       ],
-      "strategy": "role",
-      "role": "button",
-      "name": "Add to compare list",
-      "exact": true,
+      "strategy": "css",
       "type": "button",
       "description": "Add to compare list button"
     },

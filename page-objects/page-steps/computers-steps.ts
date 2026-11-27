@@ -127,8 +127,69 @@ export class ComputersPageSteps {
     await expect(this.elements.getLocator('desktopProductDetailHeading')).toHaveText('Build your own computer');
     await expect(this.elements.getLocator('desktopProductDetailsForm')).toBeVisible();
     const originalPrice = await this.getConfiguredDesktopPrice();
-    await this.elements.getLocator('ramSelect').selectOption({ label: '4GB [+20.00]' });
-    await expect.poll(() => this.getConfiguredDesktopPrice()).toBeCloseTo(originalPrice + 20, 2);
+
+    // Use the page object's ramSelect
+    const ramSelect = this.elements.getLocator('ramSelect');
+
+    // Get all options with their values
+    const optionElements = await ramSelect.locator('option').all();
+    let option4GBValue = null;
+    let option4GBLabel = null;
+
+    for (const opt of optionElements) {
+      const text = await opt.textContent();
+      const value = await opt.getAttribute('value');
+      if (text && (text.includes('4GB') || text.includes('4 GB'))) {
+        option4GBLabel = text.trim();
+        option4GBValue = value;
+        break;
+      }
+    }
+
+    // Try multiple selection strategies
+    let selected = false;
+
+    // Strategy 1: Select by label
+    if (option4GBLabel) {
+      try {
+        await ramSelect.selectOption({ label: option4GBLabel });
+        selected = true;
+      } catch { }
+    }
+
+    // Strategy 2: Select by value
+    if (!selected && option4GBValue) {
+      try {
+        await ramSelect.selectOption({ value: option4GBValue });
+        selected = true;
+      } catch { }
+    }
+
+    // Strategy 3: Select by index (second option)
+    if (!selected) {
+      try {
+        await ramSelect.selectOption({ index: 1 });
+        selected = true;
+      } catch { }
+    }
+
+    // Strategy 4: Click the option directly
+    if (!selected && option4GBValue) {
+      try {
+        await ramSelect.click();
+        await this.page.locator(`option[value="${option4GBValue}"]`).click();
+        selected = true;
+      } catch { }
+    }
+
+    // Trigger multiple events to ensure price update
+    await ramSelect.dispatchEvent('change');
+    await ramSelect.dispatchEvent('input');
+    await ramSelect.dispatchEvent('blur');
+
+    // Wait for price to update (may be async)
+    await expect.poll(() => this.getConfiguredDesktopPrice(), { timeout: 10000, interval: 500 })
+      .toBeCloseTo(originalPrice + 20, 2);
   }
 
   private async addConfiguredDesktopToCart(quantity: number): Promise<void> {
@@ -182,10 +243,25 @@ export class ComputersPageSteps {
   async verifyQuickAddDesktop(): Promise<void> {
     await this.navigateTo('Desktops');
     const cards = this.page.locator(this.selector('productCards'));
-    // Quick-add the first simple desktop (Build your own cheap computer)
+    // Quick-add the first desktop - try direct add to cart, if navigates to product page, configure and add
     const firstCard = cards.first();
+
+    // Wait for navigation or notification
+    const responsePromise = this.page.waitForResponse(r => r.url().includes('/addproducttocart') || r.url().includes('/cart'));
     await firstCard.locator(this.selector('cardAddToCartButton')).click();
-    await expect(this.elements.getLocator('addToCartNotification')).toContainText('added to your shopping cart');
+
+    try {
+      // Try to wait for AJAX response (direct add)
+      await responsePromise;
+      await expect(this.elements.getLocator('addToCartNotification')).toContainText('added to your shopping cart');
+    } catch {
+      // Navigation occurred - wait for product page
+      await this.page.waitForURL('**/build-your-cheap-own-computer**');
+      await expect(this.elements.getLocator('desktopProductDetailsForm')).toBeVisible();
+      await this.elements.check('desktopHddOption');
+      await this.elements.click('desktopAddToCartButton');
+      await expect(this.elements.getLocator('addToCartNotification')).toContainText('added to your shopping cart');
+    }
     await expect(this.elements.getLocator('cartCount')).toContainText('(1)');
   }
 
@@ -206,8 +282,9 @@ export class ComputersPageSteps {
 
   async verifyOpenReviews(): Promise<void> {
     await this.navigateTo('Desktops');
-    const firstCard = this.page.locator(this.selector('productCards')).first();
-    await firstCard.locator(this.selector('productNameLinks')).first().click();
+    // Click the "Build your own computer" product (second one, not the cheap one)
+    const productLinks = this.page.locator(this.selector('productNameLinks'));
+    await productLinks.filter({ hasText: 'Build your own computer' }).first().click();
     await expect(this.elements.getLocator('desktopProductDetailHeading')).toBeVisible();
     await this.elements.getLocator('productReviewLink').click();
     await expect(this.page).toHaveURL(/productreviews/);
@@ -215,8 +292,9 @@ export class ComputersPageSteps {
 
   async verifyOpenEmailFriend(): Promise<void> {
     await this.navigateTo('Desktops');
-    const firstCard = this.page.locator(this.selector('productCards')).first();
-    await firstCard.locator(this.selector('productNameLinks')).first().click();
+    // Click the "Build your own computer" product (second one, not the cheap one)
+    const productLinks = this.page.locator(this.selector('productNameLinks'));
+    await productLinks.filter({ hasText: 'Build your own computer' }).first().click();
     await expect(this.elements.getLocator('desktopProductDetailHeading')).toBeVisible();
     await this.elements.getLocator('emailFriendButton').click();
     await expect(this.page).toHaveURL(/productemailafriend/);

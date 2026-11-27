@@ -4,13 +4,11 @@
   "pageTitle": "Demo Web Shop. Computers",
   "elements": {
     "categoryHeading": {
-      "locator": "h1",
-      "strategy": "role",
-      "role": "heading",
-      "name": "Computers",
-      "exact": true,
+      "locator": ".page-title h1, h1.page-title, .page-title",
+      "fallbackLocators": ["h1", ".category-title"],
+      "strategy": "css",
       "type": "heading",
-      "description": "Current category heading"
+      "description": "Current category heading (dynamic based on page)"
     },
     "headerTopMenu": {
       "locator": "ul.top-menu",
@@ -30,20 +28,16 @@
       "description": "Desktops sidebar link"
     },
     "sidebarNotebooksLink": {
-      "locator": ".block-category-navigation a[href='/notebooks']",
-      "strategy": "role",
-      "role": "link",
-      "name": "Notebooks",
-      "exact": true,
+      "locator": ".block-category-navigation .listbox li a[href='/notebooks']",
+      "fallbackLocators": [".block-category-navigation a[href='/notebooks']:first-of-type"],
+      "strategy": "css",
       "type": "link",
       "description": "Notebooks sidebar link"
     },
     "sidebarAccessoriesLink": {
-      "locator": ".block-category-navigation a[href='/accessories']",
-      "strategy": "role",
-      "role": "link",
-      "name": "Accessories",
-      "exact": true,
+      "locator": ".block-category-navigation .listbox li a[href='/accessories']",
+      "fallbackLocators": [".block-category-navigation a[href='/accessories']:first-of-type"],
+      "strategy": "css",
       "type": "link",
       "description": "Accessories sidebar link"
     },
@@ -196,18 +190,16 @@
       "description": "Configured desktop price scoped to the main product"
     },
     "ramSelect": {
-      "locator": "#product-details-form select[id^='product_attribute_16_6_']",
-      "strategy": "label",
-      "name": "RAM *",
-      "exact": true,
+      "locator": "#product-details-form select[name*='product_attribute_16_6']",
+      "fallbackLocators": ["#product-details-form select[id*='product_attribute_16_6']", "#product-details-form select[name*='product_attribute_']:nth-of-type(2)", "#product-details-form select[id*='product_attribute_']:nth-of-type(2)", "#product-details-form select:has(option:has-text('GB'))"],
+      "strategy": "css",
       "type": "select",
       "description": "RAM configuration selector"
     },
     "desktopHddOption": {
-      "locator": "#product-details-form input[type='radio'][name='product_attribute_16_3_6'][value='18']",
-      "strategy": "label",
-      "name": "320 GB",
-      "exact": true,
+      "locator": "#product-details-form input[type='radio'][value='18']",
+      "fallbackLocators": ["#product-details-form input[name*='product_attribute_'][value='18']", "#product-details-form input[type='radio']:has(+ label:has-text('320 GB'))"],
+      "strategy": "css",
       "type": "radio",
       "description": "Required 320 GB HDD option"
     },
@@ -230,17 +222,15 @@
     },
 
     "addToCartNotification": {
-      "locator": ".bar-notification",
-      "fallbackLocators": [".message-success", "[class*='notification']"],
+      "locator": "#bar-notification",
+      "fallbackLocators": [".bar-notification", ".message-success", "[class*='notification']"],
       "type": "status",
       "description": "Add-to-cart success notification"
     },
     "cartCount": {
-      "locator": ".cart-qty",
-      "fallbackLocators": ["[data-testid='cart-count']", ".cart-count"],
-      "strategy": "role",
-      "role": "link",
-      "name": "Shopping cart",
+      "locator": "a.ico-cart .cart-qty, .cart-qty",
+      "fallbackLocators": [".cart-count", "[data-testid='cart-count']", "a.ico-cart"],
+      "strategy": "css",
       "type": "text",
       "description": "Shopping cart item count"
     },
@@ -260,19 +250,15 @@
     },
     "viewModeDropdown": {
       "locator": "select[id*='products-viewmode']",
-      "fallbackLocators": ["select[id*='viewmode']", ".view-mode select"],
-      "strategy": "label",
-      "name": "View:",
-      "exact": false,
+      "fallbackLocators": ["select[id*='viewmode']", ".view-mode select", "select[name*='viewmode']"],
+      "strategy": "css",
       "type": "select",
       "description": "Catalogue view mode (Grid/List)"
     },
     "pageSizeDropdown": {
       "locator": "select[id*='products-pagesize']",
-      "fallbackLocators": ["select[id*='pagesize']", ".page-size select"],
-      "strategy": "label",
-      "name": "Display:",
-      "exact": false,
+      "fallbackLocators": ["select[id*='pagesize']", ".page-size select", "select[name*='pagesize']"],
+      "strategy": "css",
       "type": "select",
       "description": "Products per page"
     },
@@ -283,47 +269,39 @@
       "description": "Add to cart button within a product card"
     },
     "cardCompareButton": {
-      "locator": ".compare-button, .add-to-compare-list, a[href*='comparelist']",
-      "strategy": "role",
-      "role": "button",
-      "name": "Add to compare list",
-      "exact": true,
+      "locator": ".compare-button, .add-to-compare-list, a[href*='comparelist'], button:has-text('Add to compare list'), .product-box-add-to-compare, [class*='compare'], .compare-product, .add-to-compare",
+      "fallbackLocators": ["[data-testid*='compare']", "a[title*='compare' i], button[title*='compare' i]", "a[href*='compare']"],
+      "strategy": "css",
       "type": "button",
       "description": "Add to compare list button within a product card"
     },
     "productReviewLink": {
       "locator": "a[href*='productreviews']",
-      "strategy": "role",
-      "role": "link",
-      "name": "Reviews",
-      "exact": true,
+      "fallbackLocators": ["a:has-text('Reviews'), .product-review-link"],
+      "strategy": "css",
       "type": "link",
       "description": "Product reviews link on detail page"
     },
     "emailFriendButton": {
       "locator": "a[href*='productemailafriend'], button:has-text('Email a friend')",
-      "strategy": "role",
-      "role": "button",
-      "name": "Email a friend",
-      "exact": true,
-      "type": "button",
+      "fallbackLocators": ["a:has-text('Email a friend'), .email-friend-button", "a[href*='emailafriend']", ".product-email-friend"],
+      "strategy": "css",
+      "type": "link",
       "description": "Email a friend button on detail page"
     },
     "desktopOsOption": {
-      "locator": "#product-details-form input[type='radio'][name='product_attribute_16_4_6'][value='19']",
-      "strategy": "label",
-      "name": "Windows 8 Pro [+50.00]",
-      "exact": true,
+      "locator": "#product-details-form input[type='radio'][value='19']",
+      "fallbackLocators": ["#product-details-form input[name*='product_attribute_'][value='19']", "#product-details-form input[type='radio']:has(+ label:has-text('Windows 8 Pro'))"],
+      "strategy": "css",
       "type": "radio",
-      "description": "OS configuration option"
+      "description": "OS configuration option (Windows 8 Pro)"
     },
     "desktopSoftwareOptions": {
-      "locator": "#product-details-form input[type='checkbox'][name='product_attribute_16_7_6']",
-      "strategy": "label",
-      "name": "Microsoft Office [+50.00]",
-      "exact": true,
+      "locator": "#product-details-form input[type='checkbox'][name*='product_attribute_']",
+      "fallbackLocators": ["#product-details-form input[type='checkbox'][id*='product_attribute_']"],
+      "strategy": "css",
       "type": "checkbox",
-      "description": "Software configuration option"
+      "description": "Software configuration option (Microsoft Office)"
     }
   }
 }

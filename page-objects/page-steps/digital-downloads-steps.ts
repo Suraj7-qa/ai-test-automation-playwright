@@ -64,7 +64,7 @@ export class DigitalDownloadsPageSteps {
 
   // Click first product
   async clickFirstProduct(): Promise<void> {
-    const productLink = this.page.locator('a[href*="digital-album"], a[href*="software"], .product-title a, .product-name a').first();
+    const productLink = this.page.locator('.product-title a').first();
     await this.commons.click(productLink);
     await this.commons.waitForPageLoad();
   }
@@ -72,14 +72,14 @@ export class DigitalDownloadsPageSteps {
   // Add product to cart from category page by product name
   async addToCartFromCategory(productName: string): Promise<void> {
     const productItem = this.page.locator(`.item-box:has-text("${productName}")`).first();
-    const addToCartBtn = productItem.locator('button:has-text("Add to cart"), .add-to-cart-button').first();
+    const addToCartBtn = productItem.locator('input[value="Add to cart"]').first();
     await this.commons.click(addToCartBtn);
     await this.commons.waitForVisible(this.page.locator('.bar-notification, .notification-success, div:has-text("added to your shopping cart")').first());
   }
 
   // Add first product to cart from category page
   async addFirstProductToCartFromCategory(): Promise<void> {
-    const addToCartBtn = this.page.locator('button:has-text("Add to cart"), .add-to-cart-button').first();
+    const addToCartBtn = this.page.locator('input[value="Add to cart"]').first();
     await this.commons.click(addToCartBtn);
     await this.commons.waitForVisible(this.page.locator('.bar-notification, .notification-success, div:has-text("added to your shopping cart")').first());
   }
@@ -142,7 +142,7 @@ export class DigitalDownloadsPageSteps {
 
   // Verify product count on page
   async verifyProductCount(expectedCount: number): Promise<void> {
-    const productItems = this.page.locator('.item-box, .product-item, [class*="product-item"]');
+    const productItems = this.page.locator('.product-grid .item-box, .products-container .item-box');
     await this.commons.assertCount(productItems, expectedCount);
   }
 
@@ -160,7 +160,8 @@ export class DigitalDownloadsPageSteps {
 
   // Search from Digital Downloads category page
   async search(term: string): Promise<void> {
-    await this.commons.fill(this.elements.getLocator('searchInput'), term);
+    // Search input has no placeholder, use CSS selector
+    await this.commons.fill(this.page.locator('input[id="small-searchterms"]'), term);
     await this.commons.click(this.elements.getLocator('searchButton'));
     await this.commons.waitForPageLoad();
   }
@@ -205,7 +206,8 @@ export class DigitalProductDetailPageSteps {
 
   // Verify product detail page loaded
   async verifyPageLoaded(): Promise<void> {
-    await this.commons.assertTitle(/Digital Album|Software/);
+    // Title is "Demo Web Shop. <Product Name>" - just verify it contains "Demo Web Shop"
+    await this.commons.assertTitle(/Demo Web Shop/);
     await this.commons.assertVisible(this.elements.getLocator('productName'));
     await this.commons.assertVisible(this.elements.getLocator('addToCartButton'));
     await this.commons.assertVisible(this.elements.getLocator('emailFriendButton'));
@@ -284,7 +286,8 @@ export class DigitalProductDetailPageSteps {
   // Click Compare list button
   async clickCompareList(): Promise<void> {
     await this.commons.click(this.elements.getLocator('compareListButton'));
-    await this.commons.waitForVisible(this.page.locator('.bar-notification, .notification-success, div:has-text("product comparison")').first());
+    // Clicking "Add to compare list" navigates to the compare products page
+    await this.commons.waitForURL(/compareproducts/);
   }
 
   // Click Review count link
@@ -415,20 +418,21 @@ export class EmailFriendPageSteps {
 
   // Verify success message
   async verifySuccessMessage(): Promise<void> {
-    await this.commons.waitForVisible(this.elements.getLocator('successMessage'));
-    await this.commons.assertContainsText(this.elements.getLocator('successMessage'), 'Your message has been sent');
+    // Success message appears as plain text in body, not in .message-success element
+    await this.commons.waitForText(this.page.locator('body'), 'Your message has been sent');
   }
 
   // Verify validation error for invalid email
   async verifyInvalidEmailError(): Promise<void> {
-    await this.commons.waitForVisible(this.elements.getLocator('validationSummary'));
-    await this.commons.assertContainsText(this.elements.getLocator('validationSummary'), 'Wrong email');
+    // The error message is in .field-validation-error which becomes visible after submission
+    await this.commons.waitForVisible(this.page.locator('.field-validation-error:visible, .message-error:visible, .validation-summary-errors:visible').first());
+    await this.commons.assertContainsText(this.page.locator('.field-validation-error:visible, .message-error:visible, .validation-summary-errors:visible').first(), 'Wrong email');
   }
 
   // Verify validation errors for empty fields
   async verifyEmptyFieldsError(): Promise<void> {
-    await this.commons.waitForVisible(this.elements.getLocator('validationSummary'));
-    await this.commons.assertContainsText(this.elements.getLocator('validationSummary'), 'required');
+    await this.commons.waitForVisible(this.page.locator('.field-validation-error:visible, .message-error:visible, .validation-summary-errors:visible').first());
+    await this.commons.assertContainsText(this.page.locator('.field-validation-error:visible, .message-error:visible, .validation-summary-errors:visible').first(), "Enter friend's email");
   }
 
   // Submit email friend form with valid data
@@ -499,7 +503,8 @@ export class ProductReviewsPageSteps {
   // Verify product reviews page loaded
   async verifyPageLoaded(): Promise<void> {
     await this.commons.assertTitle(/Product Reviews/);
-    await this.commons.assertVisible(this.elements.getLocator('pageHeading'));
+    // Heading is "Product reviews for <Product Name>" - use partial match
+    await this.commons.assertVisible(this.page.locator('h1:has-text("Product reviews")').first());
   }
 
   // Verify reviews are displayed

@@ -63,9 +63,9 @@ test.describe('Electronics module - risk-based regression', () => {
   });
 
   // Product detail and add to cart
-  test('ELEC-010: Add Handycam to cart from Camera, photo @smoke @regression @critical', async () => {
-    await electronicsSteps.verifyAddHandycamToCart();
-  });
+    test('ELEC-010: Add Camera to cart from Camera, photo @smoke @regression @critical', async () => {
+      await electronicsSteps.verifyAddCameraToCart();
+    });
 
   test('ELEC-011: Add Smartphone to cart from Cell phones @smoke @regression @critical', async () => {
     await electronicsSteps.verifyAddSmartphoneToCart();
@@ -77,9 +77,9 @@ test.describe('Electronics module - risk-based regression', () => {
   });
 
   // Compare list
-  test('ELEC-013: Add Handycam to compare list @regression', async () => {
-    await electronicsSteps.verifyCompareListHandycam();
-  });
+    test('ELEC-013: Add Camera to compare list @regression', async () => {
+      await electronicsSteps.verifyCompareListCamera();
+    });
 
   // Reviews
   test('ELEC-014: View reviews for Handycam @regression', async () => {

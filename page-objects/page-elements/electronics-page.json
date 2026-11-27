@@ -123,41 +123,32 @@
       "type": "link",
       "description": "High Definition 3D Camcorder product link"
     },
-    "sortByDropdown": {
-      "locator": "select[id*='products-orderby']",
-      "fallbackLocators": ["select[id*='sort']", ".sort-by select"],
-      "strategy": "label",
-      "name": "Sort by:",
-      "exact": false,
+        "sortByDropdown": {
+      "locator": "#products-orderby",
+      "strategy": "css",
       "type": "select",
       "description": "Catalogue sort order"
     },
     "viewModeDropdown": {
-      "locator": "select[id*='products-viewmode']",
-      "fallbackLocators": ["select[id*='viewmode']", ".view-mode select"],
-      "strategy": "label",
-      "name": "View:",
-      "exact": false,
+      "locator": "#products-viewmode",
+      "strategy": "css",
       "type": "select",
       "description": "Catalogue view mode (Grid/List)"
     },
     "pageSizeDropdown": {
-      "locator": "select[id*='products-pagesize']",
-      "fallbackLocators": ["select[id*='pagesize']", ".page-size select"],
-      "strategy": "label",
-      "name": "Display:",
-      "exact": false,
+      "locator": "#products-pagesize",
+      "strategy": "css",
       "type": "select",
       "description": "Products per page"
     },
-    "handycamDetailHeading": {
+        "digitalSlrDetailHeading": {
       "locator": "h1",
       "strategy": "role",
       "role": "heading",
-      "name": "1MP 60GB Hard Drive Handycam Camcorder",
+      "name": "Digital SLR Camera 12.2 Mpixel",
       "exact": true,
       "type": "heading",
-      "description": "Handycam detail page heading"
+      "description": "Digital SLR detail page heading"
     },
     "smartphoneDetailHeading": {
       "locator": "h1",
@@ -168,16 +159,12 @@
       "type": "heading",
       "description": "Smartphone detail page heading"
     },
-    "detailAddToCartButton": {
-      "locator": "button[id*='add-to-cart'], input[id*='add-to-cart']",
-      "fallbackLocators": [".add-to-cart-button"],
-      "strategy": "role",
-      "role": "button",
-      "name": "Add to cart",
-      "exact": true,
-      "type": "button",
-      "description": "Add to cart button on product detail page"
-    },
+        "detailAddToCartButton": {
+          "locator": "#add-to-cart-button-31, #add-to-cart-button-43, .add-to-cart-button",
+          "strategy": "css",
+          "type": "button",
+          "description": "Add to cart button on product detail page"
+        },
     "detailEmailFriendButton": {
       "locator": "a[href*='productemailafriend'], button:has-text('Email a friend')",
       "strategy": "role",
@@ -188,20 +175,15 @@
       "description": "Email a friend button on detail page"
     },
     "detailCompareButton": {
-      "locator": "a[href*='comparelist'], button:has-text('Add to compare list')",
-      "strategy": "role",
-      "role": "button",
-      "name": "Add to compare list",
-      "exact": true,
+      "locator": "input[value='Add to compare list']",
+      "strategy": "css",
       "type": "button",
       "description": "Add to compare list button on detail page"
     },
-    "detailReviewLink": {
+        "detailReviewLink": {
       "locator": "a[href*='productreviews']",
-      "strategy": "role",
-      "role": "link",
-      "name": "Reviews",
-      "exact": true,
+      "fallbackLocators": [".product-review-links a"],
+      "strategy": "css",
       "type": "link",
       "description": "Product reviews link on detail page"
     },

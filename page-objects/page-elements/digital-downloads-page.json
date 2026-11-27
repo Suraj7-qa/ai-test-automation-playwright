@@ -74,16 +74,15 @@
       "description": "Individual product item"
     },
     "productNameLink": {
-      "locator": ".product-title a, .product-name a, h2.product-title a",
+      "locator": ".product-title a",
       "fallbackLocators": [
         ".product-title a",
         ".product-name a",
         "h2.product-title a",
-        "a[href*='digital-album']",
-        "a[href*='software']"
+        "a[href*='album-']",
+        "a[href*='music-']"
       ],
-      "strategy": "role",
-      "role": "link",
+      "strategy": "css",
       "type": "link",
       "description": "Product name link to detail page"
     },
@@ -134,56 +133,47 @@
       "description": "Product review count link"
     },
     "addToCartButtonCategory": {
-      "locator": ".item-box .add-to-cart-button, .product-grid .add-to-cart-button, button:has-text('Add to cart')",
+      "locator": "input[value='Add to cart'], .add-to-cart-button, button:has-text('Add to cart')",
       "fallbackLocators": [
+        "input[value='Add to cart']",
         ".add-to-cart-button",
         "button[onclick*='addtocart']",
-        "button:has-text('Add to cart')",
-        "input[value='Add to cart']"
+        "button:has-text('Add to cart')"
       ],
-      "strategy": "role",
-      "role": "button",
-      "name": "Add to cart",
-      "exact": true,
+      "strategy": "css",
       "type": "button",
       "description": "Add to cart button on category page"
     },
     "sortByDropdown": {
-      "locator": "select[id*='sort'], select[name*='sort'], .sort-by select",
+      "locator": "select#products-orderby, select[id*='sort'], select[name*='sort']",
       "fallbackLocators": [
+        "select#products-orderby",
         "select[id*='sort']",
-        "select[name*='sort']",
-        ".sort-by select"
+        "select[name*='sort']"
       ],
-      "strategy": "label",
-      "name": "Sort by:",
-      "exact": false,
+      "strategy": "css",
       "type": "select",
       "description": "Sort by dropdown"
     },
     "displayDropdown": {
-      "locator": "select[id*='view'], select[name*='view'], .view-mode select",
+      "locator": "select#products-viewmode, select[id*='view'], select[name*='view']",
       "fallbackLocators": [
+        "select#products-viewmode",
         "select[id*='view']",
-        "select[name*='view']",
-        ".view-mode select"
+        "select[name*='view']"
       ],
-      "strategy": "label",
-      "name": "View:",
-      "exact": false,
+      "strategy": "css",
       "type": "select",
       "description": "Display/View as dropdown (Grid/List)"
     },
     "displayPerPageDropdown": {
-      "locator": "select[id*='pagesize'], select[name*='pagesize'], .page-size select",
+      "locator": "select#products-pagesize, select[id*='pagesize'], select[name*='pagesize']",
       "fallbackLocators": [
+        "select#products-pagesize",
         "select[id*='pagesize']",
-        "select[name*='pagesize']",
-        ".page-size select"
+        "select[name*='pagesize']"
       ],
-      "strategy": "label",
-      "name": "Display:",
-      "exact": false,
+      "strategy": "css",
       "type": "select",
       "description": "Items per page dropdown"
     },
@@ -197,15 +187,11 @@
       "description": "Sidebar category navigation"
     },
     "sidebarDigitalDownloadsLink": {
-      "locator": ".block-category-navigation a[href='/digital-downloads'], .block-category-navigation a:has-text('Digital downloads')",
+      "locator": ".block-category-navigation a[href='/digital-downloads']",
       "fallbackLocators": [
-        ".block-category-navigation a[href='/digital-downloads']",
-        ".block-category-navigation a:has-text('Digital downloads')"
+        ".block-category-navigation a[href='/digital-downloads']"
       ],
-      "strategy": "role",
-      "role": "link",
-      "name": "Digital downloads",
-      "exact": true,
+      "strategy": "css",
       "type": "link",
       "description": "Digital downloads link in sidebar"
     },

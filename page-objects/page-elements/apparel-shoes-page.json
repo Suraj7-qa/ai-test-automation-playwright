@@ -18,21 +18,24 @@
       "type": "heading",
       "description": "Apparel & Shoes category heading"
     },
+    "shoesCategoryHeading": {
+      "locator": "h1",
+      "strategy": "role",
+      "role": "heading",
+      "name": "Shoes",
+      "exact": true,
+      "type": "heading",
+      "description": "Shoes category heading"
+    },
     "sidebarApparelLink": {
       "locator": ".block-category-navigation a[href='/apparel-shoes']",
-      "strategy": "role",
-      "role": "link",
-      "name": "Apparel & Shoes",
-      "exact": true,
+      "strategy": "css",
       "type": "link",
       "description": "Apparel & Shoes sidebar link"
     },
     "sidebarShoesLink": {
       "locator": ".block-category-navigation a[href='/shoes']",
-      "strategy": "role",
-      "role": "link",
-      "name": "Shoes",
-      "exact": true,
+      "strategy": "css",
       "type": "link",
       "description": "Shoes sidebar link"
     },
@@ -89,13 +92,10 @@
       "description": "Next page link in the product pager"
     },
     "cardAddToCartButton": {
-      "locator": ".add-to-cart-button, .product-box-add-to-cart-button",
-      "strategy": "role",
-      "role": "button",
-      "name": "Add to cart",
-      "exact": true,
+      "locator": "input[value='Add to cart'], .add-to-cart-button, .product-box-add-to-cart-button",
+      "strategy": "css",
       "type": "button",
-      "description": "Add to cart button within a product card"
+      "description": "Add to cart button within a product card (input[type=button] or button)"
     },
     "productDetailsRegion": {
       "locator": ".product-essential",
@@ -142,20 +142,14 @@
       "description": "Email a friend button on detail page"
     },
     "compareListButton": {
-      "locator": "a[href*='comparelist'], button:has-text('Add to compare list')",
-      "strategy": "role",
-      "role": "button",
-      "name": "Add to compare list",
-      "exact": true,
+      "locator": "input[value='Add to compare list']",
+      "strategy": "css",
       "type": "button",
       "description": "Add to compare list button on detail page"
     },
     "reviewLink": {
       "locator": "a[href*='productreviews']",
-      "strategy": "role",
-      "role": "link",
-      "name": "Reviews",
-      "exact": true,
+      "strategy": "css",
       "type": "link",
       "description": "Product reviews link on detail page"
     },

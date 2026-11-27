@@ -146,7 +146,8 @@ export class HomePageSteps {
   // Verify shopping cart count
   async verifyCartCount(expectedCount: string | number): Promise<void> {
     await this.commons.waitForVisible(this.elements.getLocator('cartCount'));
-    await this.commons.assertText(this.elements.getLocator('cartCount'), expectedCount.toString());
+    // Cart count displays as "(1)" not "1", so use contains text
+    await this.commons.assertContainsText(this.elements.getLocator('cartCount'), expectedCount.toString());
   }
 
   // Get cart count

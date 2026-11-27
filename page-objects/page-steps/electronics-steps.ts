@@ -1,3 +1,4 @@
+
 import { expect, Page } from '@playwright/test';
 import { WebCommons } from '../../commons/ui/web-commons';
 import { ElementHelper, loadPageElements } from '../../utilities/element-loader';
@@ -88,11 +89,11 @@ export class ElectronicsPageSteps {
     await this.elements.getLocator('pageSizeDropdown').selectOption({ label: '4' });
   }
 
-  async verifyAddHandycamToCart(): Promise<void> {
+      async verifyAddCameraToCart(): Promise<void> {
     await this.commons.navigate('/camera-photo', { waitUntil: 'domcontentloaded' });
-    await this.elements.click('handycamLink');
-    await expect(this.elements.getLocator('handycamDetailHeading')).toBeVisible();
-    await this.elements.click('detailAddToCartButton');
+    await this.elements.click('digitalSlrLink');
+    await expect(this.elements.getLocator('digitalSlrDetailHeading')).toBeVisible();
+    await this.elements.getLocator('detailAddToCartButton').click();
     await expect(this.elements.getLocator('addToCartNotification')).toContainText('added to your shopping cart');
   }
 
@@ -100,7 +101,7 @@ export class ElectronicsPageSteps {
     await this.navigateToCellPhones();
     await this.elements.click('smartphoneLink');
     await expect(this.elements.getLocator('smartphoneDetailHeading')).toBeVisible();
-    await this.elements.click('detailAddToCartButton');
+    await this.elements.getLocator('detailAddToCartButton').click();
     await expect(this.elements.getLocator('addToCartNotification')).toContainText('added to your shopping cart');
   }
 
@@ -111,11 +112,12 @@ export class ElectronicsPageSteps {
     await expect(this.page).toHaveURL(/productemailafriend/);
   }
 
-  async verifyCompareListHandycam(): Promise<void> {
+  async verifyCompareListCamera(): Promise<void> {
     await this.commons.navigate('/camera-photo', { waitUntil: 'domcontentloaded' });
-    await this.elements.click('handycamLink');
+    await this.elements.click('digitalSlrLink');
     await this.elements.click('detailCompareButton');
-    await expect(this.elements.getLocator('addToCartNotification')).toContainText('product comparison');
+    // Clicking "Add to compare list" navigates to the compare products page
+    await expect(this.page).toHaveURL(/compareproducts/);
   }
 
   async verifyReviewsHandycam(): Promise<void> {
